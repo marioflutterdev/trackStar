@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:animate_do/animate_do.dart';
+import 'package:trackstar_web/src/presentation/screens/auth/widgets/widgets.dart';
 
 import 'package:trackstar_web/src/presentation/widgets/widgets.dart';
-import 'package:trackstar_web/src/presentation/screens/auth/widgets/widgets.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -42,7 +42,7 @@ class _Elements extends StatelessWidget {
             children: [
               FadeInRight(
                 duration: const Duration(seconds: 3),
-                child: const Logo(),
+                child: const LogoAuth(),
               ),
               _Form(),
               const SizedBox(
@@ -117,7 +117,12 @@ class _FormState extends State<_Form> {
             ),
             const SizedBox(height: 20),
             CustomButtonWidget(
-              onPressed: () {},
+              onPressed: () {
+                //todo fincionalidad con el back end
+                if (context.mounted) {
+                  Navigator.popAndPushNamed(context, '/home');
+                }
+              },
               child: const Center(
                   child: Text(
                 'Iniciar sesión',

@@ -17,7 +17,7 @@ class LoadingScreen extends StatelessWidget {
         builder: (context, snapshot) => Center(
           child: ElasticInDown(
             duration: const Duration(seconds: 3),
-            child: const Logo(),
+            child: const LogoAuth(),
           ),
         ),
       ),
