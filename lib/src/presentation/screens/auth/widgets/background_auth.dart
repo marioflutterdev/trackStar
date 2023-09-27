@@ -1,4 +1,7 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+
+import 'package:flutter_svg/svg.dart';
 
 class BackGroundAuth extends StatelessWidget {
   const BackGroundAuth({
@@ -7,28 +10,29 @@ class BackGroundAuth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Stack(
+    return Stack(
       alignment: Alignment.center,
       children: [
         Positioned(
-          bottom: -50,
-          left: -100,
-          child: _Dot(),
-        ),
-        Positioned(
-          top: -50,
-          left: -130,
-          child: _Dot(),
+          top: -550,
+          left: -600,
+          child: FadeInLeft(
+              duration: const Duration(seconds: 2),
+              child: const _Dot(size: 1500)),
         ),
         Positioned(
           bottom: 50,
           right: -150,
-          child: _Dot(),
+          child: FadeInRight(
+              duration: const Duration(seconds: 2),
+              child: const _Dot(size: 500)),
         ),
         Positioned(
-          top: 100,
-          right: -130,
-          child: _Dot(),
+          bottom: 50,
+          left: 50,
+          child: FadeInRight(
+              duration: const Duration(seconds: 2),
+              child: SvgPicture.asset('assets/svg/img2.svg')),
         ),
       ],
     );
@@ -36,17 +40,20 @@ class BackGroundAuth extends StatelessWidget {
 }
 
 class _Dot extends StatelessWidget {
+  final double size;
+
   const _Dot({
     super.key,
+    this.size = 200,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200,
-      height: 200,
+      width: size,
+      height: size,
       decoration: const BoxDecoration(
-        color: Color(0xff01091D),
+        color: Color(0xff56AEFF),
         shape: BoxShape.circle,
       ),
     );

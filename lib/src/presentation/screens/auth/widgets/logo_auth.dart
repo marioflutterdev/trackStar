@@ -6,7 +6,7 @@ class Logo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SizedBox(
-      width: 300,
+      width: 250,
       child: Image(
         image: AssetImage('assets/img/logo.png'),
       ),

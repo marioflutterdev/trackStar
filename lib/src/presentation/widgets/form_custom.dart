@@ -30,8 +30,8 @@ class FormCustomWidget extends StatelessWidget {
         right: 20,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        color: Colors.white,
+        borderRadius: BorderRadius.circular(50),
+        color: Colors.grey.shade300,
         boxShadow: const [
           BoxShadow(
             color: Colors.black26,

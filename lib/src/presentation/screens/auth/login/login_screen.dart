@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:animate_do/animate_do.dart';
 
-import 'package:trackstar_web/widgets/widgets.dart';
+import 'package:trackstar_web/src/presentation/widgets/widgets.dart';
 import 'package:trackstar_web/src/presentation/screens/auth/widgets/widgets.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -14,8 +14,12 @@ class LoginScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          // BackGround(),
-          _Elements(),
+          BackGroundAuth(),
+          Positioned(
+            right: 300,
+            bottom: 200,
+            child: _Elements(),
+          ),
         ],
       ),
     );
@@ -36,8 +40,8 @@ class _Elements extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Bounce(
-                duration: const Duration(seconds: 1),
+              FadeInRight(
+                duration: const Duration(seconds: 3),
                 child: const Logo(),
               ),
               _Form(),
@@ -63,14 +67,14 @@ class _FormState extends State<_Form> {
   @override
   Widget build(BuildContext context) {
     //final auth = Provider.of<AuthService>(context);
-    final focus = FocusScope.of(context);
+    //final focus = FocusScope.of(context);
     return Center(
       child: Container(
         height: 350,
-        width: 500,
+        width: 400,
         padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
         decoration: BoxDecoration(
-          color: const Color(0XFF01091D),
+          color: Colors.white,
           borderRadius: BorderRadius.circular(15),
           boxShadow: const [
             BoxShadow(
@@ -81,19 +85,21 @@ class _FormState extends State<_Form> {
           ],
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const SizedBox(height: 15),
             const Text(
-              'Login',
+              'Iniciar sesión',
               style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500),
+                  fontSize: 40,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 30),
             FormCustomWidget(
-              prefixIcon: const Icon(Icons.email, color: Color(0xff01091D)),
+              prefixIcon:
+                  const Icon(Icons.person_4_rounded, color: Color(0xff01091D)),
               hintText: 'Email',
               controller: controllerEmail,
               onChanged: (p0) {
@@ -101,7 +107,7 @@ class _FormState extends State<_Form> {
               },
             ),
             FormCustomWidget(
-              prefixIcon: const Icon(Icons.password, color: Color(0xff01091D)),
+              prefixIcon: const Icon(Icons.lock, color: Color(0xff01091D)),
               hintText: 'Password',
               obscureText: true,
               controller: controllerPassword,
@@ -109,14 +115,14 @@ class _FormState extends State<_Form> {
                 setState(() {});
               },
             ),
-            Row(
-              children: [
-                const Expanded(child: SizedBox()),
-                CustomButtonWidget(
-                  onPressed: () {},
-                  child: const Text('Siguiente'),
-                ),
-              ],
+            const SizedBox(height: 20),
+            CustomButtonWidget(
+              onPressed: () {},
+              child: const Center(
+                  child: Text(
+                'Iniciar sesión',
+                style: TextStyle(fontSize: 20),
+              )),
             ),
             const SizedBox(height: 15),
           ],
