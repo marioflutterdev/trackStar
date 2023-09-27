@@ -15,15 +15,16 @@ class MenuLeft extends StatelessWidget {
       width: size.width * .25,
       height: double.infinity,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: const Color(0xff56AEFF),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius: 10,
-              offset: Offset(10, 10),
-            )
-          ]),
+        borderRadius: BorderRadius.circular(20),
+        color: const Color(0xff56AEFF),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 10,
+            offset: Offset(10, 10),
+          )
+        ],
+      ),
       child: const _ViewMenuLeft(),
     );
   }

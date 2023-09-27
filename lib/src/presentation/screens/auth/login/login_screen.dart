@@ -15,11 +15,7 @@ class LoginScreen extends StatelessWidget {
       body: Stack(
         children: [
           BackGroundAuth(),
-          Positioned(
-            right: 300,
-            bottom: 200,
-            child: _Elements(),
-          ),
+          Center(child: _Elements()),
         ],
       ),
     );
@@ -33,25 +29,21 @@ class _Elements extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Builder(
-      builder: (context) {
-        return SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              FadeInRight(
-                duration: const Duration(seconds: 3),
-                child: const LogoAuth(),
-              ),
-              _Form(),
-              const SizedBox(
-                height: 50,
-              ),
-            ],
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          FadeInRight(
+            duration: const Duration(seconds: 3),
+            child: const LogoAuth(),
           ),
-        );
-      },
+          _Form(),
+          const SizedBox(
+            height: 50,
+          ),
+        ],
+      ),
     );
   }
 }

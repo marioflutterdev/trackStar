@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../menu_drawer/menu_drawer_home.dart';
+import 'package:trackstar_web/src/presentation/screens/screens.dart';
+import 'package:trackstar_web/src/presentation/widgets/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,32 +17,30 @@ class _HomeScreenState extends State<HomeScreen> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       key: key,
-      body: Row(
+      body: Column(
         children: [
-          Expanded(
-            child: Container(
-              padding: const EdgeInsets.all(10),
-              margin: const EdgeInsets.all(30),
-              height: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: const Color(0xffD9D9D9),
-              ),
-              child: ElevatedButton(
-                onPressed: () {
-                  key.currentState!.openDrawer(); //<-- SEE HERE
+          OnHoverCustomWidget(
+            builder: (isHovered) {
+              return GestureDetector(
+                onTap: () {
+                  key.currentState!.openDrawer();
                 },
-                child: const Text(
-                  'Elevated Button 1',
-                  style: TextStyle(fontSize: 24),
+                child: Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: const Icon(Icons.filter_list),
                 ),
-              ),
-            ),
+              );
+            },
           )
         ],
       ),
       drawer: Drawer(
-        width: size.width * .30,
+        width: size.width * .20,
         child: const MenuLeft(),
       ),
     );

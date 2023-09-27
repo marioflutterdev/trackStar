@@ -7,7 +7,6 @@ class BackGroundAuth extends StatelessWidget {
   const BackGroundAuth({
     super.key,
   });
-
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -21,11 +20,18 @@ class BackGroundAuth extends StatelessWidget {
               child: const _Dot(size: 1500)),
         ),
         Positioned(
-          bottom: 50,
+          bottom: -50,
           right: -150,
           child: FadeInRight(
               duration: const Duration(seconds: 2),
               child: const _Dot(size: 500)),
+        ),
+        Positioned(
+          top: -200,
+          right: -150,
+          child: FadeInRight(
+              duration: const Duration(seconds: 2),
+              child: const _Dot(size: 700)),
         ),
         Positioned(
           bottom: 50,
