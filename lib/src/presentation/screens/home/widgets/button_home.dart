@@ -1,27 +1,41 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:trackstar_web/src/presentation/widgets/widgets.dart';
 
 class ButtonHome extends StatelessWidget {
   const ButtonHome({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        ButtomCustom(
-          icon: Icons.person,
-          title: 'Usuarios',
+        FadeInLeft(
+          from: 50,
+          child: const ButtomCustom(
+            icon: Icons.person,
+            title: 'Usuarios',
+          ),
         ),
-        ButtomCustom(
-          icon: Icons.directions_bus_filled_outlined,
-          title: 'Centros Distribucion',
+        FadeInLeft(
+          from: 100,
+          child: const ButtomCustom(
+            icon: Icons.directions_bus_filled_outlined,
+            title: 'Centros Distribucion',
+          ),
         ),
-        ButtomCustom(
-          icon: Icons.production_quantity_limits,
-          title: 'Productos',
+        FadeInLeft(
+          from: 150,
+          child: const ButtomCustom(
+            icon: Icons.production_quantity_limits,
+            title: 'Productos',
+          ),
         ),
-        ButtomCustom(
-          icon: Icons.car_crash_outlined,
-          title: 'Seguimiento',
+        FadeInLeft(
+          from: 200,
+          child: const ButtomCustom(
+            icon: Icons.car_crash_outlined,
+            title: 'Seguimiento',
+          ),
         )
       ],
     );
@@ -97,43 +111,47 @@ class _BackgraundButtom extends StatelessWidget {
     required this.icon,
     required this.colors,
   });
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 15),
-        width: double.infinity,
-        height: 100,
-        decoration: BoxDecoration(
-          color: Colors.red,
-          borderRadius: BorderRadius.circular(15),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black38,
-              offset: Offset(4, 5),
-              blurRadius: 10,
-            )
-          ],
-          gradient: LinearGradient(colors: colors),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(15),
-          child: Stack(
-            children: [
-              Positioned(
-                right: -20,
-                top: -20,
-                child: Icon(
-                  icon,
-                  size: 150,
-                  color: Colors.black.withOpacity(0.5),
-                ),
-              ),
-              child
+    return OnHoverCustomWidget(
+      builder: (isHovered) {
+        final double blurRadius = isHovered ? 10 : 30;
+        final Color color = isHovered ? Colors.white : Colors.black38;
+        return Container(
+          margin: const EdgeInsets.symmetric(vertical: 15),
+          width: double.infinity,
+          height: 100,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            boxShadow: [
+              BoxShadow(
+                color: color,
+                offset: const Offset(4, 5),
+                blurRadius: blurRadius,
+              )
             ],
+            gradient: LinearGradient(colors: colors),
           ),
-        ),
-      ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Stack(
+              children: [
+                Positioned(
+                  right: -20,
+                  top: -20,
+                  child: Icon(
+                    icon,
+                    size: 150,
+                    color: Colors.black.withOpacity(0.5),
+                  ),
+                ),
+                child
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
