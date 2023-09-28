@@ -15,7 +15,9 @@ class LoginScreen extends StatelessWidget {
       body: Stack(
         children: [
           BackGroundAuth(),
-          Center(child: _Elements()),
+          Center(
+            child: _Elements(),
+          ),
         ],
       ),
     );
@@ -58,8 +60,6 @@ class _FormState extends State<_Form> {
   final controllerPassword = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    //final auth = Provider.of<AuthService>(context);
-    //final focus = FocusScope.of(context);
     return Center(
       child: Container(
         height: 350,
@@ -128,35 +128,3 @@ class _FormState extends State<_Form> {
     );
   }
 }
-
-/* 
-onPressed: auth.autenticando
-                      ? null
-                      : () async {
-                          final loginOk = await auth.login(
-                            controllerEmail.text.trim(),
-                            controllerPassword.text.trim(),
-                          );
-                          focus.unfocus();
-                          if (context.mounted) {
-                            if (loginOk == true) {
-                              Navigator.popAndPushNamed(context, 'user');
-                            } else {
-                              alertSnakbar(context, Text(loginOk));
-                            }
-
-                            auth.autenticando = false;
-                          }
-                        },
-                  child: auth.autenticando
-                      ? const Center(
-                          child: CircularProgressIndicator(
-                            color: Colors.grey,
-                          ),
-                        )
-                      : const Center(
-                          child: Text(
-                            'Ingresar',
-                            style: TextStyle(fontSize: 20, color: Colors.black),
-                          ),
-                        ), */

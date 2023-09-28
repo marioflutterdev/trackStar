@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:trackstar_web/src/presentation/provider/menu_drawer/menu_drawer_provider.dart';
 import 'package:trackstar_web/src/presentation/screens/home/widgets/widgets.dart';
+import 'package:trackstar_web/src/presentation/widgets/hover_custom.dart';
 
 class MenuLeft extends StatelessWidget {
   const MenuLeft({
@@ -8,11 +11,28 @@ class MenuLeft extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final setIsHovered = context.watch<MenuDrawerProvider>();
+    return OnHoverCustomWidget(
+      builder: (isHovered) {
+        setIsHovered.isHover = isHovered;
+        return const _ViewMenuLeft();
+      },
+    );
+  }
+}
+
+class _ViewMenuLeft extends StatelessWidget {
+  const _ViewMenuLeft({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final isHovered = context.watch<MenuDrawerProvider>().isHover;
     return Container(
       padding: const EdgeInsets.all(10),
       margin: const EdgeInsets.all(30),
-      width: size.width * .25,
+      width: isHovered ? 300 : 100,
       height: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
@@ -25,23 +45,12 @@ class MenuLeft extends StatelessWidget {
           )
         ],
       ),
-      child: const _ViewMenuLeft(),
-    );
-  }
-}
-
-class _ViewMenuLeft extends StatelessWidget {
-  const _ViewMenuLeft({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        LogoHome(),
-        ButtonHome(),
-      ],
+      child: const Column(
+        children: [
+          LogoHome(),
+          ButtonHome(),
+        ],
+      ),
     );
   }
 }

@@ -17,9 +17,10 @@ class _HomeScreenState extends State<HomeScreen> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       key: key,
-      body: Column(
+      body: const Row(
         children: [
-          OnHoverCustomWidget(
+          MenuLeft(),
+          /* OnHoverCustomWidget(
             builder: (isHovered) {
               return GestureDetector(
                 onTap: () {
@@ -36,13 +37,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               );
             },
-          )
+          ) */
         ],
       ),
-      drawer: Drawer(
-        width: size.width * .20,
-        child: const MenuLeft(),
-      ),
+      // drawer: Drawer(
+      //   width: size.width * .20,
+      //   child: const MenuLeft(),
+      // ),
     );
   }
 }
