@@ -5,14 +5,10 @@ class LogoHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
+    return const Expanded(
+      child: SizedBox(
         width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: Colors.white,
-        ),
-        child: const Image(
+        child: Image(
           image: AssetImage('assets/img/logo.png'),
         ),
       ),

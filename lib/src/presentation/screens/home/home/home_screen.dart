@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:trackstar_web/src/presentation/provider/menu_drawer/menu_drawer_provider.dart';
 
 import 'package:trackstar_web/src/presentation/screens/screens.dart';
-import 'package:trackstar_web/src/presentation/widgets/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,39 +12,37 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final GlobalKey<ScaffoldState> key = GlobalKey();
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Scaffold(
-      key: key,
-      body: const Row(
-        children: [
-          MenuLeft(),
-          /* OnHoverCustomWidget(
-            builder: (isHovered) {
-              return GestureDetector(
-                onTap: () {
-                  key.currentState!.openDrawer();
-                },
-                child: Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: const Icon(Icons.filter_list),
-                ),
-              );
-            },
-          ) */
-        ],
+    return ChangeNotifierProvider(
+      create: (context) => MenuDrawerProvider(),
+      child: Scaffold(
+        body: Stack(
+          children: [
+            Container(
+                width: double.infinity,
+                height: double.infinity,
+                color: const Color.fromARGB(255, 236, 234, 234),
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    Container(
+                      width: 600,
+                      height: 40,
+                      decoration: const BoxDecoration(
+                        color: Color(0xff56AEFF),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(25),
+                          topRight: Radius.circular(25),
+                        ),
+                      ),
+                    )
+                  ],
+                )),
+            const MenuLeft(),
+          ],
+        ),
       ),
-      // drawer: Drawer(
-      //   width: size.width * .20,
-      //   child: const MenuLeft(),
-      // ),
     );
   }
 }

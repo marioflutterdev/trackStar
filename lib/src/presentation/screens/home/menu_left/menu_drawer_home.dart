@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
-import 'package:trackstar_web/src/presentation/provider/menu_drawer/menu_drawer_provider.dart';
-import 'package:trackstar_web/src/presentation/screens/home/widgets/widgets.dart';
-import 'package:trackstar_web/src/presentation/widgets/hover_custom.dart';
+
+import '../../../provider/providers.dart';
+import '../../../widgets/widgets.dart';
+import '../widgets/widgets.dart';
 
 class MenuLeft extends StatelessWidget {
   const MenuLeft({
@@ -29,10 +31,11 @@ class _ViewMenuLeft extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isHovered = context.watch<MenuDrawerProvider>().isHover;
+    final size = MediaQuery.of(context).size;
     return Container(
       padding: const EdgeInsets.all(10),
-      margin: const EdgeInsets.all(30),
-      width: isHovered ? 300 : 100,
+      margin: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
+      width: isHovered ? size.width * .18 : 70,
       height: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),

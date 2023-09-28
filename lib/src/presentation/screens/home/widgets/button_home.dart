@@ -1,6 +1,10 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+
+import 'package:provider/provider.dart';
+import 'package:animate_do/animate_do.dart';
+
 import 'package:trackstar_web/src/presentation/widgets/widgets.dart';
+import '../../../provider/providers.dart';
 
 class ButtonHome extends StatelessWidget {
   const ButtonHome({Key? key}) : super(key: key);
@@ -20,7 +24,7 @@ class ButtonHome extends StatelessWidget {
           from: 100,
           child: const ButtomCustom(
             icon: Icons.directions_bus_filled_outlined,
-            title: 'Centros Distribucion',
+            title: 'C. Distribucion',
           ),
         ),
         FadeInLeft(
@@ -55,11 +59,12 @@ class ButtomCustom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isHovered = context.watch<MenuDrawerProvider>().isHover;
     return _BackgraundButtom(
       icon: icon,
       colors: colors ??
           [
-            const Color.fromARGB(255, 59, 199, 255),
+            Color.fromARGB(255, 3, 20, 27),
             Colors.grey,
           ],
       child: Stack(
@@ -73,26 +78,29 @@ class ButtomCustom extends StatelessWidget {
               ),
               Icon(
                 icon,
-                size: 40,
+                size: isHovered ? 40 : 30,
                 color: Colors.white,
               ),
               const SizedBox(
                 width: 10,
               ),
-              Expanded(
-                child: Text(
-                  title,
-                  style: const TextStyle(fontSize: 25, color: Colors.white),
+              if (isHovered)
+                Expanded(
+                  child: Text(
+                    title,
+                    style: const TextStyle(fontSize: 25, color: Colors.white),
+                  ),
                 ),
-              ),
-              const Icon(
-                Icons.arrow_forward_ios,
-                size: 40,
-                color: Colors.white,
-              ),
-              const SizedBox(
-                width: 10,
-              ),
+              if (isHovered)
+                const Icon(
+                  Icons.arrow_forward_ios,
+                  size: 40,
+                  color: Colors.white,
+                ),
+              if (isHovered)
+                const SizedBox(
+                  width: 10,
+                ),
             ],
           )
         ],
@@ -117,11 +125,11 @@ class _BackgraundButtom extends StatelessWidget {
     return OnHoverCustomWidget(
       builder: (isHovered) {
         final double blurRadius = isHovered ? 10 : 30;
-        final Color color = isHovered ? Colors.white : Colors.black38;
+        final Color color = isHovered ? Colors.grey : Colors.black38;
         return Container(
-          margin: const EdgeInsets.symmetric(vertical: 15),
+          margin: const EdgeInsets.symmetric(vertical: 10),
           width: double.infinity,
-          height: 100,
+          height: 50,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             boxShadow: [
@@ -138,11 +146,11 @@ class _BackgraundButtom extends StatelessWidget {
             child: Stack(
               children: [
                 Positioned(
-                  right: -20,
-                  top: -20,
+                  right: -10,
+                  top: -10,
                   child: Icon(
                     icon,
-                    size: 150,
+                    size: 70,
                     color: Colors.black.withOpacity(0.5),
                   ),
                 ),
