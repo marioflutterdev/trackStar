@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 
-import 'package:trackstar_web/src/presentation/screens/home/widgets/widgets.dart';
-
-class MenuTotalHome extends StatelessWidget {
-  const MenuTotalHome({
+class LeaveLogin extends StatelessWidget {
+  const LeaveLogin({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: double.infinity,
-      margin: const EdgeInsets.fromLTRB(100, 50, 30, 50),
+      width: 50,
+      height: 50,
+      margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
@@ -24,10 +22,8 @@ class MenuTotalHome extends StatelessWidget {
           )
         ],
       ),
-      child: const Column(
-        children: [
-          LeaveLogin(),
-        ],
+      child: const Center(
+        child: Icon(Icons.first_page),
       ),
     );
   }

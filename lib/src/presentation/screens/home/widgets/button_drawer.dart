@@ -40,6 +40,13 @@ class ButtonHome extends StatelessWidget {
             icon: Icons.car_crash_outlined,
             title: 'Seguimiento',
           ),
+        ),
+        FadeInLeft(
+          from: 250,
+          child: const ButtomCustom(
+            icon: Icons.settings,
+            title: 'Settings',
+          ),
         )
       ],
     );
@@ -64,7 +71,7 @@ class ButtomCustom extends StatelessWidget {
       icon: icon,
       colors: colors ??
           [
-            Color.fromARGB(255, 3, 20, 27),
+            Colors.black38,
             Colors.grey,
           ],
       child: Stack(

@@ -14,7 +14,7 @@ class BackGroundAuth extends StatelessWidget {
       children: [
         Positioned(
           top: -550,
-          left: -600,
+          left: -700,
           child: FadeInLeft(
               duration: const Duration(seconds: 2),
               child: const _Dot(size: 1500)),

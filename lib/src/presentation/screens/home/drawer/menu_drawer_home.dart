@@ -34,7 +34,7 @@ class _ViewMenuLeft extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Container(
       padding: const EdgeInsets.all(10),
-      margin: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
+      margin: const EdgeInsets.symmetric(vertical: 50, horizontal: 15),
       width: isHovered ? size.width * .18 : 70,
       height: double.infinity,
       decoration: BoxDecoration(
