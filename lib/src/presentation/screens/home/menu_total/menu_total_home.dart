@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trackstar_web/src/config/resposive/app_responsive.dart';
 
 import 'package:trackstar_web/src/presentation/screens/home/widgets/widgets.dart';
 
@@ -9,10 +10,12 @@ class MenuTotalHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final movile = AppResponsive.isLargeMobile(context);
     return Container(
       width: double.infinity,
       height: double.infinity,
-      margin: const EdgeInsets.fromLTRB(100, 50, 30, 50),
+      margin: EdgeInsets.fromLTRB(
+          movile ? 30 : 100, movile ? 30 : 50, 30, movile ? 30 : 50),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
@@ -24,12 +27,16 @@ class MenuTotalHome extends StatelessWidget {
           )
         ],
       ),
-      child: const Column(
+      child: Column(
         children: [
           Row(
             children: [
-              Expanded(child: SizedBox()),
-              LeaveLogin(),
+              if (movile)
+                ElevatedButton(
+                    onPressed: () => Scaffold.of(context).openDrawer(),
+                    child: const Icon(Icons.abc)),
+              const Expanded(child: SizedBox()),
+              const LeaveLogin(),
             ],
           )
         ],

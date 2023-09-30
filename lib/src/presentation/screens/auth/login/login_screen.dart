@@ -64,7 +64,8 @@ class _FormState extends State<_Form> {
       child: Container(
         height: 350,
         width: 400,
-        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+        margin: const EdgeInsets.symmetric(horizontal: 30),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(15),
