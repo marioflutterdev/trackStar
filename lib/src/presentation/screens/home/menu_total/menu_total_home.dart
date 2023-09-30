@@ -34,23 +34,90 @@ class MenuTotalHome extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Row(
-            children: [
-              if (movile) const OpenDrawer(),
-              const Expanded(child: SizedBox()),
-              ButtonCustomHome(
-                icon: providerTheme.themeData == dartMode
-                    ? Icons.light_mode
-                    : Icons.dark_mode_outlined,
-                onTap: () {
-                  providerTheme.toggleMode();
-                },
-              ),
-              const LeaveLogin(),
-            ],
+          _ButtonMenu(
+            movile: movile,
+            providerTheme: providerTheme,
+          ),
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    width: double.infinity,
+                    margin: const EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.background,
+                        borderRadius: BorderRadius.circular(15),
+                        boxShadow: const [
+                          BoxShadow(
+                              blurRadius: 10,
+                              color: Colors.black26,
+                              offset: Offset(5, 5))
+                        ]),
+                    child: const Center(
+                      child: Text(
+                        'CATEGORIAS',
+                        style: TextStyle(fontSize: 100),
+                      ),
+                    ),
+                  ),
+                ),
+                if (!movile)
+                  Container(
+                    width: 400,
+                    height: double.infinity,
+                    margin: const EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.background,
+                        borderRadius: BorderRadius.circular(15),
+                        boxShadow: const [
+                          BoxShadow(
+                              blurRadius: 10,
+                              color: Colors.black26,
+                              offset: Offset(5, 5))
+                        ]),
+                    child: const Center(
+                      child: Text(
+                        'USER',
+                        style: TextStyle(fontSize: 100),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
           )
         ],
       ),
+    );
+  }
+}
+
+class _ButtonMenu extends StatelessWidget {
+  const _ButtonMenu({
+    super.key,
+    required this.movile,
+    required this.providerTheme,
+  });
+
+  final bool movile;
+  final ThemeProvider providerTheme;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        if (movile) const OpenDrawer(),
+        const Expanded(child: SizedBox()),
+        ButtonCustomHome(
+          icon: providerTheme.themeData == dartMode
+              ? Icons.light_mode
+              : Icons.dark_mode_outlined,
+          onTap: () {
+            providerTheme.toggleMode();
+          },
+        ),
+        const LeaveLogin(),
+      ],
     );
   }
 }
