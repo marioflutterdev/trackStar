@@ -26,7 +26,12 @@ class MenuTotalHome extends StatelessWidget {
       ),
       child: const Column(
         children: [
-          LeaveLogin(),
+          Row(
+            children: [
+              Expanded(child: SizedBox()),
+              LeaveLogin(),
+            ],
+          )
         ],
       ),
     );
