@@ -31,10 +31,7 @@ class MenuTotalHome extends StatelessWidget {
         children: [
           Row(
             children: [
-              if (movile)
-                ElevatedButton(
-                    onPressed: () => Scaffold.of(context).openDrawer(),
-                    child: const Icon(Icons.abc)),
+              if (movile) const OpenDrawer(),
               const Expanded(child: SizedBox()),
               const LeaveLogin(),
             ],

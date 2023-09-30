@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MenuDrawerProvider extends ChangeNotifier {
-  late bool _isHover;
+  bool _isHover = false;
 
   bool get isHover => _isHover;
 
