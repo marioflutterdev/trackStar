@@ -28,7 +28,7 @@ class AppResponsive extends StatelessWidget {
   }
 
   static bool isDesktop(BuildContext context) {
-    return MediaQuery.sizeOf(context).width > 1024;
+    return MediaQuery.sizeOf(context).width > 1400;
   }
 
   static bool isExtraLargeScreen(BuildContext context) {

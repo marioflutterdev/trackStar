@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
+import 'package:trackstar_web/src/config/resposive/app_responsive.dart';
 
 class BackGroundAuth extends StatelessWidget {
   const BackGroundAuth({
@@ -9,37 +10,44 @@ class BackGroundAuth extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
+    final desktop = AppResponsive.isDesktop(context);
+    final movile = AppResponsive.isLargeMobile(context);
     return Stack(
       alignment: Alignment.center,
       children: [
-        Positioned(
-          top: -550,
-          left: -700,
-          child: FadeInLeft(
+        if (!movile)
+          Positioned(
+            top: -550,
+            left: -700,
+            child: FadeInLeft(
+                duration: const Duration(seconds: 2),
+                child: _Dot(size: desktop ? 1500 : 1100)),
+          ),
+        if (!movile)
+          Positioned(
+            bottom: -50,
+            right: -150,
+            child: FadeInRight(
+                duration: const Duration(seconds: 2),
+                child: const _Dot(size: 500)),
+          ),
+        if (!movile)
+          Positioned(
+            top: -300,
+            right: -150,
+            child: FadeInRight(
               duration: const Duration(seconds: 2),
-              child: const _Dot(size: 1500)),
-        ),
-        Positioned(
-          bottom: -50,
-          right: -150,
-          child: FadeInRight(
-              duration: const Duration(seconds: 2),
-              child: const _Dot(size: 500)),
-        ),
-        Positioned(
-          top: -200,
-          right: -150,
-          child: FadeInRight(
-              duration: const Duration(seconds: 2),
-              child: const _Dot(size: 700)),
-        ),
-        Positioned(
-          bottom: 50,
-          left: 50,
-          child: FadeInRight(
-              duration: const Duration(seconds: 2),
-              child: SvgPicture.asset('assets/svg/img2.svg')),
-        ),
+              child: _Dot(size: desktop ? 700 : 600),
+            ),
+          ),
+        if (!movile)
+          Positioned(
+            bottom: 50,
+            left: 50,
+            child: FadeInRight(
+                duration: const Duration(seconds: 2),
+                child: SvgPicture.asset('assets/svg/img2.svg')),
+          ),
       ],
     );
   }
