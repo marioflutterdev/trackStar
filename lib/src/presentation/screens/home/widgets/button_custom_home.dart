@@ -15,7 +15,9 @@ class ButtonCustomHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return OnHoverCustomWidget(
       builder: (isHovered) {
-        final color = isHovered ? Colors.grey : const Color(0xff56AEFF);
+        final color = isHovered
+            ? Colors.grey
+            : Theme.of(context).colorScheme.onPrimaryContainer;
         return GestureDetector(
           onTap: onTap,
           child: Container(

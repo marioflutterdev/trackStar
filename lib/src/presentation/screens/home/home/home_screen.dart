@@ -45,7 +45,7 @@ class _ScaffoldHome extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: double.infinity,
-      color: const Color.fromARGB(255, 236, 234, 234),
+      color: Theme.of(context).colorScheme.background,
       child: Stack(
         alignment: Alignment.center,
         children: [

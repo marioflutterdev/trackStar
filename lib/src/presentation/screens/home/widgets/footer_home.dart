@@ -10,9 +10,9 @@ class Footer extends StatelessWidget {
     return Container(
       height: 30,
       width: 500,
-      decoration: const BoxDecoration(
-        color: Color(0xff56AEFF),
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.onPrimaryContainer,
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(25),
           topRight: Radius.circular(25),
         ),
@@ -23,6 +23,7 @@ class Footer extends StatelessWidget {
           style: TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.bold,
+            color: Colors.black,
           ),
         ),
       ),

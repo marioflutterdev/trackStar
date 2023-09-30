@@ -48,11 +48,13 @@ class FormCustomWidget extends StatelessWidget {
         autocorrect: false,
         keyboardType: keyboardType ?? TextInputType.emailAddress,
         obscureText: obscureText ?? false,
+        style: const TextStyle(color: Colors.black),
         decoration: InputDecoration(
           prefixIcon: prefixIcon,
           border: InputBorder.none,
           focusedBorder: InputBorder.none,
           hintText: hintText ?? 'none',
+          hintStyle: const TextStyle(color: Colors.black),
         ),
       ),
     );

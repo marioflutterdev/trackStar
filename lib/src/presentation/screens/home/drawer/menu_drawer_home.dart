@@ -33,7 +33,7 @@ class _ViewMenuLeft extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isHovered = context.watch<MenuDrawerProvider>().isHover;
-
+    final theme = Theme.of(context).colorScheme;
     return Container(
       padding: const EdgeInsets.all(10),
       margin: const EdgeInsets.symmetric(vertical: 50, horizontal: 15),
@@ -41,7 +41,7 @@ class _ViewMenuLeft extends StatelessWidget {
       height: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: const Color(0xff56AEFF),
+        color: theme.onPrimaryContainer,
         boxShadow: const [
           BoxShadow(
             color: Colors.black26,

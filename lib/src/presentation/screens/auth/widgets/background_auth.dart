@@ -66,8 +66,8 @@ class _Dot extends StatelessWidget {
     return Container(
       width: size,
       height: size,
-      decoration: const BoxDecoration(
-        color: Color(0xff56AEFF),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.onPrimaryContainer,
         shape: BoxShape.circle,
       ),
     );

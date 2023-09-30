@@ -30,10 +30,14 @@ class _DialogLeave extends StatelessWidget {
     return CleanDialog(
       title: 'Cerrar Sesión',
       content: 'Estas Seguro de Esta Acción',
-      backgroundColor: const Color(0XFFF9A826),
+      backgroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
       titleTextStyle: const TextStyle(
-          fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
-      contentTextStyle: const TextStyle(fontSize: 16, color: Colors.white),
+        fontSize: 25,
+        fontWeight: FontWeight.bold,
+      ),
+      contentTextStyle: const TextStyle(
+        fontSize: 16,
+      ),
       actions: [
         CleanDialogActionButtons(
           actionTitle: 'Cancel',

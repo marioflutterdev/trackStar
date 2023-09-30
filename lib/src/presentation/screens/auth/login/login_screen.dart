@@ -119,7 +119,10 @@ class _FormState extends State<_Form> {
               child: const Center(
                   child: Text(
                 'Iniciar sesión',
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                ),
               )),
             ),
             const SizedBox(height: 15),
