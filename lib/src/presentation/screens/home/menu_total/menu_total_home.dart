@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trackstar_web/src/config/resposive/app_responsive.dart';
 import 'package:trackstar_web/src/config/theme/app_theme.dart';
+import 'package:trackstar_web/src/presentation/provider/menu_drawer/navegacion_drawer_provider.dart';
 import 'package:trackstar_web/src/presentation/provider/providers.dart';
 
 import 'package:trackstar_web/src/presentation/screens/home/widgets/widgets.dart';
+import 'package:trackstar_web/src/presentation/screens/screens.dart';
 
 class MenuTotalHome extends StatelessWidget {
   const MenuTotalHome({
@@ -41,27 +43,7 @@ class MenuTotalHome extends StatelessWidget {
           Expanded(
             child: Row(
               children: [
-                Expanded(
-                  child: Container(
-                    width: double.infinity,
-                    margin: const EdgeInsets.all(15),
-                    decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.background,
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: const [
-                          BoxShadow(
-                              blurRadius: 10,
-                              color: Colors.black26,
-                              offset: Offset(5, 5))
-                        ]),
-                    child: const Center(
-                      child: Text(
-                        'CATEGORIAS',
-                        style: TextStyle(fontSize: 100),
-                      ),
-                    ),
-                  ),
-                ),
+                const _CategoriesVIew(),
                 if (!movile)
                   Container(
                     width: 400,
@@ -78,7 +60,7 @@ class MenuTotalHome extends StatelessWidget {
                         ]),
                     child: const Center(
                       child: Text(
-                        'USER',
+                        'soon',
                         style: TextStyle(fontSize: 100),
                       ),
                     ),
@@ -87,6 +69,46 @@ class MenuTotalHome extends StatelessWidget {
             ),
           )
         ],
+      ),
+    );
+  }
+}
+
+class _CategoriesVIew extends StatelessWidget {
+  const _CategoriesVIew({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final menuController = context.watch<NavegacionDrawerProvider>();
+    return Expanded(
+      child: Container(
+        width: double.infinity,
+        margin: const EdgeInsets.all(15),
+        decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.background,
+            borderRadius: BorderRadius.circular(15),
+            boxShadow: const [
+              BoxShadow(
+                blurRadius: 10,
+                color: Colors.black26,
+                offset: Offset(5, 5),
+              )
+            ]),
+        child: Center(
+            child: PageView(
+          controller: menuController.pageController,
+          scrollDirection: Axis.vertical,
+          physics: const NeverScrollableScrollPhysics(),
+          children: const [
+            UserScreen(),
+            CenterDistribucionScreen(),
+            ProductsScreen(),
+            EntradasSalidasScreen(),
+            SettingsScreen(),
+          ],
+        )),
       ),
     );
   }

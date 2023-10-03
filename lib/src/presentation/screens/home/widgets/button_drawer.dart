@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:trackstar_web/src/presentation/provider/menu_drawer/navegacion_drawer_provider.dart';
 
 import 'package:trackstar_web/src/presentation/widgets/widgets.dart';
 import '../../../provider/providers.dart';
@@ -11,106 +12,131 @@ class ButtonHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final menuController = context.watch<NavegacionDrawerProvider>();
+
     return Column(
       children: [
         FadeInLeft(
           from: 50,
-          child: const ButtomCustom(
-            icon: Icons.person,
-            title: 'Usuarios',
-          ),
+          child: ButtomCustom(
+              icon: Icons.person,
+              title: 'Usuarios',
+              opTap: () => menuController.paginaActual = 0,
+              colors: selectColor(menuController, 0)),
         ),
         FadeInLeft(
           from: 100,
-          child: const ButtomCustom(
+          child: ButtomCustom(
             icon: Icons.directions_bus_filled_outlined,
             title: 'C. Distribucion',
+            opTap: () => menuController.paginaActual = 1,
+            colors: selectColor(menuController, 1),
           ),
         ),
         FadeInLeft(
           from: 150,
-          child: const ButtomCustom(
+          child: ButtomCustom(
             icon: Icons.production_quantity_limits,
             title: 'Productos',
+            opTap: () => menuController.paginaActual = 2,
+            colors: selectColor(menuController, 2),
           ),
         ),
         FadeInLeft(
           from: 200,
-          child: const ButtomCustom(
+          child: ButtomCustom(
             icon: Icons.car_crash_outlined,
-            title: 'Seguimiento',
+            title: 'Entradas y Salidas',
+            opTap: () => menuController.paginaActual = 3,
+            colors: selectColor(menuController, 3),
           ),
         ),
         FadeInLeft(
           from: 250,
-          child: const ButtomCustom(
+          child: ButtomCustom(
             icon: Icons.settings,
             title: 'Settings',
+            opTap: () => menuController.paginaActual = 4,
+            colors: selectColor(menuController, 4),
           ),
         )
       ],
     );
+  }
+
+  selectColor(NavegacionDrawerProvider menuController, int v) {
+    return menuController.paginaActual == v
+        ? [
+            Colors.black,
+            Colors.white,
+          ]
+        : null;
   }
 }
 
 class ButtomCustom extends StatelessWidget {
   final IconData icon;
   final String title;
+  final void Function()? opTap;
   final List<Color>? colors;
   const ButtomCustom({
     Key? key,
     required this.icon,
     required this.title,
     this.colors,
+    this.opTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final isHovered = context.watch<MenuDrawerProvider>().isHover;
-    return _BackgraundButtom(
-      icon: icon,
-      colors: colors ??
-          [
-            Colors.black38,
-            Colors.grey,
-          ],
-      child: Stack(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(
-                width: 10,
-                height: double.infinity,
-              ),
-              Icon(
-                icon,
-                size: isHovered ? 40 : 30,
-                color: Colors.white,
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              if (isHovered)
-                Expanded(
-                  child: Text(
-                    title,
-                    style: const TextStyle(fontSize: 25, color: Colors.white),
-                  ),
+    return GestureDetector(
+      onTap: opTap,
+      child: _BackgraundButtom(
+        icon: icon,
+        colors: colors ??
+            [
+              Colors.black38,
+              Colors.grey,
+            ],
+        child: Stack(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  width: 10,
+                  height: double.infinity,
                 ),
-              if (isHovered)
-                const Icon(
-                  Icons.arrow_forward_ios,
-                  size: 40,
+                Icon(
+                  icon,
+                  size: isHovered ? 40 : 30,
                   color: Colors.white,
                 ),
-              if (isHovered)
                 const SizedBox(
                   width: 10,
                 ),
-            ],
-          )
-        ],
+                if (isHovered)
+                  Expanded(
+                    child: Text(
+                      title,
+                      style: const TextStyle(fontSize: 25, color: Colors.white),
+                    ),
+                  ),
+                if (isHovered)
+                  const Icon(
+                    Icons.arrow_forward_ios,
+                    size: 40,
+                    color: Colors.white,
+                  ),
+                if (isHovered)
+                  const SizedBox(
+                    width: 10,
+                  ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
@@ -132,7 +158,7 @@ class _BackgraundButtom extends StatelessWidget {
     return OnHoverCustomWidget(
       builder: (isHovered) {
         final double blurRadius = isHovered ? 10 : 30;
-        final Color color = isHovered ? Colors.grey : Colors.black38;
+        final Color color = isHovered ? Colors.white : Colors.black38;
         return Container(
           margin: const EdgeInsets.symmetric(vertical: 10),
           width: double.infinity,

@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trackstar_web/src/config/routes/app_routes.dart';
-import 'package:trackstar_web/src/config/theme/app_theme.dart';
+import 'package:trackstar_web/src/presentation/provider/menu_drawer/navegacion_drawer_provider.dart';
 import 'package:trackstar_web/src/presentation/provider/providers.dart';
-import 'package:trackstar_web/src/presentation/screens/screens.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => ThemeProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ThemeProvider()),
+        ChangeNotifierProvider(create: (context) => NavegacionDrawerProvider()),
+      ],
       child: const MainApp(),
     ),
   );
