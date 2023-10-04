@@ -12,7 +12,9 @@ class ForgotPassawordScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          BackGroundAuth(),
+          BackGroundAuth(
+            svgRoute: 'assets/svg/forgot.svg',
+          ),
           Center(
             child: _Elements(),
           ),

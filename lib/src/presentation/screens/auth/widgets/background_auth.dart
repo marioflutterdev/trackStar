@@ -5,8 +5,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:trackstar_web/src/config/resposive/app_responsive.dart';
 
 class BackGroundAuth extends StatelessWidget {
+  final String svgRoute;
   const BackGroundAuth({
     super.key,
+    required this.svgRoute,
   });
   @override
   Widget build(BuildContext context) {
@@ -46,7 +48,7 @@ class BackGroundAuth extends StatelessWidget {
             left: 50,
             child: FadeInRight(
                 duration: const Duration(seconds: 2),
-                child: SvgPicture.asset('assets/svg/img2.svg')),
+                child: SvgPicture.asset(svgRoute)),
           ),
       ],
     );

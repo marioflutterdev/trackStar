@@ -14,7 +14,9 @@ class LoginScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          BackGroundAuth(),
+          BackGroundAuth(
+            svgRoute: 'assets/svg/login.svg',
+          ),
           Center(
             child: _Elements(),
           ),
@@ -117,7 +119,7 @@ class _FormState extends State<_Form> {
               onPressed: () {
                 //todo fincionalidad con el back end
                 if (context.mounted) {
-                  //Navigator.popAndPushNamed(context, '/home');
+                  Navigator.popAndPushNamed(context, '/home');
                 }
               },
               child: const Center(
