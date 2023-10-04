@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:trackstar_web/src/presentation/screens/auth/forgot_password/forgot_passaword_screen.dart';
+import 'package:trackstar_web/src/presentation/screens/auth/widgets/background_auth.dart';
 import 'package:trackstar_web/src/presentation/screens/screens.dart';
 
 class AppRoute {
@@ -33,6 +34,18 @@ class _PageNotFound extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold(
+      body: Stack(children: [
+        BackGroundAuth(
+          svgRoute: 'assets/svg/404.svg',
+        ),
+        Center(
+          child: Text(
+            'Page Not Found',
+            style: TextStyle(fontSize: 100, fontWeight: FontWeight.bold),
+          ),
+        )
+      ]),
+    );
   }
 }
