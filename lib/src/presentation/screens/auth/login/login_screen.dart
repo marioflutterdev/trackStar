@@ -44,6 +44,10 @@ class _Elements extends StatelessWidget {
           const SizedBox(
             height: 50,
           ),
+          const LabelsAuth(
+            route: '/forgot',
+            textLabel: '¿Olvidaste tu Contraseña?',
+          ),
         ],
       ),
     );
@@ -113,7 +117,7 @@ class _FormState extends State<_Form> {
               onPressed: () {
                 //todo fincionalidad con el back end
                 if (context.mounted) {
-                  Navigator.popAndPushNamed(context, '/home');
+                  //Navigator.popAndPushNamed(context, '/home');
                 }
               },
               child: const Center(
