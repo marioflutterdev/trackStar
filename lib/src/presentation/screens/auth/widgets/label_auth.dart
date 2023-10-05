@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:trackstar_web/src/presentation/widgets/hover_custom.dart';
 
 class LabelsAuth extends StatelessWidget {
@@ -17,7 +18,7 @@ class LabelsAuth extends StatelessWidget {
   Widget build(BuildContext context) {
     return OnHoverCustomWidget(
       builder: (isHovered) => GestureDetector(
-        onTap: () => Navigator.restorablePopAndPushNamed(context, route),
+        onTap: () => context.go(route),
         child: Column(
           children: [
             Text(

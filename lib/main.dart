@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:trackstar_web/src/config/routes/app_routes.dart';
 
 import 'package:trackstar_web/src/presentation/provider/providers.dart';
-import 'package:trackstar_web/src/presentation/screens/screens.dart';
 
 void main() {
   runApp(
@@ -24,11 +23,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      // debugShowCheckedModeBanner: false,
-      // routerConfig: AppRoute.routes,
-      home: PageNotFoundScreen(),
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       theme: context.watch<ThemeProvider>().themeData,
+      routerConfig: AppRoute.routes,
     );
   }
 }

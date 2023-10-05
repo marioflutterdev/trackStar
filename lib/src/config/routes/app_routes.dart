@@ -1,41 +1,46 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:trackstar_web/src/presentation/provider/auth/auth_provicional.dart';
 
 import 'package:trackstar_web/src/presentation/screens/screens.dart';
 
 class AppRoute {
+  static const initialRouter = '/';
+  static const notFoundRouter = '/nofound';
+  static const loginRouter = '/login';
+  static const fotgotRouter = '/forgot';
+  static const homeRouter = '/home';
+
   static final GoRouter routes = GoRouter(
     routes: <GoRoute>[
       GoRoute(
-        path: '/',
+        path: initialRouter,
         builder: (context, state) => const LoadingScreen(),
       ),
       GoRoute(
-        path: '/404',
+        path: notFoundRouter,
         builder: (context, state) => const PageNotFoundScreen(),
       ),
       GoRoute(
-        path: '/login',
+        path: loginRouter,
         builder: (context, state) => const LoginScreen(),
       ),
       GoRoute(
-        path: '/forgot',
+        path: fotgotRouter,
         builder: (context, state) => const ForgotPassawordScreen(),
       ),
       GoRoute(
-        path: '/home',
-        builder: (context, state) => const HomeScreen(),
-        //redirect: (context, state) => _redirect(context),
-      ),
+          path: homeRouter,
+          builder: (_, state) => const HomeScreen(),
+          redirect: (context, state) =>
+              (AuthService.authenticated) ? null : '/nofound')
     ],
     errorBuilder: (BuildContext context, GoRouterState state) =>
         const PageNotFoundScreen(),
-    errorPageBuilder: (BuildContext context, GoRouterState state) =>
-        const MaterialPage(child: PageNotFoundScreen()),
   );
 
-  /* static String? _redirect(BuildContext context) {
-    return AuthService.authenticated ? null : context.namedLocation('/404');
-  } */
+  static String? _redirect(BuildContext context) {
+    return AuthService.authenticated ? null : context.namedLocation("/nofound");
+  }
 }

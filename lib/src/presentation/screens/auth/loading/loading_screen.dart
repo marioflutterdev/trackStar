@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:animate_do/animate_do.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:trackstar_web/src/presentation/screens/auth/widgets/widgets.dart';
 
@@ -37,7 +38,7 @@ class LoadingScreen extends StatelessWidget {
     Future.delayed(
       const Duration(seconds: 3),
       () {
-        Navigator.popAndPushNamed(context, '/login');
+        context.go('/login');
       },
     );
 
