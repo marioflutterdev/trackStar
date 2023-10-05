@@ -11,13 +11,12 @@ class ForgotPassawordScreen extends StatelessWidget {
     return const Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
+        alignment: Alignment.center,
         children: [
           BackGroundAuth(
             svgRoute: 'assets/svg/forgot.svg',
           ),
-          Center(
-            child: _Elements(),
-          ),
+          _Elements(),
         ],
       ),
     );

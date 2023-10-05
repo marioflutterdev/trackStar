@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
 import 'package:trackstar_web/src/config/resposive/app_responsive.dart';
+import 'package:trackstar_web/src/presentation/screens/home/widgets/footer_home.dart';
 
 class BackGroundAuth extends StatelessWidget {
   final String svgRoute;
@@ -50,6 +51,10 @@ class BackGroundAuth extends StatelessWidget {
                 duration: const Duration(seconds: 2),
                 child: SvgPicture.asset(svgRoute)),
           ),
+        const Positioned(
+          bottom: 0,
+          child: Footer(),
+        )
       ],
     );
   }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:animate_do/animate_do.dart';
+import 'package:go_router/go_router.dart';
+import 'package:trackstar_web/src/presentation/provider/auth/auth_provicional.dart';
 import 'package:trackstar_web/src/presentation/screens/auth/widgets/widgets.dart';
 
 import 'package:trackstar_web/src/presentation/widgets/widgets.dart';
@@ -13,13 +15,12 @@ class LoginScreen extends StatelessWidget {
     return const Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
+        alignment: Alignment.center,
         children: [
           BackGroundAuth(
             svgRoute: 'assets/svg/login.svg',
           ),
-          Center(
-            child: _Elements(),
-          ),
+          _Elements(),
         ],
       ),
     );
@@ -119,7 +120,8 @@ class _FormState extends State<_Form> {
               onPressed: () {
                 //todo fincionalidad con el back end
                 if (context.mounted) {
-                  Navigator.popAndPushNamed(context, '/home');
+                  AuthService.authenticated = true;
+                  context.go('/home');
                 }
               },
               child: const Center(
