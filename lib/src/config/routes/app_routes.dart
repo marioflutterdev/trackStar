@@ -1,51 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
-import 'package:trackstar_web/src/presentation/screens/auth/forgot_password/forgot_passaword_screen.dart';
-import 'package:trackstar_web/src/presentation/screens/auth/widgets/background_auth.dart';
+
+import 'package:go_router/go_router.dart';
+
 import 'package:trackstar_web/src/presentation/screens/screens.dart';
 
 class AppRoute {
-  static Route<dynamic> generateRoute(RouteSettings settings) {
-    switch (settings.name) {
-      case '/':
-        return MaterialPageRoute(builder: (context) => const LoadingScreen());
-      case '/login':
-        return PageTransition(
-          child: const LoginScreen(),
-          type: PageTransitionType.leftToRight,
-          settings: settings,
-        );
-      case '/forgot':
-        return PageTransition(
-          child: const ForgotPassawordScreen(),
-          type: PageTransitionType.leftToRight,
-          settings: settings,
-        );
-      case '/home':
-        return MaterialPageRoute(builder: (context) => const HomeScreen());
-      default:
-        return MaterialPageRoute(builder: (context) => const _PageNotFound());
-    }
-  }
-}
+  static final GoRouter routes = GoRouter(
+    routes: <GoRoute>[
+      GoRoute(
+        path: '/',
+        builder: (context, state) => const LoadingScreen(),
+      ),
+      GoRoute(
+        path: '/404',
+        builder: (context, state) => const PageNotFoundScreen(),
+      ),
+      GoRoute(
+        path: '/login',
+        builder: (context, state) => const LoginScreen(),
+      ),
+      GoRoute(
+        path: '/forgot',
+        builder: (context, state) => const ForgotPassawordScreen(),
+      ),
+      GoRoute(
+        path: '/home',
+        builder: (context, state) => const HomeScreen(),
+        //redirect: (context, state) => _redirect(context),
+      ),
+    ],
+    errorBuilder: (BuildContext context, GoRouterState state) =>
+        const PageNotFoundScreen(),
+    errorPageBuilder: (BuildContext context, GoRouterState state) =>
+        const MaterialPage(child: PageNotFoundScreen()),
+  );
 
-class _PageNotFound extends StatelessWidget {
-  const _PageNotFound({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Stack(children: [
-        BackGroundAuth(
-          svgRoute: 'assets/svg/404.svg',
-        ),
-        Center(
-          child: Text(
-            'Page Not Found',
-            style: TextStyle(fontSize: 100, fontWeight: FontWeight.bold),
-          ),
-        )
-      ]),
-    );
-  }
+  /* static String? _redirect(BuildContext context) {
+    return AuthService.authenticated ? null : context.namedLocation('/404');
+  } */
 }
