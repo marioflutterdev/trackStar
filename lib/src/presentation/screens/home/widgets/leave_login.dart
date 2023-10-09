@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:trackstar_web/src/presentation/provider/auth/auth_provicional.dart';
 import 'package:trackstar_web/src/presentation/screens/home/widgets/widgets.dart';
 
 import '../../../widgets/widgets.dart';
@@ -50,7 +49,6 @@ class _DialogLeave extends StatelessWidget {
           actionTitle: 'Aceptar',
           textColor: const Color(0XFF27ae61),
           onPressed: () {
-            AuthService.authenticated = false;
             context.go('/login');
           },
         ),

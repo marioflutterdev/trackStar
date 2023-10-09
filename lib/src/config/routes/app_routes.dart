@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
-import 'package:trackstar_web/src/presentation/provider/auth/auth_provicional.dart';
+import 'package:trackstar_web/src/data/datasource/auth/signup.dart';
 
 import 'package:trackstar_web/src/presentation/screens/screens.dart';
 
@@ -34,13 +34,15 @@ class AppRoute {
           path: homeRouter,
           builder: (_, state) => const HomeScreen(),
           redirect: (context, state) =>
-              (AuthService.authenticated) ? null : '/nofound')
+              (LoginAuthProvider.authenticated) ? null : '/nofound')
     ],
     errorBuilder: (BuildContext context, GoRouterState state) =>
         const PageNotFoundScreen(),
   );
 
   static String? _redirect(BuildContext context) {
-    return AuthService.authenticated ? null : context.namedLocation("/nofound");
+    return LoginAuthProvider.authenticated
+        ? null
+        : context.namedLocation("/nofound");
   }
 }
