@@ -4,7 +4,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import 'package:trackstar_web/src/data/datasource/auth/signup.dart';
+import 'package:trackstar_web/src/data/datasource/auth/login.dart';
 import 'package:trackstar_web/src/presentation/screens/auth/widgets/widgets.dart';
 import 'package:trackstar_web/src/presentation/widgets/widgets.dart';
 
@@ -152,7 +152,7 @@ class _FormDecorationState extends State<_FormDecoration> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: SnackbarCustomWidget(
-                              sudErroloText: 'Contraseña no puesde ser nula',
+                              sudErroloText: 'Contraseña no puede ser nula',
                               color: Colors.orangeAccent,
                               svg: 'assets/svg/password.svg',
                             ),
