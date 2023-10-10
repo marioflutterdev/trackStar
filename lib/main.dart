@@ -5,8 +5,10 @@ import 'package:provider/provider.dart';
 import 'package:trackstar_web/src/config/routes/app_routes.dart';
 
 import 'package:trackstar_web/src/presentation/provider/providers.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 void main() {
+  setPathUrlStrategy();
   runApp(
     MultiProvider(
       providers: [

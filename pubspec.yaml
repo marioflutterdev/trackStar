@@ -11,10 +11,12 @@ dependencies:
   dio: ^5.3.3
   flutter:
     sdk: flutter
+  flutter_inappwebview: ^5.8.0
   flutter_svg: ^2.0.7
   go_router: ^11.1.2
   page_transition: ^2.1.0
   provider: ^6.0.5
+  url_strategy: ^0.2.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
