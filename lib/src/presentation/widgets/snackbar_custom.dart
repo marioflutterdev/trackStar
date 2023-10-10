@@ -2,7 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SnackbarCustomWidget extends StatelessWidget {
-  const SnackbarCustomWidget({Key? key}) : super(key: key);
+  final Color? color;
+  final String erroText;
+  final String sudErroloText;
+  final String svg;
+
+  const SnackbarCustomWidget({
+    super.key,
+    this.color = Colors.red,
+    this.erroText = '¡Error!',
+    this.sudErroloText = 'Revisas tus credenciales',
+    this.svg = 'assets/svg/error.svg',
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,29 +24,29 @@ class SnackbarCustomWidget extends StatelessWidget {
           width: 300,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            color: Colors.red,
+            color: color,
           ),
           child: Stack(
             clipBehavior: Clip.none,
             children: [
-              const Row(
+              Row(
                 children: [
-                  SizedBox(width: 48),
+                  const SizedBox(width: 48),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          '¡Error!',
-                          style: TextStyle(
+                          erroText,
+                          style: const TextStyle(
                               color: Colors.white,
                               fontSize: 22,
                               fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          'Revisas tus credenciales ',
-                          style: TextStyle(
+                          sudErroloText,
+                          style: const TextStyle(
                             fontSize: 15,
                             color: Colors.white,
                           ),
@@ -51,7 +62,7 @@ class SnackbarCustomWidget extends StatelessWidget {
                 left: 5,
                 top: -10,
                 child: SvgPicture.asset(
-                  'assets/svg/error.svg',
+                  svg,
                   height: 30,
                 ),
               ),

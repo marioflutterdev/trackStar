@@ -9,6 +9,7 @@ class FormCustomWidget extends StatelessWidget {
   final Function(String)? onChanged;
   final Function(String)? onFieldSubmitted;
   final FocusNode? focusNode;
+  final String? Function(String?)? validator;
   const FormCustomWidget({
     Key? key,
     this.keyboardType,
@@ -19,6 +20,7 @@ class FormCustomWidget extends StatelessWidget {
     this.onChanged,
     this.onFieldSubmitted,
     this.focusNode,
+    this.validator,
   }) : super(key: key);
 
   @override
@@ -49,6 +51,7 @@ class FormCustomWidget extends StatelessWidget {
         keyboardType: keyboardType ?? TextInputType.emailAddress,
         obscureText: obscureText ?? false,
         style: const TextStyle(color: Colors.black),
+        validator: validator,
         decoration: InputDecoration(
           prefixIcon: prefixIcon,
           border: InputBorder.none,
