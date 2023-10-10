@@ -7,27 +7,23 @@ import 'package:trackstar_web/src/data/api/api.dart';
 class LoginAuthProvider extends ChangeNotifier {
   static bool authenticated = false;
 
-  Future<void> signUp(String email, String password) async {
-    String url = '/auth/v1/signup';
+  Future<dynamic> signUp({String email = '', String password = ''}) async {
+    String url = '/auth/v1/token?grant_type=password';
 
     Map<String, dynamic> data = {
       "email": email,
       "password": password,
     };
+    Response response = await dio.post(url, data: data);
 
-    try {
-      Response response = await dio.post(url, data: data);
-
-      if (response.statusCode == 200) {
-        authenticated = true;
-        print('Respuesta: ${response.data}');
-        notifyListeners();
-      } else {
-        print('Error en la solicitud: ${response.statusCode}');
-        print('Mensaje de error: ${response.data}');
-      }
-    } catch (e) {
-      print('Error: $e');
+    if (response.statusCode == 200) {
+      authenticated = true;
+      print('Respuesta: ${response.data}');
+      notifyListeners();
+      return true;
+    } else {
+      print('Mensaje de error: ${response.data['error_description']}');
+      return false;
     }
   }
 }

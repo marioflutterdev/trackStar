@@ -71,6 +71,7 @@ class _FormState extends State<_Form> {
     return ChangeNotifierProvider(
       create: (context) => LoginAuthProvider(),
       child: Builder(builder: (context) {
+        final auth = context.watch<LoginAuthProvider>();
         return Center(
           child: Container(
             height: 350,
@@ -121,9 +122,24 @@ class _FormState extends State<_Form> {
                 ),
                 const SizedBox(height: 20),
                 CustomButtonWidget(
-                  onPressed: () {
+                  onPressed: () async {
+                    final loginOk = await auth.signUp(
+                      email: controllerEmail.text,
+                      password: controllerPassword.text,
+                    );
+
                     if (context.mounted) {
-                      context.go('/home');
+                      if (loginOk) {
+                        context.go('/home');
+                      } else {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          content: SnackbarCustomWidget(),
+                          behavior: SnackBarBehavior.floating,
+                          backgroundColor: Colors.transparent,
+                          elevation: 0,
+                        ));
+                      }
                     }
                   },
                   child: const Center(
