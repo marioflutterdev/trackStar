@@ -10,6 +10,7 @@ class AppRoute {
   static const notFoundRouter = '/nofound';
   static const loginRouter = '/login';
   static const fotgotRouter = '/forgot';
+  static const updateRouter = '/forgot/update';
   static const homeRouter = '/home';
 
   static final GoRouter routes = GoRouter(
@@ -29,6 +30,10 @@ class AppRoute {
       GoRoute(
         path: fotgotRouter,
         builder: (context, state) => const ForgotPassawordScreen(),
+      ),
+      GoRoute(
+        path: updateRouter,
+        builder: (context, state) => const UpdatePasswordScreen(),
       ),
       GoRoute(
           path: homeRouter,

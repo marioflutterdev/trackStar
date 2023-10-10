@@ -1,13 +1,15 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+
+import 'package:animate_do/animate_do.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+
 import 'package:trackstar_web/src/data/datasource/auth/reset_password.dart';
 import 'package:trackstar_web/src/presentation/screens/auth/widgets/widgets.dart';
 import 'package:trackstar_web/src/presentation/widgets/widgets.dart';
 
-class ForgotPassawordScreen extends StatelessWidget {
-  const ForgotPassawordScreen({Key? key}) : super(key: key);
+class UpdatePasswordScreen extends StatelessWidget {
+  const UpdatePasswordScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class ForgotPassawordScreen extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           BackGroundAuth(
-            svgRoute: 'assets/svg/forgot.svg',
+            svgRoute: 'assets/svg/login.svg',
           ),
           _Elements(),
         ],
@@ -42,13 +44,9 @@ class _Elements extends StatelessWidget {
             duration: const Duration(seconds: 3),
             child: const LogoAuth(),
           ),
-          _Form(),
+          _FormDecoration(),
           const SizedBox(
             height: 50,
-          ),
-          const LabelsAuth(
-            route: '/login',
-            textLabel: '¿Quieres Iniciar Sesión?',
           ),
         ],
       ),
@@ -56,20 +54,22 @@ class _Elements extends StatelessWidget {
   }
 }
 
-class _Form extends StatefulWidget {
+class _FormDecoration extends StatefulWidget {
   @override
-  State<_Form> createState() => _FormState();
+  State<_FormDecoration> createState() => _FormDecorationState();
 }
 
-class _FormState extends State<_Form> {
+class _FormDecorationState extends State<_FormDecoration> {
   final controllerEmail = TextEditingController();
+  final controllerPassword = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => ResetPasswordProvider(),
       child: Builder(builder: (context) {
-        final reset = context.watch<ResetPasswordProvider>();
+        final auth = context.watch<ResetPasswordProvider>();
         return Center(
           child: Container(
             width: 400,
@@ -96,7 +96,7 @@ class _FormState extends State<_Form> {
                   const Text(
                     'Recuperar Contraseña',
                     style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 40,
                         color: Colors.black,
                         fontWeight: FontWeight.bold),
                   ),
@@ -137,43 +137,62 @@ class _FormState extends State<_Form> {
                       setState(() {});
                     },
                   ),
+                  FormCustomWidget(
+                    prefixIcon:
+                        const Icon(Icons.lock, color: Color(0xff01091D)),
+                    hintText: 'Password',
+                    obscureText: true,
+                    controller: controllerPassword,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: SnackbarCustomWidget(
+                              sudErroloText: 'Contraseña no puede ser nula',
+                              color: Colors.orangeAccent,
+                              svg: 'assets/svg/password.svg',
+                            ),
+                            behavior: SnackBarBehavior.floating,
+                            backgroundColor: Colors.transparent,
+                            elevation: 0,
+                          ),
+                        );
+                        return '';
+                      }
+                      return null;
+                    },
+                    onChanged: (p0) {
+                      setState(() {});
+                    },
+                  ),
                   const SizedBox(height: 20),
                   CustomButtonWidget(
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        final resetOk = await reset.resetPassword(
+                        final loginOk = await auth.updatePassword(
                           email: controllerEmail.text,
+                          newPassword: controllerPassword.text,
                         );
 
                         if (context.mounted) {
-                          if (resetOk) {
+                          if (loginOk) {
+                            context.go('/login');
+                          } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                content: SnackbarCustomWidget(
-                                  color: Colors.green,
-                                  erroText: '¡Enviado!',
-                                  sudErroloText:
-                                      'Su correo fue enviado exitosamente',
-                                ),
+                                content: SnackbarCustomWidget(),
                                 behavior: SnackBarBehavior.floating,
                                 backgroundColor: Colors.transparent,
                                 elevation: 0,
                               ),
                             );
-                            Future.delayed(
-                              const Duration(seconds: 3),
-                              () {
-                                context.go('/login');
-                              },
-                            );
-                            controllerEmail.clear();
-                          } else {}
+                          }
                         }
                       }
                     },
                     child: const Center(
                         child: Text(
-                      'Enviar',
+                      'Guardar',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,
