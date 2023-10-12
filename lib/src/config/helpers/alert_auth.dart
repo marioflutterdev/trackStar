@@ -25,12 +25,12 @@ alertEmail(String? value, BuildContext context) {
   final regex = RegExp(pattern);
   if (value!.isEmpty || !regex.hasMatch(value)) {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
+      SnackBar(
         content: SnackbarCustomWidget(
           erroText: 'Advertencia',
           sudErroloText: 'Esto no parece un correo',
-          color: Colors.orangeAccent,
-          svg: 'assets/svg/mail.svg',
+          color: Colors.amber.shade900,
+          svg: 'assets/svg/warning.svg',
         ),
         behavior: SnackBarBehavior.floating,
         backgroundColor: Colors.transparent,
@@ -45,12 +45,12 @@ alertEmail(String? value, BuildContext context) {
 passwordAlert(String? value, BuildContext context) {
   if (value == null || value.length <= 6) {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
+      SnackBar(
         content: SnackbarCustomWidget(
           erroText: 'Advertencia',
           sudErroloText: 'Contraseña debe ser mayor o igual a 6 caracteres.',
-          color: Colors.orangeAccent,
-          svg: 'assets/svg/password.svg',
+          color: Colors.amber.shade900,
+          svg: 'assets/svg/warning.svg',
         ),
         behavior: SnackBarBehavior.floating,
         backgroundColor: Colors.transparent,
@@ -68,7 +68,8 @@ resetPassaword(BuildContext context, String sudErroloTex) {
       content: SnackbarCustomWidget(
         erroText: 'SUPER',
         sudErroloText: sudErroloTex,
-        color: Colors.green,
+        color: Colors.greenAccent.shade700,
+        svg: 'assets/svg/good.svg',
       ),
       behavior: SnackBarBehavior.floating,
       backgroundColor: Colors.transparent,
