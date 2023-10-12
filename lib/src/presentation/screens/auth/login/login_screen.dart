@@ -8,6 +8,8 @@ import 'package:trackstar_web/src/data/datasource/auth/login.dart';
 import 'package:trackstar_web/src/presentation/screens/auth/widgets/widgets.dart';
 import 'package:trackstar_web/src/presentation/widgets/widgets.dart';
 
+import '../../../../config/helpers/alert_auth.dart';
+
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -110,33 +112,7 @@ class _FormDecorationState extends State<_FormDecoration> {
                         color: Color(0xff01091D)),
                     hintText: 'Email',
                     controller: controllerEmail,
-                    validator: (value) {
-                      const pattern =
-                          r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'"
-                          r'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-'
-                          r'\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*'
-                          r'[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4]'
-                          r'[0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9]'
-                          r'[0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\'
-                          r'x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])';
-                      final regex = RegExp(pattern);
-                      if (value!.isEmpty || !regex.hasMatch(value)) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: SnackbarCustomWidget(
-                              sudErroloText: 'Esto no parece un correo',
-                              color: Colors.orangeAccent,
-                              svg: 'assets/svg/mail.svg',
-                            ),
-                            behavior: SnackBarBehavior.floating,
-                            backgroundColor: Colors.transparent,
-                            elevation: 0,
-                          ),
-                        );
-                        return '';
-                      }
-                      return null;
-                    },
+                    validator: (value) => alertEmail(value, context),
                     onChanged: (p0) {
                       setState(() {});
                     },
