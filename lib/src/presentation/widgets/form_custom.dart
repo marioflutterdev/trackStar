@@ -56,6 +56,7 @@ class _FormCustomWidgetState extends State<FormCustomWidget> {
         ],
       ),
       child: TextFormField(
+        cursorColor: Colors.black,
         controller: widget.controller,
         onChanged: widget.onChanged,
         onFieldSubmitted: widget.onFieldSubmitted,
