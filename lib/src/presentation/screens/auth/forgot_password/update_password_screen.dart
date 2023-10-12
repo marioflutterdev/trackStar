@@ -20,7 +20,7 @@ class UpdatePasswordScreen extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           BackGroundAuth(
-            svgRoute: 'assets/svg/login.svg',
+            svgRoute: 'assets/svg/update.svg',
           ),
           _Elements(),
         ],
@@ -94,7 +94,7 @@ class _FormState extends State<_Form> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    final auth = context.watch<ResetPasswordProvider>();
+    final reset = context.watch<ResetPasswordProvider>();
     return Form(
       key: _formKey,
       child: Column(
@@ -128,7 +128,7 @@ class _FormState extends State<_Form> {
           CustomButtonWidget(
             onPressed: () async {
               if (_formKey.currentState!.validate()) {
-                final loginOk = await auth.updatePassword(
+                final loginOk = await reset.updatePassword(
                   email: controllerEmail.text,
                   newPassword: controllerPassword.text,
                 );
@@ -144,14 +144,24 @@ class _FormState extends State<_Form> {
                 }
               }
             },
-            child: const Center(
-                child: Text(
-              'Guardar',
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.black,
-              ),
-            )),
+            child: reset.loading
+                ? const Center(
+                    child: SizedBox(
+                    height: 20,
+                    width: 20,
+                    child: CircularProgressIndicator(
+                      color: Colors.black,
+                      strokeWidth: 2,
+                    ),
+                  ))
+                : const Center(
+                    child: Text(
+                    'Guardar',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                    ),
+                  )),
           ),
           const SizedBox(height: 15),
         ],

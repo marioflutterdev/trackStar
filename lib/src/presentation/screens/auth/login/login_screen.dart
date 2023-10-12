@@ -151,14 +151,25 @@ class _FormState extends State<_Form> {
                     }
                   }
                 },
-                child: const Center(
-                    child: Text(
-                  'Iniciar sesión',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
-                )),
+                child: auth.loading
+                    ? const Center(
+                        child: SizedBox(
+                        height: 20,
+                        width: 20,
+                        child: CircularProgressIndicator(
+                          color: Colors.black,
+                          strokeWidth: 2,
+                        ),
+                      ))
+                    : const Center(
+                        child: Text(
+                          'Iniciar sesión',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
               ),
               const SizedBox(height: 15),
             ],
