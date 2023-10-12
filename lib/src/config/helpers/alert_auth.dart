@@ -1,6 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:trackstar_web/src/presentation/widgets/snackbar_custom.dart';
 
+errorAlert(
+  BuildContext context,
+) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(
+      content: SnackbarCustomWidget(),
+      behavior: SnackBarBehavior.floating,
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+    ),
+  );
+}
+
 alertEmail(String? value, BuildContext context) {
   const pattern = r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'"
       r'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-'
@@ -14,6 +27,7 @@ alertEmail(String? value, BuildContext context) {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: SnackbarCustomWidget(
+          erroText: 'Advertencia',
           sudErroloText: 'Esto no parece un correo',
           color: Colors.orangeAccent,
           svg: 'assets/svg/mail.svg',
@@ -23,7 +37,42 @@ alertEmail(String? value, BuildContext context) {
         elevation: 0,
       ),
     );
-    return '';
+    return '   Corrige este campo';
   }
   return null;
+}
+
+passwordAlert(String? value, BuildContext context) {
+  if (value == null || value.length <= 6) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: SnackbarCustomWidget(
+          erroText: 'Advertencia',
+          sudErroloText: 'Contraseña debe ser mayor o igual a 6 caracteres.',
+          color: Colors.orangeAccent,
+          svg: 'assets/svg/password.svg',
+        ),
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+    );
+    return '   Corrige este campo';
+  }
+  return null;
+}
+
+resetPassaword(BuildContext context, String sudErroloTex) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: SnackbarCustomWidget(
+        erroText: 'SUPER',
+        sudErroloText: sudErroloTex,
+        color: Colors.green,
+      ),
+      behavior: SnackBarBehavior.floating,
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+    ),
+  );
 }

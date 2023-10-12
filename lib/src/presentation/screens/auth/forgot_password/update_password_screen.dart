@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:animate_do/animate_do.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:trackstar_web/src/config/helpers/alert_auth.dart';
 
@@ -29,9 +30,7 @@ class UpdatePasswordScreen extends StatelessWidget {
 }
 
 class _Elements extends StatelessWidget {
-  const _Elements({
-    super.key,
-  });
+  const _Elements();
 
   @override
   Widget build(BuildContext context) {
@@ -60,13 +59,8 @@ class _FormDecoration extends StatefulWidget {
 }
 
 class _FormDecorationState extends State<_FormDecoration> {
-  final controllerEmail = TextEditingController();
-  final controllerPassword = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
-    final auth = context.watch<ResetPasswordProvider>();
     return Center(
       child: Container(
         width: 400,
@@ -83,110 +77,84 @@ class _FormDecorationState extends State<_FormDecoration> {
             )
           ],
         ),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const SizedBox(height: 15),
-              const Text(
-                'Recuperar Contraseña',
-                style: TextStyle(
-                    fontSize: 40,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 30),
-              FormCustomWidget(
-                prefixIcon: const Icon(Icons.person_4_rounded,
-                    color: Color(0xff01091D)),
-                hintText: 'Email',
-                controller: controllerEmail,
-                validator: (value) => alertEmail(value, context),
-                onChanged: (p0) {
-                  setState(() {});
-                },
-              ),
-              FormCustomWidget(
-                prefixIcon: const Icon(Icons.lock, color: Color(0xff01091D)),
-                hintText: 'Password',
-                obscureText: true,
-                controller: controllerPassword,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: SnackbarCustomWidget(
-                          sudErroloText: 'Contraseña no puede ser nula',
-                          color: Colors.orangeAccent,
-                          svg: 'assets/svg/password.svg',
-                        ),
-                        behavior: SnackBarBehavior.floating,
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                      ),
-                    );
-                    return '';
-                  }
-                  return null;
-                },
-                onChanged: (p0) {
-                  setState(() {});
-                },
-              ),
-              const SizedBox(height: 20),
-              CustomButtonWidget(
-                onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
-                    final loginOk = await auth.updatePassword(
-                      email: controllerEmail.text,
-                      newPassword: controllerPassword.text,
-                    );
+        child: _Form(),
+      ),
+    );
+  }
+}
 
-                    if (context.mounted) {
-                      if (loginOk) {
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(const SnackBar(
-                          content: SnackbarCustomWidget(
-                            erroText: 'SUPER',
-                            sudErroloText: 'Tu contraseña a sido actulizada',
-                            color: Colors.green,
-                          ),
-                          behavior: SnackBarBehavior.floating,
-                          backgroundColor: Colors.transparent,
-                          elevation: 0,
-                        ));
-                        //context.go('/login');
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: SnackbarCustomWidget(
-                              erroText: 'SUPER',
-                              sudErroloText: 'Tu contraseña a sido actulizada',
-                            ),
-                            behavior: SnackBarBehavior.floating,
-                            backgroundColor: Colors.transparent,
-                            elevation: 0,
-                          ),
-                        );
-                      }
-                    }
-                  }
-                },
-                child: const Center(
-                    child: Text(
-                  'Guardar',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
-                )),
-              ),
-              const SizedBox(height: 15),
-            ],
+class _Form extends StatefulWidget {
+  @override
+  State<_Form> createState() => _FormState();
+}
+
+class _FormState extends State<_Form> {
+  final controllerEmail = TextEditingController();
+  final controllerPassword = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  @override
+  Widget build(BuildContext context) {
+    final auth = context.watch<ResetPasswordProvider>();
+    return Form(
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const SizedBox(height: 15),
+          const Text(
+            'Recuperar Contraseña',
+            style: TextStyle(
+                fontSize: 40, color: Colors.black, fontWeight: FontWeight.bold),
           ),
-        ),
+          const SizedBox(height: 30),
+          FormCustomWidget(
+            prefixIcon:
+                const Icon(Icons.person_4_rounded, color: Color(0xff01091D)),
+            hintText: 'Email',
+            controller: controllerEmail,
+            validator: (value) => alertEmail(value, context),
+            onChanged: (value) => setState(() {}),
+          ),
+          FormCustomWidget(
+            prefixIcon: const Icon(Icons.lock, color: Color(0xff01091D)),
+            hintText: 'Password',
+            obscureText: true,
+            controller: controllerPassword,
+            validator: (value) => passwordAlert(value, context),
+            onChanged: (value) => setState(() {}),
+          ),
+          const SizedBox(height: 20),
+          CustomButtonWidget(
+            onPressed: () async {
+              if (_formKey.currentState!.validate()) {
+                final loginOk = await auth.updatePassword(
+                  email: controllerEmail.text,
+                  newPassword: controllerPassword.text,
+                );
+
+                if (context.mounted) {
+                  if (loginOk) {
+                    resetPassaword(context, 'Tu contraseña a sido actulizada');
+                    Future.delayed(
+                        const Duration(seconds: 3), () => context.go('/login'));
+                  } else {
+                    errorAlert(context);
+                  }
+                }
+              }
+            },
+            child: const Center(
+                child: Text(
+              'Guardar',
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.black,
+              ),
+            )),
+          ),
+          const SizedBox(height: 15),
+        ],
       ),
     );
   }

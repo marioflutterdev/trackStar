@@ -43,7 +43,7 @@ class _Elements extends StatelessWidget {
             duration: const Duration(seconds: 3),
             child: const LogoAuth(),
           ),
-          _Form(),
+          _FormDecoration(),
           const SizedBox(
             height: 50,
           ),
@@ -57,20 +57,17 @@ class _Elements extends StatelessWidget {
   }
 }
 
-class _Form extends StatefulWidget {
+class _FormDecoration extends StatefulWidget {
   @override
-  State<_Form> createState() => _FormState();
+  State<_FormDecoration> createState() => _FormDecorationState();
 }
 
-class _FormState extends State<_Form> {
-  final controllerEmail = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
+class _FormDecorationState extends State<_FormDecoration> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => ResetPasswordProvider(),
       child: Builder(builder: (context) {
-        final reset = context.watch<ResetPasswordProvider>();
         return Center(
           child: Container(
             width: 400,
@@ -87,81 +84,80 @@ class _FormState extends State<_Form> {
                 )
               ],
             ),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const SizedBox(height: 15),
-                  const Text(
-                    'Recuperar Contraseña',
-                    style: TextStyle(
-                        fontSize: 30,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 30),
-                  FormCustomWidget(
-                    prefixIcon: const Icon(Icons.person_4_rounded,
-                        color: Color(0xff01091D)),
-                    hintText: 'Email',
-                    controller: controllerEmail,
-                    validator: (value) => alertEmail(value, context),
-                    onChanged: (p0) {
-                      setState(() {});
-                    },
-                  ),
-                  const SizedBox(height: 20),
-                  CustomButtonWidget(
-                    onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        final resetOk = await reset.resetPassword(
-                          email: controllerEmail.text,
-                        );
-
-                        if (context.mounted) {
-                          if (resetOk) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: SnackbarCustomWidget(
-                                  color: Colors.green,
-                                  erroText: '¡Enviado!',
-                                  sudErroloText:
-                                      'Su correo fue enviado exitosamente',
-                                ),
-                                behavior: SnackBarBehavior.floating,
-                                backgroundColor: Colors.transparent,
-                                elevation: 0,
-                              ),
-                            );
-                            Future.delayed(
-                              const Duration(seconds: 3),
-                              () {
-                                context.go('/login');
-                              },
-                            );
-                            controllerEmail.clear();
-                          } else {}
-                        }
-                      }
-                    },
-                    child: const Center(
-                        child: Text(
-                      'Enviar',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    )),
-                  ),
-                  const SizedBox(height: 15),
-                ],
-              ),
-            ),
+            child: _Form(),
           ),
         );
       }),
+    );
+  }
+}
+
+class _Form extends StatefulWidget {
+  @override
+  State<_Form> createState() => _FormState();
+}
+
+class _FormState extends State<_Form> {
+  final controllerEmail = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  @override
+  Widget build(BuildContext context) {
+    final reset = context.watch<ResetPasswordProvider>();
+    return Form(
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const SizedBox(height: 15),
+          const Text(
+            'Recuperar Contraseña',
+            style: TextStyle(
+                fontSize: 30, color: Colors.black, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 30),
+          FormCustomWidget(
+            prefixIcon:
+                const Icon(Icons.person_4_rounded, color: Color(0xff01091D)),
+            hintText: 'Email',
+            controller: controllerEmail,
+            validator: (value) => alertEmail(value, context),
+          ),
+          const SizedBox(height: 20),
+          CustomButtonWidget(
+            onPressed: () async {
+              if (_formKey.currentState!.validate()) {
+                final resetOk = await reset.resetPassword(
+                  email: controllerEmail.text,
+                );
+
+                if (context.mounted) {
+                  if (resetOk) {
+                    resetPassaword(
+                        context, 'Su correo fue enviado exitosamente');
+                    Future.delayed(
+                      const Duration(seconds: 3),
+                      () {
+                        context.go('/login');
+                      },
+                    );
+                    controllerEmail.clear();
+                  } else {}
+                }
+              }
+            },
+            child: const Center(
+                child: Text(
+              'Enviar',
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.black,
+              ),
+            )),
+          ),
+          const SizedBox(height: 15),
+        ],
+      ),
     );
   }
 }

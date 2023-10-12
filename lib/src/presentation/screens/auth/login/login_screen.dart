@@ -31,9 +31,7 @@ class LoginScreen extends StatelessWidget {
 }
 
 class _Elements extends StatelessWidget {
-  const _Elements({
-    super.key,
-  });
+  const _Elements();
 
   @override
   Widget build(BuildContext context) {
@@ -66,123 +64,104 @@ class _FormDecoration extends StatefulWidget {
 }
 
 class _FormDecorationState extends State<_FormDecoration> {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        width: 400,
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+        margin: const EdgeInsets.symmetric(horizontal: 30),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 10,
+              offset: Offset(0, 5),
+            )
+          ],
+        ),
+        child: _Form(),
+      ),
+    );
+  }
+}
+
+class _Form extends StatefulWidget {
+  @override
+  State<_Form> createState() => _FormState();
+}
+
+class _FormState extends State<_Form> {
   final controllerEmail = TextEditingController();
   final controllerPassword = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => LoginAuthProvider(),
       child: Builder(builder: (context) {
         final auth = context.watch<LoginAuthProvider>();
-        return Center(
-          child: Container(
-            width: 400,
-            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-            margin: const EdgeInsets.symmetric(horizontal: 30),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(15),
-              boxShadow: const [
-                BoxShadow(
-                  color: Colors.black26,
-                  blurRadius: 10,
-                  offset: Offset(0, 5),
-                )
-              ],
-            ),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const SizedBox(height: 15),
-                  const Text(
-                    'Iniciar sesión',
-                    style: TextStyle(
-                        fontSize: 40,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 30),
-                  FormCustomWidget(
-                    prefixIcon: const Icon(Icons.person_4_rounded,
-                        color: Color(0xff01091D)),
-                    hintText: 'Email',
-                    controller: controllerEmail,
-                    validator: (value) => alertEmail(value, context),
-                    onChanged: (p0) {
-                      setState(() {});
-                    },
-                  ),
-                  FormCustomWidget(
-                    prefixIcon:
-                        const Icon(Icons.lock, color: Color(0xff01091D)),
-                    hintText: 'Password',
-                    obscureText: true,
-                    controller: controllerPassword,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: SnackbarCustomWidget(
-                              sudErroloText: 'Contraseña no puede ser nula',
-                              color: Colors.orangeAccent,
-                              svg: 'assets/svg/password.svg',
-                            ),
-                            behavior: SnackBarBehavior.floating,
-                            backgroundColor: Colors.transparent,
-                            elevation: 0,
-                          ),
-                        );
-                        return '';
-                      }
-                      return null;
-                    },
-                    onChanged: (p0) {
-                      setState(() {});
-                    },
-                  ),
-                  const SizedBox(height: 20),
-                  CustomButtonWidget(
-                    onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        final loginOk = await auth.signUp(
-                          email: controllerEmail.text,
-                          password: controllerPassword.text,
-                        );
-
-                        if (context.mounted) {
-                          if (loginOk) {
-                            context.go('/home');
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: SnackbarCustomWidget(),
-                                behavior: SnackBarBehavior.floating,
-                                backgroundColor: Colors.transparent,
-                                elevation: 0,
-                              ),
-                            );
-                          }
-                        }
-                      }
-                    },
-                    child: const Center(
-                        child: Text(
-                      'Iniciar sesión',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    )),
-                  ),
-                  const SizedBox(height: 15),
-                ],
+        return Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const SizedBox(height: 15),
+              const Text(
+                'Iniciar sesión',
+                style: TextStyle(
+                    fontSize: 40,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold),
               ),
-            ),
+              const SizedBox(height: 30),
+              FormCustomWidget(
+                prefixIcon: const Icon(Icons.person_4_rounded,
+                    color: Color(0xff01091D)),
+                hintText: 'Email',
+                controller: controllerEmail,
+                validator: (value) => alertEmail(value, context),
+                onChanged: (value) => setState(() {}),
+              ),
+              FormCustomWidget(
+                prefixIcon: const Icon(Icons.lock, color: Color(0xff01091D)),
+                hintText: 'Password',
+                obscureText: true,
+                controller: controllerPassword,
+                validator: (value) => passwordAlert(value, context),
+                onChanged: (value) => setState(() {}),
+              ),
+              const SizedBox(height: 20),
+              CustomButtonWidget(
+                onPressed: () async {
+                  if (_formKey.currentState!.validate()) {
+                    final loginOk = await auth.signUp(
+                      email: controllerEmail.text,
+                      password: controllerPassword.text,
+                    );
+                    if (context.mounted) {
+                      if (loginOk) {
+                        context.go('/home');
+                      } else {
+                        errorAlert(context);
+                      }
+                    }
+                  }
+                },
+                child: const Center(
+                    child: Text(
+                  'Iniciar sesión',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                  ),
+                )),
+              ),
+              const SizedBox(height: 15),
+            ],
           ),
         );
       }),

@@ -26,29 +26,11 @@ class LoadingScreen extends StatelessWidget {
   }
 
   checkLoginState(BuildContext context) async {
-    //final auth = Provider.of<AuthService>(context);
-    //final socket = Provider.of<SockectService>(context);
-    //final loginTokenOk = await auth.isLoggedIn();
-
-    /* Timer(const Duration(seconds: 3), () {
-      if (context.mounted) {
-        Navigator.popAndPushNamed(context, '/login');
-      }
-    }); */
     Future.delayed(
       const Duration(seconds: 3),
       () {
         context.go('/login');
       },
     );
-
-    /* if (context.mounted) {
-      if (loginTokenOk) {
-        // socket.connect();
-        Navigator.popAndPushNamed(context, 'user');
-      } else {
-        Navigator.popAndPushNamed(context, 'login');
-      }
-    } */
   }
 }
