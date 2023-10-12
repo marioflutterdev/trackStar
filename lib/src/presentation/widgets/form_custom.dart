@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class FormCustomWidget extends StatelessWidget {
+class FormCustomWidget extends StatefulWidget {
   final TextInputType? keyboardType;
   final String? hintText;
   final Widget? prefixIcon;
@@ -24,6 +24,19 @@ class FormCustomWidget extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<FormCustomWidget> createState() => _FormCustomWidgetState();
+}
+
+class _FormCustomWidgetState extends State<FormCustomWidget> {
+  bool _obscureText = true;
+
+  void _toggle() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(bottom: 15),
@@ -43,20 +56,35 @@ class FormCustomWidget extends StatelessWidget {
         ],
       ),
       child: TextFormField(
-        controller: controller,
-        onChanged: onChanged,
-        onFieldSubmitted: onFieldSubmitted,
-        focusNode: focusNode,
+        controller: widget.controller,
+        onChanged: widget.onChanged,
+        onFieldSubmitted: widget.onFieldSubmitted,
+        focusNode: widget.focusNode,
         autocorrect: false,
-        keyboardType: keyboardType ?? TextInputType.emailAddress,
-        obscureText: obscureText ?? false,
+        keyboardType: widget.keyboardType ?? TextInputType.emailAddress,
+        obscureText: widget.obscureText == true ? _obscureText : false,
         style: const TextStyle(color: Colors.black),
-        validator: validator,
+        validator: widget.validator,
         decoration: InputDecoration(
-          prefixIcon: prefixIcon,
+          suffixIcon: widget.obscureText == true
+              ? Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 4, 0),
+                  child: GestureDetector(
+                    onTap: _toggle,
+                    child: Icon(
+                      _obscureText
+                          ? Icons.visibility_rounded
+                          : Icons.visibility_off_rounded,
+                      size: 24,
+                      color: Colors.black,
+                    ),
+                  ),
+                )
+              : null,
+          prefixIcon: widget.prefixIcon,
           border: InputBorder.none,
           focusedBorder: InputBorder.none,
-          hintText: hintText ?? 'none',
+          hintText: widget.hintText ?? 'none',
           hintStyle: const TextStyle(color: Colors.black),
         ),
       ),
