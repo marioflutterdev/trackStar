@@ -43,7 +43,7 @@ alertEmail(String? value, BuildContext context) {
 }
 
 passwordAlert(String? value, BuildContext context) {
-  if (value == null || value.length <= 6) {
+  if (value == null || value.length < 6) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: SnackbarCustomWidget(
