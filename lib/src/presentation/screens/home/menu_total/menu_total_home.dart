@@ -22,7 +22,7 @@ class MenuTotalHome extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       margin: EdgeInsets.fromLTRB(
-          movile ? 30 : 100, movile ? 30 : 50, 30, movile ? 30 : 50),
+          movile ? 15 : 100, movile ? 15 : 15, 15, movile ? 15 : 50),
       decoration: BoxDecoration(
         color: theme.onSecondaryContainer,
         borderRadius: BorderRadius.circular(15),
@@ -40,33 +40,8 @@ class MenuTotalHome extends StatelessWidget {
             movile: movile,
             providerTheme: providerTheme,
           ),
-          Expanded(
-            child: Row(
-              children: [
-                const _CategoriesVIew(),
-                if (!movile)
-                  Container(
-                    width: 400,
-                    height: double.infinity,
-                    margin: const EdgeInsets.all(15),
-                    decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.background,
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: const [
-                          BoxShadow(
-                              blurRadius: 10,
-                              color: Colors.black26,
-                              offset: Offset(5, 5))
-                        ]),
-                    child: const Center(
-                      child: Text(
-                        'soon',
-                        style: TextStyle(fontSize: 100),
-                      ),
-                    ),
-                  ),
-              ],
-            ),
+          const Expanded(
+            child: _CategoriesVIew(),
           )
         ],
       ),
@@ -129,7 +104,17 @@ class _ButtonMenu extends StatelessWidget {
     return Row(
       children: [
         if (movile) const OpenDrawer(),
-        const Expanded(child: SizedBox()),
+        if (!movile)
+          const SizedBox(
+            width: 15,
+          ),
+        Expanded(
+            child: !movile
+                ? const Text(
+                    'Nombre de categoria',
+                    style: TextStyle(fontSize: 60),
+                  )
+                : const SizedBox()),
         ButtonCustomHome(
           icon: providerTheme.themeData == dartMode
               ? Icons.light_mode

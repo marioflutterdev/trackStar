@@ -55,7 +55,7 @@ class ButtonHome extends StatelessWidget {
           from: 250,
           child: ButtomCustom(
             icon: Icons.settings,
-            title: 'Settings',
+            title: 'Configuraciónes',
             opTap: () => menuController.paginaActual = 4,
             colors: selectColor(menuController, 4),
           ),

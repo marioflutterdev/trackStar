@@ -36,7 +36,7 @@ class _ViewMenuLeft extends StatelessWidget {
     final theme = Theme.of(context).colorScheme;
     return Container(
       padding: const EdgeInsets.all(10),
-      margin: const EdgeInsets.symmetric(vertical: 50, horizontal: 15),
+      margin: const EdgeInsets.fromLTRB(15, 15, 15, 50),
       width: isHovered ? 350 : 70,
       height: double.infinity,
       decoration: BoxDecoration(
