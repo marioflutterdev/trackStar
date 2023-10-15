@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
+List<String> categorias = [
+  'USUARIOS',
+  'CENTROS DE DISTRIBUCION',
+  'PRODUCTOS',
+];
+
 class NavegacionDrawerProvider extends ChangeNotifier {
-  int _paginaActual = 0;
+  late int _paginaActual = 0;
 
   final PageController _pageController = PageController();
 
   int get paginaActual => _paginaActual;
+  String get nombreCategoria => categorias[_paginaActual];
 
   set paginaActual(int value) {
     _paginaActual = value;

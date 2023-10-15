@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:provider/provider.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:trackstar_web/src/presentation/provider/menu_drawer/navegacion_drawer_provider.dart';
+import 'package:provider/provider.dart';
 
-import 'package:trackstar_web/src/presentation/widgets/widgets.dart';
 import '../../../provider/providers.dart';
+import '../../../widgets/widgets.dart';
 
 class ButtonHome extends StatelessWidget {
   const ButtonHome({Key? key}) : super(key: key);

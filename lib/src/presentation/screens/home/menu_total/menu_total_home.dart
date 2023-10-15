@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:trackstar_web/src/config/resposive/app_responsive.dart';
-import 'package:trackstar_web/src/config/theme/app_theme.dart';
-import 'package:trackstar_web/src/presentation/provider/menu_drawer/navegacion_drawer_provider.dart';
-import 'package:trackstar_web/src/presentation/provider/providers.dart';
 
-import 'package:trackstar_web/src/presentation/screens/home/widgets/widgets.dart';
-import 'package:trackstar_web/src/presentation/screens/screens.dart';
+import 'package:provider/provider.dart';
+
+import '../../../../config/config.dart';
+import '../../../../config/theme/app_theme.dart';
+import '../../../provider/providers.dart';
+import '../../screens.dart';
+import '../widgets/widgets.dart';
 
 class MenuTotalHome extends StatelessWidget {
   const MenuTotalHome({
@@ -101,6 +101,7 @@ class _ButtonMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final nameCategoria = context.watch<NavegacionDrawerProvider>();
     return Row(
       children: [
         if (movile) const OpenDrawer(),
@@ -110,9 +111,11 @@ class _ButtonMenu extends StatelessWidget {
           ),
         Expanded(
             child: !movile
-                ? const Text(
-                    'Nombre de categoria',
-                    style: TextStyle(fontSize: 60),
+                ? Center(
+                    child: Text(
+                      nameCategoria.nombreCategoria,
+                      style: const TextStyle(fontSize: 60),
+                    ),
                   )
                 : const SizedBox()),
         ButtonCustomHome(

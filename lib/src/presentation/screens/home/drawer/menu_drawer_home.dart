@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:provider/provider.dart';
-import 'package:trackstar_web/src/config/resposive/app_responsive.dart';
 
+import '../../../../config/config.dart';
 import '../../../provider/providers.dart';
 import '../../../widgets/widgets.dart';
 import '../widgets/widgets.dart';

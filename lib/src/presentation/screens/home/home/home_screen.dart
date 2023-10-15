@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
-import 'package:trackstar_web/src/config/resposive/app_responsive.dart';
 
+import '../../../../config/config.dart';
+import '../../../provider/providers.dart';
 import '../drawer/menu_drawer_home.dart';
-import 'package:trackstar_web/src/presentation/screens/home/widgets/widgets.dart';
-import 'package:trackstar_web/src/presentation/provider/menu_drawer/menu_drawer_provider.dart';
-
 import '../menu_total/menu_total_home.dart';
+import '../widgets/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
