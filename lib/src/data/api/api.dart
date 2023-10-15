@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import 'package:trackstar_web/src/config/constans.dart';
+import 'package:trackstar_web/src/config/constans/constans.dart';
 
 Dio dio = Dio(
   BaseOptions(
