@@ -61,16 +61,6 @@ class _CategoriesVIew extends StatelessWidget {
       child: Container(
         width: double.infinity,
         margin: const EdgeInsets.all(15),
-        decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.background,
-            borderRadius: BorderRadius.circular(15),
-            boxShadow: const [
-              BoxShadow(
-                blurRadius: 10,
-                color: Colors.black26,
-                offset: Offset(5, 5),
-              )
-            ]),
         child: Center(
             child: PageView(
           controller: menuController.pageController,

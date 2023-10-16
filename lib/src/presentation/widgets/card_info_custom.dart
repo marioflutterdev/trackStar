@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-class CardInfoProducts extends StatelessWidget {
-  const CardInfoProducts({super.key});
+class CardInfoCustomWidget extends StatelessWidget {
+  final Widget child;
+  const CardInfoCustomWidget({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 300,
+      height: 400,
       margin: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primary,
@@ -23,6 +24,7 @@ class CardInfoProducts extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
         child: CustomPaint(
           painter: _CustomPaintCard(context: context),
+          child: child,
         ),
       ),
     );
