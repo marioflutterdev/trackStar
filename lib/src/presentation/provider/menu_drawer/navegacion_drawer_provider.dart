@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 List<String> categorias = [
-  'USUARIOS',
-  'CENTROS DE DISTRIBUCION',
-  'PRODUCTOS',
+  'Usuarios',
+  'Centros de Distribución',
+  'Productos',
+  'Entradas y salidas',
+  'Configuraciónes'
 ];
 
 class NavegacionDrawerProvider extends ChangeNotifier {
