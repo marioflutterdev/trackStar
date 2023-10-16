@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/card_info_products.dart';
+
 class ProductsScreen extends StatelessWidget {
   const ProductsScreen({Key? key}) : super(key: key);
 
@@ -28,24 +30,8 @@ class _ViewProducts extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: 10,
         itemBuilder: (context, index) {
-          return const _CardInfoProducts();
+          return const CardInfoProducts();
         },
-      ),
-    );
-  }
-}
-
-class _CardInfoProducts extends StatelessWidget {
-  const _CardInfoProducts();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 300,
-      margin: const EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.onPrimaryContainer,
-        borderRadius: BorderRadius.circular(20),
       ),
     );
   }

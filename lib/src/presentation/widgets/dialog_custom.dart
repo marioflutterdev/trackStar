@@ -53,7 +53,6 @@ class CleanDialog extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
         child: SizedBox(
           width: 400,
-          height: 190,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,

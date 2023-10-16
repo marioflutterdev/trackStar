@@ -20,7 +20,7 @@ class SnackbarCustomWidget extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: 70,
+          padding: const EdgeInsets.symmetric(horizontal: 5),
           width: 300,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
