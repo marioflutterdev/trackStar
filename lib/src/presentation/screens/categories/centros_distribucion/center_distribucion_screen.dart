@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../../../config/config.dart';
-import 'widgets/info_user.dart';
+import 'widgets/info-centros.dart';
 
-class UserScreen extends StatelessWidget {
-  const UserScreen({Key? key}) : super(key: key);
+class CenterDistribucionScreen extends StatelessWidget {
+  const CenterDistribucionScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class UserScreen extends StatelessWidget {
         mainAxisExtent: 400,
       ),
       itemBuilder: (BuildContext context, int index) {
-        return const InfoUser();
+        return const InfoCenter();
       },
     );
   }
