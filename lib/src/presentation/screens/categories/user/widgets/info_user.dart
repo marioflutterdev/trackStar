@@ -3,7 +3,20 @@ import 'package:flutter/material.dart';
 import '../../../../widgets/widgets.dart';
 
 class InfoUser extends StatelessWidget {
-  const InfoUser({Key? key}) : super(key: key);
+  final String img;
+  final String name;
+  final int edad;
+  final String genero;
+  final String descripcion;
+
+  const InfoUser(
+      {Key? key,
+      required this.img,
+      required this.name,
+      required this.edad,
+      required this.genero,
+      required this.descripcion})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +33,16 @@ class InfoUser extends StatelessWidget {
                 radius: 75,
                 backgroundColor:
                     Theme.of(context).colorScheme.onPrimaryContainer,
-                child: const CircleAvatar(
+                child: CircleAvatar(
                   radius: 70,
-                  backgroundImage: NetworkImage(
-                      'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGVyc29uYXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80'),
+                  backgroundImage: NetworkImage(img),
                 ),
               ),
             ),
-            const Text('ID: 54642'),
-            const Text('Nombre: David'),
-            const Text(
-                'Descripción: Nisi eiusmod nostrud eu elit adipisicing esse qui est aliqua eu proident et sit. Exercitation ipsum ea ea irure consectetur do aliqua cillum proident consectetur nostrud.')
+            Text('Nombre: $name'),
+            Text('ID: ${edad.toString()}'),
+            Text('Geneor: $genero'),
+            Text('Descripción: $descripcion')
           ],
         ),
       ),
