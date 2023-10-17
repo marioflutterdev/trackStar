@@ -14,7 +14,6 @@ class AppRoute {
   static const homeRouter = '/home';
 
   static final GoRouter routes = GoRouter(
-    initialLocation: homeRouter,
     routes: <GoRoute>[
       GoRoute(
         path: initialRouter,
@@ -37,11 +36,10 @@ class AppRoute {
         builder: (context, state) => const UpdatePasswordScreen(),
       ),
       GoRoute(
-        path: homeRouter,
-        builder: (_, state) => const HomeScreen(),
-        /* redirect: (context, state) =>
-              (LoginAuthProvider.authenticated) ? null : '/nofound') */
-      )
+          path: homeRouter,
+          builder: (_, state) => const HomeScreen(),
+          redirect: (context, state) =>
+              (LoginAuthProvider.authenticated) ? null : '/nofound')
     ],
     errorBuilder: (BuildContext context, GoRouterState state) =>
         const PageNotFoundScreen(),
