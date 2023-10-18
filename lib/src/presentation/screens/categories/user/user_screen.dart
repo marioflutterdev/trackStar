@@ -52,10 +52,16 @@ class UserScreen extends StatelessWidget {
                 cardBgColor: theme.background,
                 appBar: XenCardAppBar(
                   color: theme.background,
-                  child: const Center(
-                    child: Text(
-                      'Añadir Producto',
-                      style: TextStyle(fontSize: 15),
+                  child: const SizedBox(
+                    height: 50,
+                    width: double.infinity,
+                    child: Center(
+                      child: FittedBox(
+                        child: Text(
+                          'Añadir Usuario',
+                          style: TextStyle(fontSize: 45),
+                        ),
+                      ),
                     ),
                   ),
                 ),

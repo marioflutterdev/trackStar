@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trackstar_web/src/config/config.dart';
 
 import 'xencard_appbar.dart';
 import 'xencardgutter.dart';
@@ -67,11 +68,21 @@ class XenPopupCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    final movile = AppResponsive.isMobile(context);
+    final table = AppResponsive.isTablet(context);
     return Container(
       // margin
       margin: EdgeInsets.only(
-          left: size.width * 0.50 / 2,
-          right: size.width * 0.50 / 2,
+          left: movile
+              ? size.width * 0.2 / 2
+              : table
+                  ? size.width * 0.3 / 2
+                  : size.width * 0.5 / 2,
+          right: movile
+              ? size.width * 0.2 / 2
+              : table
+                  ? size.width * 0.3 / 2
+                  : size.width * 0.5 / 2,
           top: size.height * 0.1,
           bottom: size.height * 0.1),
       // material with border radius
@@ -83,7 +94,7 @@ class XenPopupCard extends StatelessWidget {
             // body
             Padding(
                 padding: EdgeInsets.only(
-                    top: appBar == null ? 20 : 80,
+                    top: appBar == null ? 20 : 100,
                     bottom: padding ?? 20,
                     left: padding ?? 20,
                     right: padding ?? 20),
