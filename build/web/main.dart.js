@@ -26168,8 +26168,8 @@ _.y=$
 _.a=e
 _.b=f},
 Zj:function Zj(){},
-aP2(a,b){var s=null,r=new A.a9Z(A.aRa())
-r.a4r(!1,a,s,s,s,s,s,s,!1,s,5,s,!0,s,!1,b)
+aP2(a,b,c){var s=null,r=new A.a9Z(A.aRa())
+r.a4r(!1,a,s,s,b,s,s,s,!1,s,5,s,!0,s,!1,c)
 return r},
 nC(a){var s=a.fF(t.q0)
 s=s==null?null:s.gaj()
@@ -88039,7 +88039,8 @@ if(q)p.wX()},
 a7N(a){var s
 $.ab.toString
 s=$.aY().gzP()
-return s}}
+if(s==="/")return a
+else return s}}
 A.aa2.prototype={
 $2(a,b){return null},
 $S:522}
@@ -89843,7 +89844,7 @@ A.a3b.prototype={
 $2(a,b){return B.IW},
 $S:549}
 A.a3c.prototype={
-$2(a,b){return $.aDK?null:"/nofound"},
+$2(a,b){return $.aDK?null:"/home"},
 $S:550}
 A.a35.prototype={
 $2(a,b){return B.uP},
@@ -100080,7 +100081,7 @@ s($,"b1X","aLh",()=>{var q=t.ob,p=A.a9("dX")
 return A.aEd(A.aAJ(A.aQ9(A.aAi("^",null),t.N),$.aLm(),q,p),new A.avD(),q,p,p)})
 s($,"b1r","aKT",()=>!t.Cm.b(A.a([],t.Z)))
 s($,"aZy","aJt",()=>{var q=null
-return A.aP2(new A.a35(),A.a([A.ux(new A.a36(),"/",q),A.ux(new A.a37(),"/nofound",q),A.ux(new A.a38(),"/login",q),A.ux(new A.a39(),"/forgot",q),A.ux(new A.a3a(),"/forgot/update",q),A.ux(new A.a3b(),"/home",new A.a3c())],A.a9("r<uw>")))})
+return A.aP2(new A.a35(),"/home",A.a([A.ux(new A.a36(),"/",q),A.ux(new A.a37(),"/nofound",q),A.ux(new A.a38(),"/login",q),A.ux(new A.a39(),"/forgot",q),A.ux(new A.a3a(),"/forgot/update",q),A.ux(new A.a3b(),"/home",new A.a3c())],A.a9("r<uw>")))})
 r($,"b2V","aBq",()=>{var q=null
 return A.akU(B.R,new A.nr(B.R,B.bS.gCr(),B.i,q,B.E5,B.bS.gCr(),B.k,q,B.bS.gCr(),q,q,q,q,B.Fb,B.i,q,q,B.i,B.k,B.i,B.k,q,q,q,q,q,q,q,q,q,q),!0)})
 r($,"b2M","axi",()=>{var q,p,o=null,n=B.bS.i(0,800)
