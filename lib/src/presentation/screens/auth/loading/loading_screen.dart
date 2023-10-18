@@ -13,6 +13,7 @@ class LoadingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
       body: FutureBuilder(
         future: checkLoginState(context),
         builder: (context, snapshot) => Center(
