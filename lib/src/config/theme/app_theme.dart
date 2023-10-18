@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 ThemeData lighMode = ThemeData(
+  fontFamily: GoogleFonts.tiltNeon().fontFamily,
   useMaterial3: true,
   brightness: Brightness.light,
   colorScheme: ColorScheme.light(
@@ -12,6 +14,7 @@ ThemeData lighMode = ThemeData(
   ),
 );
 ThemeData dartMode = ThemeData(
+  fontFamily: GoogleFonts.tiltNeon().fontFamily,
   brightness: Brightness.dark,
   useMaterial3: true,
   colorScheme: ColorScheme.dark(
