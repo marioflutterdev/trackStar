@@ -7,16 +7,15 @@ class InfoCenter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CardInfoCustomWidget(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Positioned(
-              top: 5,
-              child: CircleAvatar(
+    return RepaintBoundary(
+      child: CardInfoCustomWidget(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CircleAvatar(
                 radius: 75,
                 backgroundColor:
                     Theme.of(context).colorScheme.onPrimaryContainer,
@@ -26,12 +25,12 @@ class InfoCenter extends StatelessWidget {
                       'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGVyc29uYXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80'),
                 ),
               ),
-            ),
-            const Text('ID: 54642'),
-            const Text('Nombre: David'),
-            const Text(
-                'Descripción: Nisi eiusmod nostrud eu elit adipisicing esse qui est aliqua eu proident et sit. Exercitation ipsum ea ea irure consectetur do aliqua cillum proident consectetur nostrud.')
-          ],
+              const Text('ID: 54642'),
+              const Text('Nombre: David'),
+              const Text(
+                  'Descripción: Nisi eiusmod nostrud eu elit adipisicing esse qui est aliqua eu proident et sit. Exercitation ipsum ea ea irure consectetur do aliqua cillum proident consectetur nostrud.')
+            ],
+          ),
         ),
       ),
     );

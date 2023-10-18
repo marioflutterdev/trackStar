@@ -16,7 +16,7 @@ void main() {
   final fragmentParams = Uri.splitQueryString(fragment);
   final accessToken = fragmentParams['access_token'];
 
-  //setPathUrlStrategy();
+  setPathUrlStrategy();
   runApp(
     MultiProvider(
       providers: [
