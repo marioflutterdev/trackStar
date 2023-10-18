@@ -21,7 +21,30 @@ class InfoUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RepaintBoundary(
-      child: CardInfoCustomWidget(child: const Text('hola')),
+      child: CardInfoCustomWidget(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CircleAvatar(
+                radius: 75,
+                backgroundColor:
+                    Theme.of(context).colorScheme.onPrimaryContainer,
+                child: CircleAvatar(
+                  radius: 70,
+                  backgroundImage: NetworkImage(img),
+                ),
+              ),
+              Text('Nombre: $name'),
+              Text('ID: ${edad.toString()}'),
+              Text('Geneor: $genero'),
+              Text('Descripción: $descripcion')
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
