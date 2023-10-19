@@ -77,12 +77,12 @@ class XenPopupCard extends StatelessWidget {
               ? size.width * 0.2 / 2
               : table
                   ? size.width * 0.3 / 2
-                  : size.width * 0.5 / 2,
+                  : size.width * 0.60 / 2,
           right: movile
               ? size.width * 0.2 / 2
               : table
                   ? size.width * 0.3 / 2
-                  : size.width * 0.5 / 2,
+                  : size.width * 0.60 / 2,
           top: size.height * 0.1,
           bottom: size.height * 0.1),
       // material with border radius
