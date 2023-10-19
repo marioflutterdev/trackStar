@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class FormCustomWidget extends StatefulWidget {
+  final double? border;
+  final bool? textExtraLarge;
   final TextInputType? keyboardType;
   final String? hintText;
   final Widget? prefixIcon;
@@ -21,6 +23,8 @@ class FormCustomWidget extends StatefulWidget {
     this.onFieldSubmitted,
     this.focusNode,
     this.validator,
+    this.textExtraLarge = false,
+    this.border,
   }) : super(key: key);
 
   @override
@@ -45,7 +49,7 @@ class _FormCustomWidgetState extends State<FormCustomWidget> {
         right: 20,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(50),
+        borderRadius: BorderRadius.circular(widget.border ?? 50),
         color: Colors.grey.shade300,
         boxShadow: const [
           BoxShadow(
@@ -56,6 +60,7 @@ class _FormCustomWidgetState extends State<FormCustomWidget> {
         ],
       ),
       child: TextFormField(
+        maxLines: widget.textExtraLarge! ? 4 : 1,
         cursorColor: Colors.black,
         controller: widget.controller,
         onChanged: widget.onChanged,
