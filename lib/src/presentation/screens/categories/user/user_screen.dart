@@ -13,6 +13,7 @@ class UserScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const userBoss = false;
     final usersData = users;
     final theme = Theme.of(context).colorScheme;
     final table = AppResponsive.isTablet(context);
@@ -45,28 +46,31 @@ class UserScreen extends StatelessWidget {
         Positioned(
           bottom: 30,
           right: 30,
-          child: ButtonCustomHome(
-            icon: Icons.add,
-            onTap: () => showDialog(
-              context: context,
-              builder: (builder) => XenPopupCard(
-                cardBgColor: theme.background,
-                appBar: XenCardAppBar(
-                  color: theme.background,
-                  child: const SizedBox(
-                    height: 50,
-                    width: double.infinity,
-                    child: Center(
-                      child: FittedBox(
-                        child: Text(
-                          'Añadir Usuario',
-                          style: TextStyle(fontSize: 45),
+          child: Visibility(
+            visible: userBoss,
+            child: ButtonCustomHome(
+              icon: Icons.add,
+              onTap: () => showDialog(
+                context: context,
+                builder: (builder) => XenPopupCard(
+                  cardBgColor: theme.background,
+                  appBar: XenCardAppBar(
+                    color: theme.background,
+                    child: const SizedBox(
+                      height: 50,
+                      width: double.infinity,
+                      child: Center(
+                        child: FittedBox(
+                          child: Text(
+                            'Añadir Usuario',
+                            style: TextStyle(fontSize: 45),
+                          ),
                         ),
                       ),
                     ),
                   ),
+                  body: const _BodyForm(),
                 ),
-                body: const _BodyForm(),
               ),
             ),
           ),
@@ -83,53 +87,57 @@ class _BodyForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        textTitle("Nombre"),
-        const FormCustomWidget(
-          border: 15,
-          hintText: "Nombre",
-        ),
-        textTitle("Correo"),
-        const FormCustomWidget(
-          border: 15,
-          hintText: "Correo",
-        ),
-        textTitle("contraseña"),
-        const FormCustomWidget(
-          obscureText: true,
-          border: 15,
-          hintText: "contraseña",
-        ),
-        textTitle("Genero"),
-        const FormCustomWidget(
-          border: 15,
-          hintText: "Genero",
-        ),
-        textTitle("Descripcion"),
-        const FormCustomWidget(
-          border: 15,
-          textExtraLarge: true,
-          hintText: "Descripcion",
-        ),
-        const Spacer(),
-        SizedBox(
-          width: double.infinity,
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5),
-              ),
-            ),
-            onPressed: () {
-              //TODO: Añadir Usuario
-            },
-            child: const Text("Añadir Usuario"),
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          textTitle("Nombre"),
+          const FormCustomWidget(
+            border: 15,
+            hintText: "Nombre",
           ),
-        ),
-      ],
+          textTitle("Correo"),
+          const FormCustomWidget(
+            border: 15,
+            hintText: "Correo",
+          ),
+          textTitle("contraseña"),
+          const FormCustomWidget(
+            obscureText: true,
+            border: 15,
+            hintText: "contraseña",
+          ),
+          textTitle("Genero"),
+          const FormCustomWidget(
+            textExtraLarge: true,
+            border: 15,
+            hintText: "Genero",
+          ),
+          textTitle("Descripcion"),
+          const FormCustomWidget(
+            border: 15,
+            textExtraLarge: true,
+            hintText: "Descripcion",
+          ),
+          const SizedBox(height: 15),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor:
+                    Theme.of(context).colorScheme.onPrimaryContainer,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
+                ),
+              ),
+              onPressed: () {
+                //TODO: Añadir Usuario
+              },
+              child: const Text("Añadir Usuario"),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
