@@ -17,8 +17,8 @@ class UserTest {
 }
 
 List<UserTest> users = List.generate(20, (index) {
-  final randomImageUrl =
-      'https://via.placeholder.com/${100 + Random().nextInt(200)}x${100 + Random().nextInt(200)}';
+  const randomImageUrl =
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSez5Hhwz8qtjcctv1WFL6Td8NVdHUtSw12hw&usqp=CAU';
   return UserTest(
     imageUrl: randomImageUrl,
     name: 'Usuario ${index + 1}',

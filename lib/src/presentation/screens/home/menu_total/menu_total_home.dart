@@ -40,17 +40,15 @@ class MenuTotalHome extends StatelessWidget {
             movile: movile,
             providerTheme: providerTheme,
           ),
-          const Expanded(
-            child: _CategoriesVIew(),
-          )
+          const _CategoriesView()
         ],
       ),
     );
   }
 }
 
-class _CategoriesVIew extends StatelessWidget {
-  const _CategoriesVIew({
+class _CategoriesView extends StatelessWidget {
+  const _CategoriesView({
     super.key,
   });
 
@@ -59,12 +57,9 @@ class _CategoriesVIew extends StatelessWidget {
     final menuController = context.watch<NavegacionDrawerProvider>();
     return Expanded(
       child: Container(
-        width: double.infinity,
         margin: const EdgeInsets.all(15),
-        child: Center(
-            child: PageView(
+        child: PageView(
           controller: menuController.pageController,
-          scrollDirection: Axis.vertical,
           physics: const NeverScrollableScrollPhysics(),
           children: const [
             UserScreen(),
@@ -73,7 +68,7 @@ class _CategoriesVIew extends StatelessWidget {
             EntradasSalidasScreen(),
             SettingsScreen(),
           ],
-        )),
+        ),
       ),
     );
   }
