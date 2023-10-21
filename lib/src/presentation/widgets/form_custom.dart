@@ -60,7 +60,7 @@ class _FormCustomWidgetState extends State<FormCustomWidget> {
         ],
       ),
       child: TextFormField(
-        maxLines: widget.textExtraLarge! ? 4 : 1,
+        maxLines: widget.textExtraLarge! ? 3 : 1,
         cursorColor: Colors.black,
         controller: widget.controller,
         onChanged: widget.onChanged,
@@ -69,6 +69,7 @@ class _FormCustomWidgetState extends State<FormCustomWidget> {
         autocorrect: false,
         keyboardType: widget.keyboardType ?? TextInputType.emailAddress,
         obscureText: widget.obscureText == true ? _obscureText : false,
+        maxLength: widget.textExtraLarge! ? 150 : null,
         style: const TextStyle(color: Colors.black),
         validator: widget.validator,
         decoration: InputDecoration(
