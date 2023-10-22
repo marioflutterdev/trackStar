@@ -19,13 +19,16 @@ class CreatedNewUser extends ChangeNotifier {
   ) async {
     loading = true;
     const String url = '/auth/v1/signup';
+    print('description: $description');
 
     final data = {
-      "name": name,
       "email": email,
       "password": password,
-      "superUser": superUser,
-      "description": description,
+      "data": {
+        "full_name": name,
+        "super_user": superUser,
+        "description_user": description,
+      }
     };
 
     final res = await dio.post(url, data: data);

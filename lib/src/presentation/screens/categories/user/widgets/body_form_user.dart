@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../config/helpers/alert_auth.dart';
+import '../../../../../data/data.dart';
 import '../../../../widgets/widgets.dart';
 
 class BodyFormUser extends StatefulWidget {
@@ -76,34 +78,50 @@ class _BodyFormUserState extends State<BodyFormUser> {
             ),
           ),
           const SizedBox(height: 15),
-          SizedBox(
-            height: 40,
-            width: double.infinity,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor:
-                    Theme.of(context).colorScheme.onPrimaryContainer,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5),
+          ChangeNotifierProvider(
+            create: (context) => CreatedNewUser(),
+            child: Builder(builder: (context) {
+              final newUser = context.watch<CreatedNewUser>();
+              return SizedBox(
+                height: 40,
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:
+                        Theme.of(context).colorScheme.onPrimaryContainer,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                  ),
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate()) {
+                      await newUser.createNewUser(
+                        nameController.text,
+                        emailController.text,
+                        passwordController.text,
+                        superUser,
+                        descriptionController.text,
+                      );
+                    }
+                  },
+                  child: newUser.loading
+                      ? const SizedBox(
+                          height: 20,
+                          width: 20,
+                          child: CircularProgressIndicator(
+                            color: Colors.white,
+                          ),
+                        )
+                      : const Text(
+                          "Añadir Usuario",
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                          ),
+                        ),
                 ),
-              ),
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  print('nameController.text ${nameController.text}');
-                  print('nameController.text ${emailController.text}');
-                  print('SuperUser ${superUser.toString()}');
-                  print('nameController.text ${passwordController.text}');
-                  print('nameController.text ${descriptionController.text}');
-                }
-              },
-              child: const Text(
-                "Añadir Usuario",
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                ),
-              ),
-            ),
+              );
+            }),
           ),
         ],
       ),
