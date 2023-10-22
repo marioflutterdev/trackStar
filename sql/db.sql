@@ -1,9 +1,10 @@
 -- Create a table for public profiles
 create table profiles (
   id uuid references auth.users on delete cascade not null primary key,
-  updated_at timestamp with time zone,
-  email text unique,
   full_name text,
+  email text unique,
+  super_user boolean default false,
+  description_user text default 'No description',
   avatar_url text
 );
 -- Set up Row Level Security (RLS)
@@ -24,9 +25,16 @@ create policy "Users can update own profile." on profiles
 
 create function public.handle_new_user()
 returns trigger as $$
+declare
+  isSuperUser boolean := false;
 begin
-  insert into public.profiles (id, email, full_name, avatar_url)
-  values (new.id, new.email,new.raw_user_meta_data->>'full_name', new.raw_user_meta_data->>'avatar_url');
+  -- Check if the new user is a super user
+  if new.raw_user_meta_data->>'super_user' = 'true' then
+    isSuperUser := true;
+  end if;
+
+  insert into public.profiles (id, email, full_name, avatar_url, super_user, description_user)
+  values (new.id, new.email,new.raw_user_meta_data->>'full_name', new.raw_user_meta_data->>'avatar_url', isSuperUser, new.raw_user_meta_data->>'description_user');
   return new;
 end;
 $$ language plpgsql security definer;
