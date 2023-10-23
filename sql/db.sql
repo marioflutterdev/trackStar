@@ -7,8 +7,9 @@ create table profiles (
   description_user text default 'No description',
   avatar_url text
 );
+
 -- Set up Row Level Security (RLS)
--- See https://supabase.com/docs/guides/auth/row-level-security for more details.
+
 alter table profiles
   enable row level security;
 
@@ -21,7 +22,6 @@ create policy "Users can insert their own profile." on profiles
 create policy "Users can update own profile." on profiles
   for update using (auth.uid() = id);
 
--- This trigger automatically creates a profile entry when a new user signs up via Supabase Auth.
 
 create function public.handle_new_user()
 returns trigger as $$
@@ -42,11 +42,9 @@ create trigger on_auth_user_created
   after insert on auth.users
   for each row execute procedure public.handle_new_user();
 
--- Set up Storage!
 insert into storage.buckets (id, name)
   values ('avatars', 'avatars');
 
--- Set up access controls for storage.
 create policy "Avatar images are publicly accessible." on storage.objects
   for select using (bucket_id = 'avatars');
 

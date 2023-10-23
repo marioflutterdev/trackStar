@@ -34,6 +34,17 @@ class _BodyFormUserState extends State<BodyFormUser> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    textTitle("Imagen"),
+                    CircleAvatar(
+                      radius: 50,
+                      backgroundColor: theme.onPrimaryContainer,
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.add_a_photo),
+                        color: Colors.black,
+                      ),
+                    ),
+                    const SizedBox(height: 15),
                     textTitle("Nombre"),
                     FormCustomWidget(
                       controller: nameController,
@@ -54,7 +65,7 @@ class _BodyFormUserState extends State<BodyFormUser> {
                       border: 15,
                       hintText: "contraseña",
                     ),
-                    textTitle("Super Usuario"),
+                    textTitle("Administrador"),
                     Switch(
                       value: superUser,
                       activeColor: theme.onPrimaryContainer,
@@ -65,13 +76,14 @@ class _BodyFormUserState extends State<BodyFormUser> {
                         superUser = value;
                       },
                     ),
-                    textTitle("Descripcion"),
+
+                    /* textTitle("Descripcion"),
                     FormCustomWidget(
                       controller: descriptionController,
                       border: 15,
                       textExtraLarge: true,
                       hintText: "Descripcion",
-                    ),
+                    ), */
                   ],
                 ),
               ),
