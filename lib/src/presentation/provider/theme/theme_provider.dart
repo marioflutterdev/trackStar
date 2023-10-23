@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../config/theme/app_theme.dart';
 
 class ThemeProvider extends ChangeNotifier {
-  ThemeData _themeData = dartMode;
+  ThemeData _themeData = lighMode;
 
   ThemeData get themeData => _themeData;
 
