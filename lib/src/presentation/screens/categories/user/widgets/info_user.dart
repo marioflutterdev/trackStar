@@ -3,20 +3,18 @@ import 'package:flutter/material.dart';
 import '../../../../widgets/widgets.dart';
 
 class InfoUser extends StatelessWidget {
-  final String img;
+  final String id;
   final String name;
-  final int edad;
-  final String genero;
-  final String descripcion;
+  final String img;
+  final bool superUser;
 
-  const InfoUser(
-      {Key? key,
-      required this.img,
-      required this.name,
-      required this.edad,
-      required this.genero,
-      required this.descripcion})
-      : super(key: key);
+  const InfoUser({
+    Key? key,
+    required this.img,
+    required this.name,
+    required this.id,
+    required this.superUser,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +35,22 @@ class InfoUser extends StatelessWidget {
                   backgroundImage: NetworkImage(img),
                 ),
               ),
-              Text('Nombre: $name'),
-              Text('ID: ${edad.toString()}'),
-              Text('Geneor: $genero'),
-              Text('Descripción: $descripcion')
+              Text(name),
+              Text('ID: $id'),
+              Row(
+                children: [
+                  const Text('Adaministrador: '),
+                  superUser
+                      ? const Icon(
+                          Icons.check_circle,
+                          color: Colors.green,
+                        )
+                      : Icon(
+                          Icons.cancel,
+                          color: Theme.of(context).colorScheme.error,
+                        ),
+                ],
+              )
             ],
           ),
         ),
