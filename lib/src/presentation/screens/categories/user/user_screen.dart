@@ -1,41 +1,28 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:trackstar_web/src/data/models/categorias/user_category/user._category.dart';
 
 import '../../../../config/config.dart';
+import '../../../../data/data.dart';
 import '../../../widgets/xencard_custom/xencard_custom.dart';
 import '../../home/widgets/widgets.dart';
 import 'widgets/body_form_user.dart';
 import 'widgets/info_user.dart';
 
-class UserScreen extends StatelessWidget {
+class UserScreen extends StatefulWidget {
   const UserScreen({Key? key}) : super(key: key);
 
   @override
+  State<UserScreen> createState() => _UserScreenState();
+}
+
+class _UserScreenState extends State<UserScreen> {
+  @override
   Widget build(BuildContext context) {
-    final List<UsersGet> usersData = [
-      UsersGet(
-        id: '123',
-        fullName: 'Mario Steven Melo Mendoza',
-        email: 'mario@google.com',
-        superUser: true,
-        descriptionUser: 'fdas',
-        avatarUrl:
-            'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png',
-      ),
-      UsersGet(
-        id: '123',
-        fullName: 'Adamarys rodriguez',
-        email: 'ada@google.com',
-        superUser: false,
-        descriptionUser: 'no Importa',
-        avatarUrl:
-            'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png',
-      ),
-    ];
+    final userData = Provider.of<GetUser>(context);
+    final List<UsersGet> usersData = userData.users;
     final theme = Theme.of(context).colorScheme;
     final table = AppResponsive.isTablet(context);
     final desktop = AppResponsive.isDesktop(context);
@@ -43,7 +30,7 @@ class UserScreen extends StatelessWidget {
     return Stack(
       children: [
         Skeletonizer(
-          enabled: true,
+          enabled: userData.loading,
           child: GridView.builder(
             itemCount: usersData.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -58,9 +45,10 @@ class UserScreen extends StatelessWidget {
             ),
             itemBuilder: (BuildContext context, int index) {
               return InfoUser(
-                img: usersData[index].avatarUrl,
+                img: usersData[index].avatarUrl ??
+                    'https://t4.ftcdn.net/jpg/04/75/01/23/360_F_475012363_aNqXx8CrsoTfJP5KCf1rERd6G50K0hXw.jpg',
                 id: usersData[index].id,
-                name: usersData[index].fullName!,
+                name: usersData[index].fullName ?? 'no data',
                 superUser: usersData[index].superUser,
               );
             },

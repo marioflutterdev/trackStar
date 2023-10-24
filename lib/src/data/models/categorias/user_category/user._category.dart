@@ -40,4 +40,13 @@ class UsersGet {
         "description_user": descriptionUser,
         "avatar_url": avatarUrl,
       };
+
+  UsersGet toUserGetEntity() => UsersGet(
+        id: id,
+        fullName: fullName,
+        email: email,
+        superUser: superUser,
+        descriptionUser: descriptionUser,
+        avatarUrl: avatarUrl,
+      );
 }

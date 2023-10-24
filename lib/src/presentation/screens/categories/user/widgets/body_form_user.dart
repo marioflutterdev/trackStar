@@ -14,16 +14,18 @@ class BodyFormUser extends StatefulWidget {
 
 class _BodyFormUserState extends State<BodyFormUser> {
   final _formKey = GlobalKey<FormState>();
+
   final nameController = TextEditingController(),
       emailController = TextEditingController(),
       passwordController = TextEditingController(),
       descriptionController = TextEditingController();
 
-  var superUser = false;
+  bool superUser = false;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).colorScheme;
+    final getUser = context.watch<GetUser>();
     return Form(
       key: _formKey,
       child: Column(
@@ -76,14 +78,6 @@ class _BodyFormUserState extends State<BodyFormUser> {
                         superUser = value;
                       },
                     ),
-
-                    /* textTitle("Descripcion"),
-                    FormCustomWidget(
-                      controller: descriptionController,
-                      border: 15,
-                      textExtraLarge: true,
-                      hintText: "Descripcion",
-                    ), */
                   ],
                 ),
               ),
@@ -107,13 +101,23 @@ class _BodyFormUserState extends State<BodyFormUser> {
                   ),
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      await newUser.createNewUser(
+                      final userOk = await newUser.createNewUser(
                         nameController.text,
                         emailController.text,
                         passwordController.text,
                         superUser,
                         descriptionController.text,
                       );
+                      if (context.mounted) {
+                        if (userOk) {
+                          getUser.getUser();
+                          Navigator.pop(context);
+                        } else {
+                          errorAlert(
+                            context,
+                          );
+                        }
+                      }
                     }
                   },
                   child: newUser.loading

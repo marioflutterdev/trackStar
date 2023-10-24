@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import 'package:trackstar_web/src/config/routes/app_routes.dart';
 import 'package:trackstar_web/src/data/datasource/auth/reset_password.dart';
+import 'package:trackstar_web/src/data/datasource/categorys/user/get_users.dart';
 
 import 'package:trackstar_web/src/presentation/provider/providers.dart';
 import 'package:url_strategy/url_strategy.dart';
@@ -25,6 +26,8 @@ void main() {
         ChangeNotifierProvider(
             create: (context) =>
                 ResetPasswordProvider(accessToken: accessToken.toString())),
+        //TODO cambiar de lugar este provider
+        ChangeNotifierProvider(create: (context) => GetUser()),
       ],
       child: const MainApp(),
     ),

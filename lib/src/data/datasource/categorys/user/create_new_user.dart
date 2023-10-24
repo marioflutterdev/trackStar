@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../api/api.dart';
+import '../../../api/api.dart';
 
 class CreatedNewUser extends ChangeNotifier {
   bool _loading = false;
@@ -10,7 +10,7 @@ class CreatedNewUser extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> createNewUser(
+  Future<bool> createNewUser(
     String name,
     String email,
     String password,
@@ -19,7 +19,6 @@ class CreatedNewUser extends ChangeNotifier {
   ) async {
     loading = true;
     const String url = '/auth/v1/signup';
-    print('description: $description');
 
     final data = {
       "email": email,
@@ -36,9 +35,11 @@ class CreatedNewUser extends ChangeNotifier {
     if (res.statusCode == 200) {
       print(res.data);
       loading = false;
+      return true;
     } else {
       print(res.data);
       loading = false;
+      return false;
     }
   }
 }
