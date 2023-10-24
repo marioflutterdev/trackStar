@@ -27,6 +27,7 @@ class _BodyFormUserState extends State<BodyFormUser> {
   bool superUser = false;
 
   Uint8List? newPictureFile = Uint8List(8);
+  File? fileSendData;
 
   @override
   Widget build(BuildContext context) {
@@ -59,17 +60,16 @@ class _BodyFormUserState extends State<BodyFormUser> {
                                 : null,
                             child: IconButton(
                               onPressed: () async {
-                                if (kIsWeb) {
-                                  final picker = ImagePicker();
-                                  final XFile? image = await picker.pickImage(
-                                    source: ImageSource.gallery,
-                                  );
-                                  if (image != null) {
-                                    var webImage = await image.readAsBytes();
-                                    newPictureFile = webImage;
-                                    setState(() {});
-                                    //createUser.newPictureFile = webImage;
-                                  }
+                                final picker = ImagePicker();
+                                final XFile? image = await picker.pickImage(
+                                  source: ImageSource.gallery,
+                                );
+                                if (image != null) {
+                                  final webImage = await image.readAsBytes();
+                                  newPictureFile = webImage;
+                                  setState(() {});
+                                  createUser
+                                      .updateSelectedProductImage(image.path);
                                 }
                               },
                               icon: const Icon(Icons.add_a_photo),
