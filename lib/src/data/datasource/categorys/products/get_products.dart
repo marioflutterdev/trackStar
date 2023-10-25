@@ -28,12 +28,11 @@ class GetProducts extends ChangeNotifier {
 
     dio.options.headers['Authorization'] = ' $accessToken';
 
-    final res = await dio.get('/rest/v1/profiles?select=*');
+    final res = await dio.get('/rest/v1/products?select=*');
     if (res.statusCode == 200) {
       res.data.forEach((element) {
         _products.add(ProductsModel.fromJson(element));
       });
-
       Future.delayed(
           const Duration(
             seconds: 2,

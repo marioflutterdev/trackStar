@@ -3,7 +3,18 @@ import 'package:flutter/material.dart';
 import '../../../../widgets/widgets.dart';
 
 class InfoProducts extends StatelessWidget {
-  const InfoProducts({Key? key}) : super(key: key);
+  final String id;
+  final String name;
+  final String img;
+  final String description;
+
+  const InfoProducts({
+    Key? key,
+    required this.img,
+    required this.name,
+    required this.id,
+    required this.description,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,16 +30,17 @@ class InfoProducts extends StatelessWidget {
                 radius: 75,
                 backgroundColor:
                     Theme.of(context).colorScheme.onPrimaryContainer,
-                child: const CircleAvatar(
+                child: CircleAvatar(
                   radius: 70,
-                  backgroundImage: NetworkImage(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPYj-P5N6h6pKiQ294t6HM0N8TveV15NfS6csUVtp_&s'),
+                  backgroundImage: NetworkImage(img),
                 ),
               ),
-              const Text('ID: 54642'),
-              const Text('Nombre: Arroz'),
-              const Text(
-                  'Descripción: Nisi eiusmod nostrud eu elit adipisicing esse qui est aliqua eu proident et sit. Exercitation ipsum ea ea irure consectetur do aliqua cillum proident consectetur nostrud.')
+              Text(name),
+              Text('ID: $id'),
+              SizedBox(
+                  height: 100,
+                  width: double.infinity,
+                  child: Text(description)),
             ],
           ),
         ),

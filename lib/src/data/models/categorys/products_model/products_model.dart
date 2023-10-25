@@ -9,28 +9,28 @@ String productsModelToJson(List<ProductsModel> data) =>
 
 class ProductsModel {
   final String id;
-  final String nameProducts;
-  final String descriptionProducts;
+  final String nameProduct;
+  final String descriptionProduct;
   final String avatarUrl;
 
   ProductsModel({
     required this.id,
-    required this.nameProducts,
-    required this.descriptionProducts,
+    required this.nameProduct,
+    required this.descriptionProduct,
     required this.avatarUrl,
   });
 
   factory ProductsModel.fromJson(Map<String, dynamic> json) => ProductsModel(
         id: json["id"],
-        nameProducts: json["name_products"],
-        descriptionProducts: json["description_products"],
+        nameProduct: json["name_product"],
+        descriptionProduct: json["description_product"],
         avatarUrl: json["avatar_url"],
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "name_products": nameProducts,
-        "description_products": descriptionProducts,
+        "name_product": nameProduct,
+        "description_product": descriptionProduct,
         "avatar_url": avatarUrl,
       };
 }
