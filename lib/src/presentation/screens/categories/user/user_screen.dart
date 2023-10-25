@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:skeletonizer/skeletonizer.dart';
-import 'package:trackstar_web/src/data/models/categorias/user_category/user._category.dart';
+import 'package:trackstar_web/src/data/models/categorys/user_model/user_model.dart';
 
 import '../../../../config/config.dart';
 import '../../../../data/data.dart';
@@ -22,7 +22,7 @@ class _UserScreenState extends State<UserScreen> {
   @override
   Widget build(BuildContext context) {
     final userData = Provider.of<GetUser>(context);
-    final List<UsersGet> usersData = userData.users;
+    final List<UsersGetModel> usersData = userData.users;
     final theme = Theme.of(context).colorScheme;
     final table = AppResponsive.isTablet(context);
     final desktop = AppResponsive.isDesktop(context);

@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-List<UsersGet> usersFromJson(String str) =>
-    List<UsersGet>.from(json.decode(str).map((x) => UsersGet.fromJson(x)));
+List<UsersGetModel> usersFromJson(String str) => List<UsersGetModel>.from(
+    json.decode(str).map((x) => UsersGetModel.fromJson(x)));
 
-String usersToJson(List<UsersGet> data) =>
+String usersToJson(List<UsersGetModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class UsersGet {
+class UsersGetModel {
   final String id;
   final String? fullName;
   final String email;
@@ -14,7 +14,7 @@ class UsersGet {
   final String? descriptionUser;
   final dynamic avatarUrl;
 
-  UsersGet({
+  UsersGetModel({
     required this.id,
     required this.fullName,
     required this.email,
@@ -23,7 +23,7 @@ class UsersGet {
     required this.avatarUrl,
   });
 
-  factory UsersGet.fromJson(Map<String, dynamic> json) => UsersGet(
+  factory UsersGetModel.fromJson(Map<String, dynamic> json) => UsersGetModel(
         id: json["id"],
         fullName: json["full_name"],
         email: json["email"],
@@ -41,7 +41,7 @@ class UsersGet {
         "avatar_url": avatarUrl,
       };
 
-  UsersGet toUserGetEntity() => UsersGet(
+  UsersGetModel toUserGetEntity() => UsersGetModel(
         id: id,
         fullName: fullName,
         email: email,
