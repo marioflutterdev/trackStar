@@ -28,7 +28,6 @@ returns trigger as $$
 declare
   isSuperUser boolean := false;
 begin
-  -- Check if the new user is a super user
   if new.raw_user_meta_data->>'super_user' = 'true' then
     isSuperUser := true;
   end if;
@@ -50,3 +49,44 @@ create policy "Avatar images are publicly accessible." on storage.objects
 
 create policy "Anyone can upload an avatar." on storage.objects
   for insert with check (bucket_id = 'avatars');
+
+-- Create a table for public Products
+CREATE TABLE products (
+  id SERIAL PRIMARY KEY,
+  name_product TEXT NOT NULL,
+  description_product TEXT,
+  avatar_url TEXT
+);
+-- Create a table for public Products
+CREATE TABLE center_distribution (
+  id SERIAL PRIMARY KEY,
+  name_center TEXT NOT NULL,
+  address TEXT NOT NULL,
+  user_id INTEGER NOT NULL REFERENCES profiles(id)
+);
+
+CREATE TABLE center_distribution_products (
+  id SERIAL PRIMARY KEY,
+  center_distribution_id INTEGER NOT NULL REFERENCES center_distribution(id),
+  product_id INTEGER NOT NULL REFERENCES products(id)
+);
+
+-- Insertar datos ficticios en la tabla products
+INSERT INTO products (name_products, description_products, avatar_url)
+VALUES ('Producto 1', 'Descripción del producto 1', 'https://example.com/producto1.jpg'),
+     ('Producto 2', 'Descripción del producto 2', 'https://example.com/producto2.jpg'),
+     ('Producto 3', 'Descripción del producto 3', 'https://example.com/producto3.jpg');
+
+-- Insertar datos ficticios en la tabla center_distribution
+INSERT INTO center_distribution (name_center, address, user_id)
+VALUES ('Centro de distribución 1', 'Dirección del centro de distribución 1', 1),
+     ('Centro de distribución 2', 'Dirección del centro de distribución 2', 2),
+     ('Centro de distribución 3', 'Dirección del centro de distribución 3', 3);
+
+-- Insertar datos ficticios en la tabla center_distribution_products
+INSERT INTO center_distribution_products (center_distribution_id, product_id)
+VALUES (1, 1),
+     (1, 2),
+     (2, 2),
+     (3, 1),
+     (3, 3);

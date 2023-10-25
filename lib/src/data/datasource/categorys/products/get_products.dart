@@ -1,37 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:trackstar_web/src/data/models/categorys/user_model/user_model.dart';
 
 import '../../../../config/constans/constans.dart';
 import '../../../api/api.dart';
+import '../../../data.dart';
 
-class GetUser extends ChangeNotifier {
-  GetUser() {
-    getUser();
+class GetProducts extends ChangeNotifier {
+  GetProducts() {
+    getProducts();
   }
 
   bool _loading = true;
-  final List<UsersGetModel> _users = [];
+  final List<ProductsModel> _products = [];
   //TODO chage apikey for your apikey
   final String accessToken = 'Bearer $apikey';
 
   bool get loading => _loading;
 
-  List<UsersGetModel> get users => _users;
+  List<ProductsModel> get products => _products;
   set loading(bool valor) {
     _loading = valor;
     notifyListeners();
   }
 
-  Future<void> getUser() async {
+  Future<void> getProducts() async {
     loading = true;
-    _users.clear();
+    _products.clear();
 
     dio.options.headers['Authorization'] = ' $accessToken';
 
     final res = await dio.get('/rest/v1/profiles?select=*');
     if (res.statusCode == 200) {
       res.data.forEach((element) {
-        _users.add(UsersGetModel.fromJson(element));
+        _products.add(ProductsModel.fromJson(element));
       });
 
       Future.delayed(
