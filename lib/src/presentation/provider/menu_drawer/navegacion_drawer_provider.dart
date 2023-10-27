@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 
 List<String> categorias = [
   'Usuarios',
-  'Centros de Distribución',
   'Productos',
-  'Entradas y salidas',
+  'Centros de Distribución',
   'Configuraciónes'
 ];
 
@@ -21,8 +20,8 @@ class NavegacionDrawerProvider extends ChangeNotifier {
 
     _pageController.animateToPage(
       value,
-      curve: Curves.bounceIn,
-      duration: const Duration(milliseconds: 250),
+      curve: Curves.bounceInOut,
+      duration: const Duration(milliseconds: 500),
     );
 
     notifyListeners();

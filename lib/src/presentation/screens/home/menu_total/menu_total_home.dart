@@ -63,9 +63,8 @@ class _CategoriesView extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           children: const [
             UserScreen(),
-            CenterDistribucionScreen(),
             ProductsScreen(),
-            EntradasSalidasScreen(),
+            CenterDistribucionScreen(),
             SettingsScreen(),
           ],
         ),

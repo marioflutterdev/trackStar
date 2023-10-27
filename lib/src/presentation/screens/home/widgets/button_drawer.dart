@@ -24,30 +24,21 @@ class ButtonHome extends StatelessWidget {
               colors: selectColor(menuController, 0)),
         ),
         FadeInLeft(
-          from: 100,
+          from: 150,
           child: ButtomCustom(
-            icon: Icons.directions_bus_filled_outlined,
-            title: 'C. Distribucion',
+            icon: Icons.production_quantity_limits,
+            title: 'Productos',
             opTap: () => menuController.paginaActual = 1,
             colors: selectColor(menuController, 1),
           ),
         ),
         FadeInLeft(
-          from: 150,
+          from: 100,
           child: ButtomCustom(
-            icon: Icons.production_quantity_limits,
-            title: 'Productos',
+            icon: Icons.directions_bus_filled_outlined,
+            title: 'C. Distribucion',
             opTap: () => menuController.paginaActual = 2,
             colors: selectColor(menuController, 2),
-          ),
-        ),
-        FadeInLeft(
-          from: 200,
-          child: ButtomCustom(
-            icon: Icons.car_crash_outlined,
-            title: 'Entradas y Salidas',
-            opTap: () => menuController.paginaActual = 3,
-            colors: selectColor(menuController, 3),
           ),
         ),
         FadeInLeft(
@@ -55,8 +46,8 @@ class ButtonHome extends StatelessWidget {
           child: ButtomCustom(
             icon: Icons.settings,
             title: 'Configuraciónes',
-            opTap: () => menuController.paginaActual = 4,
-            colors: selectColor(menuController, 4),
+            opTap: () => menuController.paginaActual = 3,
+            colors: selectColor(menuController, 3),
           ),
         )
       ],
