@@ -46,7 +46,8 @@ class _UserScreenState extends State<CenterDistribucionScreen> {
           bottom: 30,
           right: 30,
           child: BodyUpdateItemCustomWidget(
-            title: 'Añañir Usuario',
+            title: 'Agregar Centro de Distribución',
+            //TODO agregar el formulario de agregar centro de distribución
             child: BodyFormUser(),
           ),
         )
