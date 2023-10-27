@@ -58,3 +58,13 @@ create table products (
     description_product text null,
     avatar_url text null
 );
+
+-- Create a table for public Center Distribution 
+
+create table center (
+    id uuid not null primary key,
+    name_center text not null unique,
+    address_center text not null unique,
+    description_center text null,
+    avatar_url text null
+);

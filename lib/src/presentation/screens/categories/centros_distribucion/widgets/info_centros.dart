@@ -3,7 +3,20 @@ import 'package:flutter/material.dart';
 import '../../../../widgets/widgets.dart';
 
 class InfoCenter extends StatelessWidget {
-  const InfoCenter({Key? key}) : super(key: key);
+  final String id;
+  final String name;
+  final String address;
+  final String img;
+  final String description;
+
+  const InfoCenter({
+    Key? key,
+    required this.img,
+    required this.name,
+    required this.id,
+    required this.description,
+    required this.address,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,16 +32,19 @@ class InfoCenter extends StatelessWidget {
                 radius: 75,
                 backgroundColor:
                     Theme.of(context).colorScheme.onPrimaryContainer,
-                child: const CircleAvatar(
+                child: CircleAvatar(
                   radius: 70,
-                  backgroundImage: NetworkImage(
-                      'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGVyc29uYXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80'),
+                  backgroundImage: NetworkImage(img),
                 ),
               ),
-              const Text('ID: 54642'),
-              const Text('Nombre: David'),
-              const Text(
-                  'Descripción: Nisi eiusmod nostrud eu elit adipisicing esse qui est aliqua eu proident et sit. Exercitation ipsum ea ea irure consectetur do aliqua cillum proident consectetur nostrud.')
+              Text(name),
+              Text(address),
+              Text('ID: $id'),
+              SizedBox(
+                height: 100,
+                width: double.infinity,
+                child: Text(description),
+              ),
             ],
           ),
         ),
