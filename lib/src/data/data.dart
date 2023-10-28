@@ -1,3 +1,4 @@
+export 'package:trackstar_web/src/data/models/categorys/inventory_model/inventory_model.dart';
 export 'package:trackstar_web/src/data/models/categorys/center_model/center_model.dart';
 export 'package:trackstar_web/src/data/datasource/categorys/center_distribution/get_center_distribution.dart';
 export 'package:trackstar_web/src/data/datasource/categorys/products/get_products.dart';

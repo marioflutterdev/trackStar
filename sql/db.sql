@@ -68,3 +68,13 @@ create table center (
     description_center text null,
     avatar_url text null
 );
+
+-- Create a table for inventory of center distribution
+
+create table inventory (
+    id uuid not null primary key,
+    id_center uuid not null references center(id) on delete cascade,
+    id_product uuid not null references products(id) on delete cascade,
+    quantity int not null,
+    price int not null
+);
