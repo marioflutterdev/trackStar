@@ -1,6 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../provider/providers.dart';
 import '../../../../widgets/widgets.dart';
 
 class InfoCenter extends StatelessWidget {
@@ -74,6 +76,7 @@ class _MenuButtonState extends State<_MenuButton> {
   bool _visible = false;
   @override
   Widget build(BuildContext context) {
+    final menuController = context.watch<NavegacionDrawerProvider>();
     return Column(
       children: [
         IconButton(
@@ -90,7 +93,7 @@ class _MenuButtonState extends State<_MenuButton> {
             from: 40,
             child: IconButton(
               onPressed: () {
-                //TODO ver productos
+                menuController.paginaActual = 4;
               },
               icon: const Icon(Icons.production_quantity_limits),
             ),
@@ -102,7 +105,7 @@ class _MenuButtonState extends State<_MenuButton> {
             from: 50,
             child: IconButton(
               onPressed: () {
-                //TODO ver entradas y salidas
+                menuController.paginaActual = 5;
               },
               icon: const Icon(Icons.car_rental_outlined),
             ),

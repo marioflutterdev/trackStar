@@ -66,6 +66,8 @@ class _CategoriesView extends StatelessWidget {
             ProductsScreen(),
             CenterDistribucionScreen(),
             SettingsScreen(),
+            InventarioScreen(),
+            EntradasSalidasScreen(),
           ],
         ),
       ),

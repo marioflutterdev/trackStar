@@ -4,7 +4,9 @@ List<String> categorias = [
   'Usuarios',
   'Productos',
   'Centros de Distribución',
-  'Configuraciónes'
+  'Configuraciónes',
+  'inventario',
+  'Entradas y Salidas',
 ];
 
 class NavegacionDrawerProvider extends ChangeNotifier {
@@ -21,7 +23,7 @@ class NavegacionDrawerProvider extends ChangeNotifier {
     _pageController.animateToPage(
       value,
       curve: Curves.bounceInOut,
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 10),
     );
 
     notifyListeners();
