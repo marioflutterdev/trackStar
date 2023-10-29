@@ -56,7 +56,7 @@ create table products (
     id uuid not null primary key,
     name_product text not null unique,
     description_product text null,
-    avatar_url text null
+    avatar_url text null unique
 );
 
 -- Create a table for public Center Distribution 
@@ -74,7 +74,8 @@ create table center (
 create table inventory (
     id uuid not null primary key,
     id_center uuid not null references center(id) on delete cascade,
-    id_product uuid not null references products(id) on delete cascade,
+    name_product text not null references products(name_product) on delete cascade,
+    avatar_product text not null references products(avatar_url) on delete cascade,
     quantity int not null,
     price int not null
 );

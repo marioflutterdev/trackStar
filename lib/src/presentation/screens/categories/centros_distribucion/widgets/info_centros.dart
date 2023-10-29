@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../../data/data.dart';
 import '../../../../provider/providers.dart';
 import '../../../../widgets/widgets.dart';
 
@@ -52,10 +53,10 @@ class InfoCenter extends StatelessWidget {
                   ),
                 ],
               ),
-              const Positioned(
+              Positioned(
                 top: 5,
                 right: 0,
-                child: _MenuButton(),
+                child: _MenuButton(id),
               )
             ],
           ),
@@ -66,7 +67,8 @@ class InfoCenter extends StatelessWidget {
 }
 
 class _MenuButton extends StatefulWidget {
-  const _MenuButton();
+  final String id;
+  const _MenuButton(this.id);
 
   @override
   State<_MenuButton> createState() => _MenuButtonState();
@@ -77,6 +79,7 @@ class _MenuButtonState extends State<_MenuButton> {
   @override
   Widget build(BuildContext context) {
     final menuController = context.watch<NavegacionDrawerProvider>();
+    final inventory = context.watch<GetInventory>();
     return Column(
       children: [
         IconButton(
@@ -94,6 +97,7 @@ class _MenuButtonState extends State<_MenuButton> {
             child: IconButton(
               onPressed: () {
                 menuController.paginaActual = 4;
+                inventory.getInventory(widget.id);
               },
               icon: const Icon(Icons.production_quantity_limits),
             ),
