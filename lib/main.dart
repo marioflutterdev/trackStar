@@ -30,6 +30,7 @@ void main() {
         ChangeNotifierProvider(create: (context) => GetProducts()),
         ChangeNotifierProvider(create: (context) => GetCenterDistribution()),
         ChangeNotifierProvider(create: (context) => GetInventory()),
+        ChangeNotifierProvider(create: (context) => NewProduct()),
       ],
       child: const MainApp(),
     ),

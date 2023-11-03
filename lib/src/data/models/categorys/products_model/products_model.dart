@@ -11,7 +11,7 @@ class ProductsModel {
   final String id;
   final String nameProduct;
   final String descriptionProduct;
-  final String avatarUrl;
+  final String? avatarUrl;
 
   ProductsModel({
     required this.id,

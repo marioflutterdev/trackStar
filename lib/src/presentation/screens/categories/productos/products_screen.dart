@@ -20,24 +20,25 @@ class _UserScreenState extends State<ProductsScreen> {
   @override
   Widget build(BuildContext context) {
     final productsData = Provider.of<GetProducts>(context);
-    final List<ProductsModel> usersData = productsData.products;
+    final List<ProductsModel> productData = productsData.products;
 
     return Stack(
       children: [
         Skeletonizer(
           enabled: productsData.loading,
           child: GridView.builder(
-            itemCount: usersData.length,
+            itemCount: productData.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: responsiveGrip(context),
               mainAxisExtent: 400,
             ),
             itemBuilder: (BuildContext context, int index) {
               return InfoProducts(
-                id: usersData[index].id,
-                name: usersData[index].nameProduct,
-                description: usersData[index].descriptionProduct,
-                img: usersData[index].avatarUrl,
+                id: productData[index].id,
+                name: productData[index].nameProduct,
+                description: productData[index].descriptionProduct,
+                img: productData[index].avatarUrl ??
+                    'https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg',
               );
             },
           ),
@@ -46,7 +47,7 @@ class _UserScreenState extends State<ProductsScreen> {
           bottom: 30,
           right: 30,
           child: BodyUpdateItemCustomWidget(
-            title: 'Add Product',
+            title: 'Agregar Producto',
             child: BodyFormProducts(),
           ),
         )

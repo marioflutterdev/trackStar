@@ -74,8 +74,7 @@ create table center (
 create table inventory (
     id uuid not null primary key,
     id_center uuid not null references center(id) on delete cascade,
-    name_product text not null references products(name_product) on delete cascade,
-    avatar_product text not null references products(avatar_url) on delete cascade,
+    id_product uuid not null references products(id) on delete cascade,
     quantity int not null,
     price int not null
 );

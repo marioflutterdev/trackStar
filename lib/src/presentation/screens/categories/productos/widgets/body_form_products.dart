@@ -80,9 +80,9 @@ class _BodyFormProductsState extends State<BodyFormProducts> {
                     textTitle("Descripción"),
                     FormCustomWidget(
                       controller: descriptionController,
+                      hintText: "Descripción",
+                      textExtraLarge: true,
                       border: 15,
-                      hintText: "Correo",
-                      validator: (value) => alertEmail(value, context),
                     ),
                   ],
                 ),
@@ -122,43 +122,54 @@ class _ButtonSentNewProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => CreatedNewUser(),
-      child: Builder(builder: (context) {
-        final createUser = context.watch<CreatedNewUser>();
-        return SizedBox(
-          height: 40,
-          width: double.infinity,
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5),
-              ),
-            ),
-            onPressed: () async {
-              if (_formKey.currentState!.validate()) {
-                //TODO funcionalidad de crear productos
-              }
-            },
-            child: createUser.loading
-                ? const SizedBox(
-                    height: 20,
-                    width: 20,
-                    child: CircularProgressIndicator(
-                      color: Colors.white,
-                    ),
-                  )
-                : const Text(
-                    "Añadir producto",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                    ),
-                  ),
+    final newProduct = context.watch<NewProduct>();
+    final getProducts = context.watch<GetProducts>();
+    return SizedBox(
+      height: 40,
+      width: double.infinity,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
           ),
-        );
-      }),
+        ),
+        onPressed: () async {
+          if (_formKey.currentState!.validate()) {
+            final createOk = await newProduct.createNewProduct(
+              nameController.text,
+              descriptionController.text,
+            );
+            if (context.mounted) {
+              resetPassaword(context, 'Producto creado correctamente');
+              getProducts.getProducts();
+              Future.delayed(
+                const Duration(milliseconds: 500),
+                () => Navigator.pop(context),
+              );
+              if (createOk) {
+              } else {
+                errorAlert(context);
+              }
+            }
+          }
+        },
+        child: newProduct.loading
+            ? const SizedBox(
+                height: 20,
+                width: 20,
+                child: CircularProgressIndicator(
+                  color: Colors.white,
+                ),
+              )
+            : const Text(
+                "Añadir producto",
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                ),
+              ),
+      ),
     );
   }
 }
