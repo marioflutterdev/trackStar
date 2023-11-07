@@ -1,30 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:trackstar_web/src/data/data.dart';
 
 import '../../../../widgets/widgets.dart';
 
 class InfoUser extends StatelessWidget {
-  final String id;
-  final String email;
-  final String firstName;
-  final String lastName;
-  final String direccion;
-  final String documento;
-  final dynamic avatarUrl;
-  final String numCel;
-  final bool superUser;
+  final UsersGetModel user;
 
-  const InfoUser({
-    Key? key,
-    required this.id,
-    required this.email,
-    required this.firstName,
-    required this.lastName,
-    required this.direccion,
-    required this.documento,
-    required this.avatarUrl,
-    required this.numCel,
-    required this.superUser,
-  }) : super(key: key);
+  const InfoUser({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -42,25 +24,28 @@ class InfoUser extends StatelessWidget {
                     Theme.of(context).colorScheme.onPrimaryContainer,
                 child: CircleAvatar(
                   radius: 70,
-                  backgroundImage: NetworkImage(avatarUrl),
+                  backgroundImage: user.avatarUrl != null
+                      ? NetworkImage(user.avatarUrl!)
+                      : const AssetImage('assets/img/no-image.jpg')
+                          as ImageProvider,
                 ),
               ),
               Text(
-                '$firstName $lastName',
+                '${user.firstName} ${user.lastName}',
                 style: const TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              textCustom(id, title: 'ID'),
-              textCustom(email, title: 'Email'),
-              textCustom(numCel, title: 'Celular'),
-              textCustom(direccion, title: 'Direccion'),
-              textCustom(documento, title: 'CC'),
+              textCustom(user.id, title: 'ID'),
+              textCustom(user.email, title: 'Email'),
+              textCustom(user.phoneNumber, title: 'Celular'),
+              textCustom(user.addressProfile, title: 'Direccion'),
+              textCustom(user.documentProfile, title: 'CC'),
               Row(
                 children: [
                   const Text('Adaministrador: '),
-                  superUser
+                  user.superUser
                       ? const Icon(
                           Icons.check_circle,
                           color: Colors.green,
@@ -78,7 +63,7 @@ class InfoUser extends StatelessWidget {
     );
   }
 
-  Row textCustom(String value, {String? title}) {
+  Row textCustom(String? value, {String? title}) {
     const TextStyle textStyles = TextStyle(
       fontSize: 15,
       fontWeight: FontWeight.bold,
@@ -86,7 +71,7 @@ class InfoUser extends StatelessWidget {
     return Row(
       children: [
         Text('$title: ', style: textStyles),
-        Text(value),
+        Text(value ?? 'no data'),
       ],
     );
   }

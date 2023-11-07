@@ -32,17 +32,7 @@ class _UserScreenState extends State<UserScreen> {
               mainAxisExtent: 400,
             ),
             itemBuilder: (BuildContext context, int index) {
-              return InfoUser(
-                id: usersData[index].id,
-                email: usersData[index].email,
-                firstName: usersData[index].firstName,
-                lastName: usersData[index].lastName,
-                direccion: usersData[index].addressProfile,
-                documento: usersData[index].documentProfile,
-                avatarUrl: usersData[index].avatarUrl ?? '',
-                numCel: usersData[index].phoneNumber,
-                superUser: usersData[index].superUser,
-              );
+              return InfoUser(user: usersData[index]);
             },
           ),
         ),

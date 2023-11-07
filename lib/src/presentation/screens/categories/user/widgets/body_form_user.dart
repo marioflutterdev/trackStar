@@ -1,4 +1,3 @@
-import 'dart:html';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -43,6 +42,7 @@ class _BodyFormUserState extends State<BodyFormUser> {
   }
 
   Uint8List? newPictureFile = Uint8List(8);
+  File? fileSendData;
 
   @override
   Widget build(BuildContext context) {
