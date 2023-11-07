@@ -11,13 +11,16 @@ class CreatedNewUser extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> createNewUser(
-    String name,
-    String email,
-    String password,
-    bool superUser,
-    String description,
-  ) async {
+  Future<bool> createNewUser({
+    required String name,
+    String? lastName,
+    String? address,
+    String? documentUser,
+    String? numUser,
+    required String email,
+    required String password,
+    bool? superUser,
+  }) async {
     loading = true;
     const String url = '/auth/v1/signup';
 
@@ -25,9 +28,12 @@ class CreatedNewUser extends ChangeNotifier {
       "email": email,
       "password": password,
       "data": {
-        "full_name": name,
+        "first_name": name,
+        "last_name": lastName,
+        "direccion": address,
+        "num_cel": numUser,
+        "documento": documentUser,
         "super_user": superUser,
-        "description_user": description,
       }
     };
 

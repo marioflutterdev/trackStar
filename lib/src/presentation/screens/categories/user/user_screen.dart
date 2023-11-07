@@ -33,10 +33,14 @@ class _UserScreenState extends State<UserScreen> {
             ),
             itemBuilder: (BuildContext context, int index) {
               return InfoUser(
-                img: usersData[index].avatarUrl ??
-                    'https://t4.ftcdn.net/jpg/04/75/01/23/360_F_475012363_aNqXx8CrsoTfJP5KCf1rERd6G50K0hXw.jpg',
                 id: usersData[index].id,
-                name: usersData[index].fullName ?? 'no data',
+                email: usersData[index].email,
+                firstName: usersData[index].firstName,
+                lastName: usersData[index].lastName,
+                direccion: usersData[index].addressProfile,
+                documento: usersData[index].documentProfile,
+                avatarUrl: usersData[index].avatarUrl ?? '',
+                numCel: usersData[index].phoneNumber,
                 superUser: usersData[index].superUser,
               );
             },
@@ -46,7 +50,7 @@ class _UserScreenState extends State<UserScreen> {
           bottom: 30,
           right: 30,
           child: BodyUpdateItemCustomWidget(
-            title: 'Añañir Usuario',
+            title: 'Añadir Usuario',
             child: BodyFormUser(),
           ),
         )

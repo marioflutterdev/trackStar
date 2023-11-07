@@ -4,15 +4,25 @@ import '../../../../widgets/widgets.dart';
 
 class InfoUser extends StatelessWidget {
   final String id;
-  final String name;
-  final String img;
+  final String email;
+  final String firstName;
+  final String lastName;
+  final String direccion;
+  final String documento;
+  final dynamic avatarUrl;
+  final String numCel;
   final bool superUser;
 
   const InfoUser({
     Key? key,
-    required this.img,
-    required this.name,
     required this.id,
+    required this.email,
+    required this.firstName,
+    required this.lastName,
+    required this.direccion,
+    required this.documento,
+    required this.avatarUrl,
+    required this.numCel,
     required this.superUser,
   }) : super(key: key);
 
@@ -32,11 +42,21 @@ class InfoUser extends StatelessWidget {
                     Theme.of(context).colorScheme.onPrimaryContainer,
                 child: CircleAvatar(
                   radius: 70,
-                  backgroundImage: NetworkImage(img),
+                  backgroundImage: NetworkImage(avatarUrl),
                 ),
               ),
-              Text(name),
-              Text('ID: $id'),
+              Text(
+                '$firstName $lastName',
+                style: const TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              textCustom(id, title: 'ID'),
+              textCustom(email, title: 'Email'),
+              textCustom(numCel, title: 'Celular'),
+              textCustom(direccion, title: 'Direccion'),
+              textCustom(documento, title: 'CC'),
               Row(
                 children: [
                   const Text('Adaministrador: '),
@@ -55,6 +75,19 @@ class InfoUser extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Row textCustom(String value, {String? title}) {
+    const TextStyle textStyles = TextStyle(
+      fontSize: 15,
+      fontWeight: FontWeight.bold,
+    );
+    return Row(
+      children: [
+        Text('$title: ', style: textStyles),
+        Text(value),
+      ],
     );
   }
 }

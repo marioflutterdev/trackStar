@@ -1,3 +1,4 @@
+import 'dart:html';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -20,9 +21,12 @@ class _BodyFormUserState extends State<BodyFormUser> {
   final _formKey = GlobalKey<FormState>();
 
   final nameController = TextEditingController(),
+      lastNameController = TextEditingController(),
+      addressController = TextEditingController(),
+      documentUser = TextEditingController(),
+      numTelefonoController = TextEditingController(),
       emailController = TextEditingController(),
-      passwordController = TextEditingController(),
-      descriptionController = TextEditingController();
+      passwordController = TextEditingController();
 
   bool superUser = false;
 
@@ -39,7 +43,6 @@ class _BodyFormUserState extends State<BodyFormUser> {
   }
 
   Uint8List? newPictureFile = Uint8List(8);
-  File? fileSendData;
 
   @override
   Widget build(BuildContext context) {
@@ -74,11 +77,35 @@ class _BodyFormUserState extends State<BodyFormUser> {
                       ),
                     ),
                     const SizedBox(height: 15),
-                    textTitle("Nombre"),
+                    textTitle("Nombres"),
                     FormCustomWidget(
                       controller: nameController,
                       border: 15,
-                      hintText: "Nombre",
+                      hintText: "Nombres",
+                    ),
+                    textTitle("Apellidos"),
+                    FormCustomWidget(
+                      controller: lastNameController,
+                      border: 15,
+                      hintText: "Apellidos",
+                    ),
+                    textTitle("Direccion"),
+                    FormCustomWidget(
+                      controller: addressController,
+                      border: 15,
+                      hintText: "Direccion",
+                    ),
+                    textTitle("Documento"),
+                    FormCustomWidget(
+                      controller: documentUser,
+                      border: 15,
+                      hintText: "Documento",
+                    ),
+                    textTitle("Numero De Telefono"),
+                    FormCustomWidget(
+                      controller: numTelefonoController,
+                      border: 15,
+                      hintText: "Numero De Telefono",
                     ),
                     textTitle("Correo"),
                     FormCustomWidget(
@@ -87,7 +114,7 @@ class _BodyFormUserState extends State<BodyFormUser> {
                       hintText: "Correo",
                       validator: (value) => alertEmail(value, context),
                     ),
-                    textTitle("contraseña"),
+                    textTitle("Contraseña"),
                     FormCustomWidget(
                       controller: passwordController,
                       obscureText: true,
@@ -113,11 +140,14 @@ class _BodyFormUserState extends State<BodyFormUser> {
           const SizedBox(height: 15),
           _ButtonSentNewUser(
             formKey: _formKey,
-            nameController: nameController,
-            emailController: emailController,
-            passwordController: passwordController,
+            name: nameController.text,
+            lastName: lastNameController.text,
+            address: addressController.text,
+            documentUser: documentUser.text,
+            numUser: numTelefonoController.text,
+            email: emailController.text,
+            password: passwordController.text,
             superUser: superUser,
-            descriptionController: descriptionController,
             getUser: getUser,
           )
           // const SizedBox(height: 15,
@@ -137,20 +167,26 @@ class _BodyFormUserState extends State<BodyFormUser> {
 class _ButtonSentNewUser extends StatelessWidget {
   const _ButtonSentNewUser({
     required GlobalKey<FormState> formKey,
-    required this.nameController,
-    required this.emailController,
-    required this.passwordController,
-    required this.superUser,
-    required this.descriptionController,
     required this.getUser,
+    required this.name,
+    required this.lastName,
+    required this.address,
+    required this.documentUser,
+    required this.numUser,
+    required this.email,
+    required this.password,
+    required this.superUser,
   }) : _formKey = formKey;
 
   final GlobalKey<FormState> _formKey;
-  final TextEditingController nameController;
-  final TextEditingController emailController;
-  final TextEditingController passwordController;
+  final String name;
+  final String lastName;
+  final String address;
+  final String documentUser;
+  final String numUser;
+  final String email;
+  final String password;
   final bool superUser;
-  final TextEditingController descriptionController;
   final GetUser getUser;
 
   @override
@@ -172,11 +208,14 @@ class _ButtonSentNewUser extends StatelessWidget {
             onPressed: () async {
               if (_formKey.currentState!.validate()) {
                 final userOk = await createUser.createNewUser(
-                  nameController.text,
-                  emailController.text,
-                  passwordController.text,
-                  superUser,
-                  descriptionController.text,
+                  name: name,
+                  lastName: lastName,
+                  address: address,
+                  documentUser: documentUser,
+                  numUser: numUser,
+                  email: email,
+                  password: password,
+                  superUser: superUser,
                 );
                 if (context.mounted) {
                   if (userOk) {

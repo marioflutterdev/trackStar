@@ -1,3 +1,3 @@
-const String baseUrl = 'https://lhvbhwhyasuemwvtager.supabase.co';
+const String baseUrl = 'https://uhaduxdijqzduisctlab.supabase.co';
 const String apikey =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxodmJod2h5YXN1ZW13dnRhZ2VyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTg2MDE0NDMsImV4cCI6MjAxNDE3NzQ0M30.cEkzDNFIcd3g37tVSGZYP1hrKXvSnLmxEuWwyZqRCBw';
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVoYWR1eGRpanF6ZHVpc2N0bGFiIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5OTIxMDkyOSwiZXhwIjoyMDE0Nzg2OTI5fQ.I-Yp8lSiDCZV9W4SCIucXQkO9U_lVyV_km2sMJsX6Ag';
