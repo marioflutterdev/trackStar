@@ -140,15 +140,19 @@ class _BodyFormUserState extends State<BodyFormUser> {
           const SizedBox(height: 15),
           _ButtonSentNewUser(
             formKey: _formKey,
-            name: nameController.text,
-            lastName: lastNameController.text,
-            address: addressController.text,
-            documentUser: documentUser.text,
-            numUser: numTelefonoController.text,
-            email: emailController.text,
-            password: passwordController.text,
-            superUser: superUser,
+            dataUser: UsersGetModel(
+              id: "",
+              email: emailController.text,
+              firstName: nameController.text,
+              lastName: lastNameController.text,
+              addressProfile: addressController.text,
+              documentProfile: documentUser.text,
+              avatarUrl: "",
+              phoneNumber: numTelefonoController.text,
+              superUser: superUser,
+            ),
             getUser: getUser,
+            password: passwordController.text,
           )
           // const SizedBox(height: 15,
         ],
@@ -165,29 +169,18 @@ class _BodyFormUserState extends State<BodyFormUser> {
 }
 
 class _ButtonSentNewUser extends StatelessWidget {
-  const _ButtonSentNewUser({
-    required GlobalKey<FormState> formKey,
-    required this.getUser,
-    required this.name,
-    required this.lastName,
-    required this.address,
-    required this.documentUser,
-    required this.numUser,
-    required this.email,
-    required this.password,
-    required this.superUser,
-  }) : _formKey = formKey;
-
-  final GlobalKey<FormState> _formKey;
-  final String name;
-  final String lastName;
-  final String address;
-  final String documentUser;
-  final String numUser;
-  final String email;
   final String password;
-  final bool superUser;
+  final GlobalKey<FormState> formKey;
+  final UsersGetModel dataUser;
   final GetUser getUser;
+
+  const _ButtonSentNewUser({
+    super.key,
+    required this.formKey,
+    required this.dataUser,
+    required this.getUser,
+    required this.password,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -206,16 +199,10 @@ class _ButtonSentNewUser extends StatelessWidget {
               ),
             ),
             onPressed: () async {
-              if (_formKey.currentState!.validate()) {
+              if (formKey.currentState!.validate()) {
                 final userOk = await createUser.createNewUser(
-                  name: name,
-                  lastName: lastName,
-                  address: address,
-                  documentUser: documentUser,
-                  numUser: numUser,
-                  email: email,
+                  dataUser: dataUser,
                   password: password,
-                  superUser: superUser,
                 );
                 if (context.mounted) {
                   if (userOk) {

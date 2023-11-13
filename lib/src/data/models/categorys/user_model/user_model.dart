@@ -12,10 +12,10 @@ class UsersGetModel {
   final String email;
   final String firstName;
   final String lastName;
-  final String addressProfile;
-  final String documentProfile;
+  final String? addressProfile;
+  final String? documentProfile;
   final dynamic avatarUrl;
-  final String phoneNumber;
+  final String? phoneNumber;
   final bool superUser;
 
   UsersGetModel({
@@ -23,10 +23,10 @@ class UsersGetModel {
     required this.email,
     required this.firstName,
     required this.lastName,
-    required this.addressProfile,
-    required this.documentProfile,
+    this.addressProfile,
+    this.documentProfile,
     required this.avatarUrl,
-    required this.phoneNumber,
+    this.phoneNumber,
     required this.superUser,
   });
 

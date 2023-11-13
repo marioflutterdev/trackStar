@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trackstar_web/src/data/models/categorys/user_model/user_model.dart';
 
 import '../../../api/api.dart';
 
@@ -12,28 +13,22 @@ class CreatedNewUser extends ChangeNotifier {
   }
 
   Future<bool> createNewUser({
-    required String name,
-    String? lastName,
-    String? address,
-    String? documentUser,
-    String? numUser,
-    required String email,
+    required UsersGetModel dataUser,
     required String password,
-    bool? superUser,
   }) async {
     loading = true;
     const String url = '/auth/v1/signup';
 
     final data = {
-      "email": email,
+      "email": dataUser.email,
       "password": password,
       "data": {
-        "first_name": name,
-        "last_name": lastName,
-        "direccion": address,
-        "num_cel": numUser,
-        "documento": documentUser,
-        "super_user": superUser,
+        "first_name": dataUser.firstName,
+        "last_name": dataUser.lastName,
+        "address_profile": dataUser.addressProfile,
+        "phone_number": dataUser.phoneNumber,
+        "document_profile": dataUser.documentProfile,
+        "super_user": dataUser.superUser,
       }
     };
 
