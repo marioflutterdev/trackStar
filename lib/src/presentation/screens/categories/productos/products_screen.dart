@@ -6,7 +6,7 @@ import 'package:trackstar_web/src/presentation/widgets/widgets.dart';
 
 import '../../../../config/resposive/responsive_funtion.dart';
 import '../../../../data/data.dart';
-import 'widgets/body_form_products.dart';
+import 'widgets/body_form_add_products.dart';
 import 'widgets/info_products.dart';
 
 class ProductsScreen extends StatefulWidget {
@@ -33,13 +33,7 @@ class _UserScreenState extends State<ProductsScreen> {
               mainAxisExtent: 400,
             ),
             itemBuilder: (BuildContext context, int index) {
-              return InfoProducts(
-                id: productData[index].id,
-                name: productData[index].nameProduct,
-                description: productData[index].descriptionProduct,
-                img: productData[index].avatarUrl ??
-                    'https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg',
-              );
+              return InfoProducts(product: productData[index]);
             },
           ),
         ),
@@ -48,7 +42,7 @@ class _UserScreenState extends State<ProductsScreen> {
           right: 30,
           child: BodyUpdateItemCustomWidget(
             title: 'Agregar Producto',
-            child: BodyFormProducts(),
+            child: BodyFormAddProducts(),
           ),
         )
       ],

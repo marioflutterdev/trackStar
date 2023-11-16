@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import 'package:trackstar_web/src/config/routes/app_routes.dart';
 import 'package:trackstar_web/src/data/data.dart';
+import 'package:trackstar_web/src/data/datasource/categorys/products/edit_products.dart';
 
 import 'package:trackstar_web/src/presentation/provider/providers.dart';
 import 'package:url_strategy/url_strategy.dart';
@@ -30,6 +31,7 @@ void main() {
         ChangeNotifierProvider(create: (context) => GetProducts()),
         ChangeNotifierProvider(create: (context) => GetCenterDistribution()),
         ChangeNotifierProvider(create: (context) => NewProduct()),
+        ChangeNotifierProvider(create: (context) => EditProduct()),
       ],
       child: const MainApp(),
     ),

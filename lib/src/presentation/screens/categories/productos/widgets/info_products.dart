@@ -1,21 +1,17 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:trackstar_web/src/data/data.dart';
 
 import '../../../../widgets/widgets.dart';
+import 'body_form_edit_product.dart';
 
 class InfoProducts extends StatelessWidget {
-  final String id;
-  final String name;
-  final String img;
-  final String description;
+  final ProductsModel product;
 
   const InfoProducts({
-    Key? key,
-    required this.img,
-    required this.name,
-    required this.id,
-    required this.description,
-  }) : super(key: key);
+    super.key,
+    required this.product,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -35,22 +31,28 @@ class InfoProducts extends StatelessWidget {
                         Theme.of(context).colorScheme.onPrimaryContainer,
                     child: CircleAvatar(
                       radius: 70,
-                      backgroundImage: NetworkImage(img),
+                      backgroundImage: NetworkImage(product.avatarUrl ?? ''),
                     ),
                   ),
-                  Text(name),
-                  Text('ID: $id'),
+                  Text(
+                    product.nameProduct,
+                    style: const TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text('ID: ${product.id}'),
                   SizedBox(
                     height: 100,
                     width: double.infinity,
-                    child: Text(description),
+                    child: Text(product.descriptionProduct),
                   ),
                 ],
               ),
               Positioned(
                 top: 5,
                 right: 0,
-                child: _MenuButton(id),
+                child: _MenuButton(product: product),
               )
             ],
           ),
@@ -61,8 +63,12 @@ class InfoProducts extends StatelessWidget {
 }
 
 class _MenuButton extends StatefulWidget {
-  final String id;
-  const _MenuButton(this.id);
+  final ProductsModel product;
+
+  const _MenuButton({
+    super.key,
+    required this.product,
+  });
 
   @override
   State<_MenuButton> createState() => _MenuButtonState();
@@ -86,9 +92,12 @@ class _MenuButtonState extends State<_MenuButton> {
           visible: _visible,
           child: FadeInLeft(
             from: 40,
-            child: IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.edit),
+            child: FormFuncion(
+              title: 'Editar Producto \'${widget.product.nameProduct}\' ',
+              icon: Icons.edit,
+              child: BodyFormEditProducts(
+                product: widget.product,
+              ),
             ),
           ),
         ),
