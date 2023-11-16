@@ -4,7 +4,7 @@ import 'package:trackstar_web/src/data/data.dart';
 import '../../../../../widgets/widgets.dart';
 
 class InfoInventy extends StatelessWidget {
-  final Inventory inventory;
+  final InventoryModel inventory;
 
   const InfoInventy({super.key, required this.inventory});
 

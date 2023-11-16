@@ -5,21 +5,21 @@ import '../../../../config/constans/constans.dart';
 import '../../../api/api.dart';
 
 class GetUser extends ChangeNotifier {
-  GetUser() {
-    getUser();
-  }
-
   bool _loading = true;
   final List<UsersGetModel> _users = [];
   //TODO chage apikey for your apikey
   final String accessToken = 'Bearer $apikey';
 
-  bool get loading => _loading;
-
   List<UsersGetModel> get users => _users;
+
+  bool get loading => _loading;
   set loading(bool valor) {
     _loading = valor;
     notifyListeners();
+  }
+
+  GetUser() {
+    getUser();
   }
 
   Future<void> getUser() async {

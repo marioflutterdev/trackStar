@@ -7,8 +7,12 @@ class MenuDrawerProvider extends ChangeNotifier {
 
   set isHover(value) {
     _isHover = value;
-    Future.delayed(Duration.zero, () {
-      notifyListeners();
-    });
+
+    Future.delayed(
+      Duration.zero,
+      () {
+        notifyListeners();
+      },
+    );
   }
 }

@@ -62,7 +62,7 @@ class InfoCenter extends StatelessWidget {
 }
 
 class _MenuButton extends StatefulWidget {
-  final List<Inventory>? inventory;
+  final List<InventoryModel>? inventory;
 
   const _MenuButton({super.key, this.inventory});
 

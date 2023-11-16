@@ -5,6 +5,7 @@ import 'package:trackstar_web/src/data/datasource/auth/login.dart';
 
 import 'package:trackstar_web/src/presentation/screens/screens.dart';
 
+//? Clase para manejar las rutas de la aplicacion
 class AppRoute {
   static const initialRouter = '/';
   static const notFoundRouter = '/nofound';
@@ -44,10 +45,4 @@ class AppRoute {
     errorBuilder: (BuildContext context, GoRouterState state) =>
         const PageNotFoundScreen(),
   );
-
-  static String? _redirect(BuildContext context) {
-    return LoginAuthProvider.authenticated
-        ? null
-        : context.namedLocation("/nofound");
-  }
 }

@@ -25,11 +25,10 @@ void main() {
         ChangeNotifierProvider(
             create: (context) =>
                 ResetPasswordProvider(accessToken: accessToken.toString())),
-        //TODO cambiar de lugar este provider
+        //TODO Change of location the providers
         ChangeNotifierProvider(create: (context) => GetUser()),
         ChangeNotifierProvider(create: (context) => GetProducts()),
         ChangeNotifierProvider(create: (context) => GetCenterDistribution()),
-        ChangeNotifierProvider(create: (context) => GetInventory()),
         ChangeNotifierProvider(create: (context) => NewProduct()),
       ],
       child: const MainApp(),

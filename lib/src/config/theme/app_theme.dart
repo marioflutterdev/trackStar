@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+//! Theme Claro de la aplicacion
 ThemeData lighMode = ThemeData(
   fontFamily: GoogleFonts.tiltNeon().fontFamily,
   useMaterial3: true,
@@ -13,6 +14,7 @@ ThemeData lighMode = ThemeData(
     onSecondaryContainer: Colors.grey.shade300,
   ),
 );
+//! Theme Oscuro de la aplicacion
 ThemeData dartMode = ThemeData(
   fontFamily: GoogleFonts.tiltNeon().fontFamily,
   brightness: Brightness.dark,

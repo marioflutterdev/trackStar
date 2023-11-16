@@ -8,7 +8,7 @@ import '../../../../widgets/widgets.dart';
 import '../../user/widgets/body_form_user.dart';
 
 class InventarioScreen extends StatefulWidget {
-  final List<Inventory>? inventory;
+  final List<InventoryModel>? inventory;
   const InventarioScreen({
     Key? key,
     this.inventory,

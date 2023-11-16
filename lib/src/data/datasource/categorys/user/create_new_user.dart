@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trackstar_web/src/data/models/categorys/user_model/user_model.dart';
+import 'package:trackstar_web/src/data/data.dart';
 
 import '../../../api/api.dart';
 
@@ -36,6 +36,7 @@ class CreatedNewUser extends ChangeNotifier {
 
     if (res.statusCode == 200) {
       loading = false;
+      GetUser().getUser();
       return true;
     } else {
       loading = false;

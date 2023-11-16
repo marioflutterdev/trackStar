@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trackstar_web/src/data/data.dart';
 
 import '../../../../config/constans/constans.dart';
 import '../../../api/api.dart';
@@ -32,11 +33,10 @@ class NewProduct extends ChangeNotifier {
     final res = await dio.post(url, data: data);
 
     if (res.statusCode == 201) {
-      print(res.data);
       loading = false;
+      GetProducts().getProducts();
       return true;
     } else {
-      print(res.data);
       loading = false;
       return false;
     }

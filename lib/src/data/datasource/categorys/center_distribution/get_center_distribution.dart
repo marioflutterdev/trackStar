@@ -5,14 +5,12 @@ import '../../../api/api.dart';
 import '../../../data.dart';
 
 class GetCenterDistribution extends ChangeNotifier {
-  GetCenterDistribution() {
-    getProducts();
-  }
-
   bool _loading = true;
   final List<CenterModel> _centerDistribution = [];
+  final url =
+      '/rest/v1/center?select=*,inventory(id,quantity,price,product:id_product(*))';
 
-  //TODO chage apikey for your apikey
+  //TODO Cambiar el apikey por el de produccion
   final String accessToken = 'Bearer $apikey';
 
   bool get loading => _loading;
@@ -24,24 +22,31 @@ class GetCenterDistribution extends ChangeNotifier {
     notifyListeners();
   }
 
+  GetCenterDistribution() {
+    getProducts();
+  }
   Future<void> getProducts() async {
     loading = true;
+
     _centerDistribution.clear();
 
     dio.options.headers['Authorization'] = ' $accessToken';
 
-    final res = await dio.get(
-        '/rest/v1/center?select=*,inventory(id,quantity,price,product:id_product(*))');
-    print(res.data);
+    final res = await dio.get(url);
+
     if (res.statusCode == 200) {
-      res.data.forEach((element) {
-        _centerDistribution.add(CenterModel.fromJson(element));
-      });
+      res.data.forEach(
+        (element) {
+          _centerDistribution.add(CenterModel.fromJson(element));
+        },
+      );
+
       Future.delayed(
-          const Duration(
-            seconds: 2,
-          ),
-          () => loading = false);
+        const Duration(
+          seconds: 2,
+        ),
+        () => loading = false,
+      );
 
       notifyListeners();
     } else {

@@ -14,7 +14,7 @@ class CenterModel {
   final String addressCenter;
   final String descriptionCenter;
   final String avatarUrl;
-  final List<Inventory>? inventory;
+  final List<InventoryModel>? inventory;
 
   CenterModel({
     required this.id,
@@ -31,8 +31,8 @@ class CenterModel {
         addressCenter: json["address_center"],
         descriptionCenter: json["description_center"],
         avatarUrl: json["avatar_url"],
-        inventory: List<Inventory>.from(
-            json["inventory"].map((x) => Inventory.fromJson(x))),
+        inventory: List<InventoryModel>.from(
+            json["inventory"].map((x) => InventoryModel.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -42,33 +42,5 @@ class CenterModel {
         "description_center": descriptionCenter,
         "avatar_url": avatarUrl,
         "inventory": List<dynamic>.from(inventory!.map((x) => x.toJson())),
-      };
-}
-
-class Inventory {
-  final String id;
-  final int quantity;
-  final int price;
-  final ProductsModel product;
-
-  Inventory({
-    required this.id,
-    required this.quantity,
-    required this.price,
-    required this.product,
-  });
-
-  factory Inventory.fromJson(Map<String, dynamic> json) => Inventory(
-        id: json["id"],
-        quantity: json["quantity"],
-        price: json["price"],
-        product: ProductsModel.fromJson(json["product"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "quantity": quantity,
-        "price": price,
-        "product": product.toJson(),
       };
 }

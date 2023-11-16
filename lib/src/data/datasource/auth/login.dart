@@ -1,9 +1,8 @@
-// ignore_for_file: avoid_print
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:trackstar_web/src/data/api/api.dart';
 
+//? Provider para login de la aplicacion
 class LoginAuthProvider extends ChangeNotifier {
   static bool authenticated = false;
 
@@ -14,6 +13,7 @@ class LoginAuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  //! Funcion para hacer login en la aplicacion
   Future<dynamic> signUp({String email = '', String password = ''}) async {
     loading = true;
 

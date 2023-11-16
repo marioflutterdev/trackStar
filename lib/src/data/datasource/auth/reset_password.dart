@@ -2,9 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:trackstar_web/src/data/api/api.dart';
 
+//? Provider para Resetpassword de la aplicacion
 class ResetPasswordProvider extends ChangeNotifier {
   static bool authenticated = false;
-  // ignore: prefer_typing_uninitialized_variables
   final String? accessToken;
 
   bool _loading = false;
@@ -16,7 +16,11 @@ class ResetPasswordProvider extends ChangeNotifier {
 
   ResetPasswordProvider({this.accessToken});
 
-  Future<dynamic> resetPassword({String email = ''}) async {
+  //! Funcion para hacer resetpassword en la aplicacion
+
+  Future<dynamic> resetPassword({
+    String email = '',
+  }) async {
     loading = true;
     String url = '/auth/v1/recover';
 
@@ -37,8 +41,12 @@ class ResetPasswordProvider extends ChangeNotifier {
     }
   }
 
-  Future<dynamic> updatePassword(
-      {String email = '', String newPassword = ''}) async {
+  //! Funcion para hacer updatepassword en la aplicacion
+
+  Future<dynamic> updatePassword({
+    String email = '',
+    String newPassword = '',
+  }) async {
     loading = true;
     String url = '/auth/v1/user';
 
