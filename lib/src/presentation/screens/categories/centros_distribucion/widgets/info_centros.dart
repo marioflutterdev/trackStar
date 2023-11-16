@@ -1,7 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:trackstar_web/src/presentation/screens/categories/info_centros_distribucion/inventario_centro/inventario_screen.dart';
 
 import '../../../../../data/data.dart';
 import '../../../../provider/providers.dart';
