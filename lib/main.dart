@@ -32,6 +32,7 @@ void main() {
         ChangeNotifierProvider(create: (context) => GetCenterDistribution()),
         ChangeNotifierProvider(create: (context) => NewProduct()),
         ChangeNotifierProvider(create: (context) => EditProduct()),
+        ChangeNotifierProvider(create: (context) => DelateProduct()),
       ],
       child: const MainApp(),
     ),

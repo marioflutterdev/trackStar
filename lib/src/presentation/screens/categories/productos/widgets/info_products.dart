@@ -1,5 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:trackstar_web/src/data/data.dart';
 
 import '../../../../widgets/widgets.dart';
@@ -78,6 +80,8 @@ class _MenuButtonState extends State<_MenuButton> {
   bool _visible = false;
   @override
   Widget build(BuildContext context) {
+    final delateProduct = context.watch<DelateProduct>();
+    final getUser = context.watch<GetProducts>();
     return Column(
       children: [
         IconButton(
@@ -105,9 +109,14 @@ class _MenuButtonState extends State<_MenuButton> {
           visible: _visible,
           child: FadeInLeft(
             from: 50,
-            child: IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.delete),
+            child: DelateItemWidget(
+              onPressed: () {
+                delateProduct.delateProduct(widget.product.id);
+                Future.delayed(const Duration(milliseconds: 300), () {
+                  getUser.getProducts();
+                });
+                context.pop(context);
+              },
             ),
           ),
         ),

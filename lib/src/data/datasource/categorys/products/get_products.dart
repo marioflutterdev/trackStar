@@ -42,7 +42,7 @@ class GetProducts extends ChangeNotifier {
 
       Future.delayed(
         const Duration(
-          seconds: 2,
+          milliseconds: 500,
         ),
         () => loading = false,
       );

@@ -4,7 +4,7 @@ import '../../../../config/constans/constans.dart';
 import '../../../api/api.dart';
 import '../../../data.dart';
 
-class EditProduct extends ChangeNotifier {
+class DelateProduct extends ChangeNotifier {
   bool _loading = false;
   bool get loading => _loading;
 
@@ -15,10 +15,8 @@ class EditProduct extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> editProduct(
+  Future<bool> delateProduct(
     String id,
-    String name,
-    String description,
   ) async {
     loading = true;
 
@@ -26,14 +24,8 @@ class EditProduct extends ChangeNotifier {
         'https://ztqeizrfbddnmuvjznav.supabase.co/rest/v1/products?id=eq.$id';
 
     dio.options.headers['Authorization'] = ' $accessToken';
-    dio.options.headers['Prefer'] = 'return=minimal';
 
-    final data = {
-      "name_product": name,
-      "description_product": description,
-    };
-
-    final res = await dio.patch(url, data: data);
+    final res = await dio.delete(url);
 
     if (res.statusCode == 201) {
       loading = false;
