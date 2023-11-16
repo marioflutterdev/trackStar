@@ -30,7 +30,9 @@ class GetCenterDistribution extends ChangeNotifier {
 
     dio.options.headers['Authorization'] = ' $accessToken';
 
-    final res = await dio.get('/rest/v1/center?select=*');
+    final res = await dio.get(
+        '/rest/v1/center?select=*,inventory(id,quantity,price,product:id_product(*))');
+    print(res.data);
     if (res.statusCode == 200) {
       res.data.forEach((element) {
         _centerDistribution.add(CenterModel.fromJson(element));

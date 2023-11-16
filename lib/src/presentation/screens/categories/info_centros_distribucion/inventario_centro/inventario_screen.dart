@@ -10,7 +10,11 @@ import '../../../../widgets/widgets.dart';
 import '../../user/widgets/body_form_user.dart';
 
 class InventarioScreen extends StatefulWidget {
-  const InventarioScreen({Key? key}) : super(key: key);
+  final List<Inventory>? inventory;
+  const InventarioScreen({
+    Key? key,
+    this.inventory,
+  }) : super(key: key);
 
   @override
   State<InventarioScreen> createState() => _UserScreenState();
@@ -19,28 +23,19 @@ class InventarioScreen extends StatefulWidget {
 class _UserScreenState extends State<InventarioScreen> {
   @override
   Widget build(BuildContext context) {
-    final inventoryProvider = Provider.of<GetInventory>(context);
-    final List<InventoryModel> inventoryData = inventoryProvider.inventory;
     return Stack(
       children: [
-        Skeletonizer(
-          enabled: inventoryProvider.loading,
-          child: GridView.builder(
-            itemCount: inventoryData.length,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: responsiveGrip(context),
-              mainAxisExtent: 400,
-            ),
-            itemBuilder: (BuildContext context, int index) {
-              return InfoInventy(
-                id: inventoryData[index].id,
-                nameProduct: inventoryData[index].nameProduct,
-                img: inventoryData[index].img,
-                quantity: inventoryData[index].quantity,
-                price: inventoryData[index].price,
-              );
-            },
+        GridView.builder(
+          itemCount: widget.inventory!.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: responsiveGrip(context),
+            mainAxisExtent: 400,
           ),
+          itemBuilder: (BuildContext context, int index) {
+            return InfoInventy(
+              inventory: widget.inventory![index],
+            );
+          },
         ),
         const Positioned(
           bottom: 30,

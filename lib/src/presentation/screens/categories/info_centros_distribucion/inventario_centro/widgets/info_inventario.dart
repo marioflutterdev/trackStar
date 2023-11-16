@@ -1,22 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:trackstar_web/src/data/data.dart';
 
 import '../../../../../widgets/widgets.dart';
 
 class InfoInventy extends StatelessWidget {
-  final String id;
-  final String nameProduct;
-  final String img;
-  final int quantity;
-  final int price;
+  final Inventory inventory;
 
-  const InfoInventy({
-    Key? key,
-    required this.id,
-    required this.nameProduct,
-    required this.img,
-    required this.quantity,
-    required this.price,
-  }) : super(key: key);
+  const InfoInventy({super.key, required this.inventory});
 
   @override
   Widget build(BuildContext context) {
@@ -36,20 +26,21 @@ class InfoInventy extends StatelessWidget {
                         Theme.of(context).colorScheme.onPrimaryContainer,
                     child: CircleAvatar(
                       radius: 70,
-                      backgroundImage: NetworkImage(img),
+                      backgroundImage:
+                          NetworkImage(inventory.product.avatarUrl ?? ''),
                     ),
                   ),
                   Text(
-                    nameProduct,
+                    inventory.product.nameProduct,
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text('ID: $id'),
-                  Text('Cantidad: $quantity'),
+                  Text('ID: ${inventory.id}'),
+                  Text('Cantidad: ${inventory.quantity}'),
                   Text(
-                    'Precio: $price',
+                    'Precio: ${inventory.price}',
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,

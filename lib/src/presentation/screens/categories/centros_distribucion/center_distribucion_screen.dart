@@ -33,11 +33,7 @@ class _UserScreenState extends State<CenterDistribucionScreen> {
             ),
             itemBuilder: (BuildContext context, int index) {
               return InfoCenter(
-                id: usersData[index].id,
-                name: usersData[index].nameCenter,
-                img: usersData[index].avatarUrl,
-                description: usersData[index].descriptionCenter,
-                address: usersData[index].addressCenter,
+                center: usersData[index],
               );
             },
           ),

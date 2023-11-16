@@ -1,26 +1,19 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:trackstar_web/src/presentation/screens/categories/info_centros_distribucion/inventario_centro/inventario_screen.dart';
 
 import '../../../../../data/data.dart';
 import '../../../../provider/providers.dart';
 import '../../../../widgets/widgets.dart';
 
 class InfoCenter extends StatelessWidget {
-  final String id;
-  final String name;
-  final String address;
-  final String img;
-  final String description;
+  final CenterModel center;
 
   const InfoCenter({
-    Key? key,
-    required this.img,
-    required this.name,
-    required this.id,
-    required this.description,
-    required this.address,
-  }) : super(key: key);
+    super.key,
+    required this.center,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -40,23 +33,26 @@ class InfoCenter extends StatelessWidget {
                         Theme.of(context).colorScheme.onPrimaryContainer,
                     child: CircleAvatar(
                       radius: 70,
-                      backgroundImage: NetworkImage(img),
+                      backgroundImage: NetworkImage(center.avatarUrl),
                     ),
                   ),
-                  Text(name),
-                  Text(address),
-                  Text('ID: $id'),
+                  Text(center.nameCenter),
+                  Text(center.addressCenter),
                   SizedBox(
                     height: 100,
                     width: double.infinity,
-                    child: Text(description),
+                    child: Text(
+                      center.descriptionCenter,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 4,
+                    ),
                   ),
                 ],
               ),
               Positioned(
                 top: 5,
                 right: 0,
-                child: _MenuButton(id),
+                child: _MenuButton(inventory: center.inventory),
               )
             ],
           ),
@@ -67,8 +63,9 @@ class InfoCenter extends StatelessWidget {
 }
 
 class _MenuButton extends StatefulWidget {
-  final String id;
-  const _MenuButton(this.id);
+  final List<Inventory>? inventory;
+
+  const _MenuButton({super.key, this.inventory});
 
   @override
   State<_MenuButton> createState() => _MenuButtonState();
@@ -79,7 +76,6 @@ class _MenuButtonState extends State<_MenuButton> {
   @override
   Widget build(BuildContext context) {
     final menuController = context.watch<NavegacionDrawerProvider>();
-    final inventory = context.watch<GetInventory>();
     return Column(
       children: [
         IconButton(
@@ -96,8 +92,8 @@ class _MenuButtonState extends State<_MenuButton> {
             from: 40,
             child: IconButton(
               onPressed: () {
+                menuController.inventory = widget.inventory;
                 menuController.paginaActual = 4;
-                inventory.getInventory(widget.id);
               },
               icon: const Icon(Icons.production_quantity_limits),
             ),

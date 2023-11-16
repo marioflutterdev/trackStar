@@ -37,7 +37,6 @@ class InfoUser extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              textCustom(user.id, title: 'ID'),
               textCustom(user.email, title: 'Email'),
               textCustom(user.phoneNumber, title: 'Celular'),
               textCustom(user.addressProfile, title: 'Direccion'),

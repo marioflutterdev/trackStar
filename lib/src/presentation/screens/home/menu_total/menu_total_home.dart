@@ -61,13 +61,13 @@ class _CategoriesView extends StatelessWidget {
         child: PageView(
           controller: menuController.pageController,
           physics: const NeverScrollableScrollPhysics(),
-          children: const [
-            UserScreen(),
-            ProductsScreen(),
-            CenterDistribucionScreen(),
-            SettingsScreen(),
-            InventarioScreen(),
-            EntradasSalidasScreen(),
+          children: [
+            const UserScreen(),
+            const ProductsScreen(),
+            const CenterDistribucionScreen(),
+            const SettingsScreen(),
+            InventarioScreen(inventory: menuController.inventory),
+            const EntradasSalidasScreen(),
           ],
         ),
       ),
