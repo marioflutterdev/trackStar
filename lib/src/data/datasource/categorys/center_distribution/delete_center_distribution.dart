@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import '../../../../config/constans/constans.dart';
 import '../../../api/api.dart';
 
-class DelateProduct extends ChangeNotifier {
+class DeleteCenter extends ChangeNotifier {
   final String accessToken = 'Bearer $apikey';
 
-  Future<bool> delateProduct(
+  Future<bool> delateCenter(
     String id,
   ) async {
     final url =
-        'https://ztqeizrfbddnmuvjznav.supabase.co/rest/v1/products?id=eq.$id';
+        'https://ztqeizrfbddnmuvjznav.supabase.co/rest/v1/center?id=eq.$id';
 
     dio.options.headers['Authorization'] = ' $accessToken';
 

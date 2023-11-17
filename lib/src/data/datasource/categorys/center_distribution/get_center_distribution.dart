@@ -23,9 +23,9 @@ class GetCenterDistribution extends ChangeNotifier {
   }
 
   GetCenterDistribution() {
-    getProducts();
+    getCenter();
   }
-  Future<void> getProducts() async {
+  Future<void> getCenter() async {
     loading = true;
 
     _centerDistribution.clear();

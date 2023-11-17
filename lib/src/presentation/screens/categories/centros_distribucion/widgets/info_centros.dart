@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../data/data.dart';
@@ -51,7 +52,7 @@ class InfoCenter extends StatelessWidget {
               Positioned(
                 top: 5,
                 right: 0,
-                child: _MenuButton(inventory: center.inventory),
+                child: _MenuButton(center: center),
               )
             ],
           ),
@@ -62,9 +63,12 @@ class InfoCenter extends StatelessWidget {
 }
 
 class _MenuButton extends StatefulWidget {
-  final List<InventoryModel>? inventory;
+  final CenterModel center;
 
-  const _MenuButton({super.key, this.inventory});
+  const _MenuButton({
+    super.key,
+    required this.center,
+  });
 
   @override
   State<_MenuButton> createState() => _MenuButtonState();
@@ -75,6 +79,8 @@ class _MenuButtonState extends State<_MenuButton> {
   @override
   Widget build(BuildContext context) {
     final menuController = context.watch<NavegacionDrawerProvider>();
+    final deleteCenter = context.watch<DeleteCenter>();
+    final getCenter = context.watch<GetCenterDistribution>();
     return Column(
       children: [
         IconButton(
@@ -91,10 +97,10 @@ class _MenuButtonState extends State<_MenuButton> {
             from: 40,
             child: IconButton(
               onPressed: () {
-                menuController.inventory = widget.inventory;
+                menuController.inventory = widget.center.inventory;
                 menuController.paginaActual = 4;
               },
-              icon: const Icon(Icons.production_quantity_limits),
+              icon: const Icon(Icons.shopping_basket_outlined),
             ),
           ),
         ),
@@ -106,7 +112,7 @@ class _MenuButtonState extends State<_MenuButton> {
               onPressed: () {
                 menuController.paginaActual = 5;
               },
-              icon: const Icon(Icons.car_rental_outlined),
+              icon: const Icon(Icons.local_shipping),
             ),
           ),
         ),
@@ -118,7 +124,22 @@ class _MenuButtonState extends State<_MenuButton> {
               onPressed: () {
                 //TODO editar centro
               },
-              icon: const Icon(Icons.edit_note_sharp),
+              icon: const Icon(Icons.edit),
+            ),
+          ),
+        ),
+        Visibility(
+          visible: _visible,
+          child: FadeInLeft(
+            from: 70,
+            child: DelateItemWidget(
+              onPressed: () {
+                deleteCenter.delateCenter(widget.center.id);
+                Future.delayed(const Duration(milliseconds: 500), () {
+                  getCenter.getCenter();
+                });
+                context.pop(context);
+              },
             ),
           ),
         ),

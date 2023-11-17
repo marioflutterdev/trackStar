@@ -33,6 +33,7 @@ void main() {
         ChangeNotifierProvider(create: (context) => NewProduct()),
         ChangeNotifierProvider(create: (context) => EditProduct()),
         ChangeNotifierProvider(create: (context) => DelateProduct()),
+        ChangeNotifierProvider(create: (context) => DeleteCenter()),
       ],
       child: const MainApp(),
     ),
