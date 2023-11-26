@@ -8,6 +8,7 @@ import '../../../../config/resposive/responsive_funtion.dart';
 import '../../../../data/data.dart';
 import '../../../widgets/widgets.dart';
 import '../user/widgets/body_form_user.dart';
+import 'widgets/body_form_add_center.dart';
 
 class CenterDistribucionScreen extends StatefulWidget {
   const CenterDistribucionScreen({Key? key}) : super(key: key);
@@ -43,8 +44,7 @@ class _UserScreenState extends State<CenterDistribucionScreen> {
           right: 30,
           child: BodyUpdateItemCustomWidget(
             title: 'Agregar Centro de Distribución',
-            //TODO agregar el formulario de agregar centro de distribución
-            child: BodyFormUser(),
+            child: BodyFormAddCenter(),
           ),
         )
       ],

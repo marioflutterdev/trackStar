@@ -112,7 +112,7 @@ class _MenuButtonState extends State<_MenuButton> {
             child: DelateItemWidget(
               onPressed: () {
                 delateProduct.delateProduct(widget.product.id);
-                Future.delayed(const Duration(milliseconds: 300), () {
+                Future.delayed(const Duration(milliseconds: 500), () {
                   getUser.getProducts();
                 });
                 context.pop(context);

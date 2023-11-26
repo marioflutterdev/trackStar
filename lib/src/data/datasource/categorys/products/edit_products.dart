@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 import '../../../../config/constans/constans.dart';
+
 import '../../../api/api.dart';
-import '../../../data.dart';
 
 class EditProduct extends ChangeNotifier {
   bool _loading = false;
-  bool get loading => _loading;
 
   final String accessToken = 'Bearer $apikey';
 
+  bool get loading => _loading;
   set loading(bool valor) {
     _loading = valor;
     notifyListeners();
@@ -37,7 +37,6 @@ class EditProduct extends ChangeNotifier {
 
     if (res.statusCode == 201) {
       loading = false;
-      GetProducts().getProducts();
       return true;
     } else {
       loading = false;
