@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:trackstar_web/src/data/data.dart';
 
 import '../../../../config/constans/constans.dart';
 import '../../../api/api.dart';
@@ -14,7 +13,11 @@ class NewCenter extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> createNewCenter(CenterModel center) async {
+  Future<bool> createNewCenter({
+    final String? name,
+    final String? address,
+    final String? description,
+  }) async {
     loading = true;
 
     const String url = '/rest/v1/center';
@@ -22,12 +25,10 @@ class NewCenter extends ChangeNotifier {
     dio.options.headers['Authorization'] = ' $accessToken';
     dio.options.headers['Prefer'] = 'return=minimal';
 
-    print(center);
-
     final data = {
-      "name_center": center.nameCenter,
-      "address_center": center.addressCenter,
-      "description_center": center.descriptionCenter,
+      "name_center": name,
+      "address_center": address,
+      "description_center": description,
     };
 
     final res = await dio.post(url, data: data);

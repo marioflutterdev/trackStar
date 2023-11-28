@@ -14,12 +14,12 @@ class EditCenter extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> editProduct(
-    String id,
-    String name,
-    String addressCenter,
-    String description,
-  ) async {
+  Future<bool> editCenter({
+    final String? id,
+    final String? name,
+    final String? addressCenter,
+    final String? description,
+  }) async {
     loading = true;
 
     final url =

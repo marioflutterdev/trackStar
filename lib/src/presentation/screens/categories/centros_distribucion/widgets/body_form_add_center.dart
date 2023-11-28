@@ -4,8 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:trackstar_web/src/config/helpers/alert_auth.dart';
 
-import '../../../../../config/helpers/alert_auth.dart';
 import '../../../../../data/data.dart';
 import '../../../../widgets/widgets.dart';
 
@@ -20,6 +20,7 @@ class _BodyFormAddCenterState extends State<BodyFormAddCenter> {
   final _formKey = GlobalKey<FormState>();
 
   final nameController = TextEditingController(),
+      addressController = TextEditingController(),
       descriptionController = TextEditingController();
 
   bool superUser = false;
@@ -77,7 +78,13 @@ class _BodyFormAddCenterState extends State<BodyFormAddCenter> {
                       border: 15,
                       hintText: "Nombre",
                     ),
-                    textTitle("Descripción"),
+                    textTitle("Direccion"),
+                    FormCustomWidget(
+                      controller: addressController,
+                      border: 15,
+                      hintText: "Description",
+                    ),
+                    textTitle("Direccion"),
                     FormCustomWidget(
                       controller: descriptionController,
                       hintText: "Descripción",
@@ -92,8 +99,9 @@ class _BodyFormAddCenterState extends State<BodyFormAddCenter> {
           const SizedBox(height: 15),
           _ButtonSentNewProduct(
             formKey: _formKey,
-            nameController: nameController,
-            descriptionController: descriptionController,
+            name: nameController,
+            address: addressController,
+            description: descriptionController,
           )
           // const SizedBox(height: 15,
         ],
@@ -111,13 +119,15 @@ class _BodyFormAddCenterState extends State<BodyFormAddCenter> {
 
 class _ButtonSentNewProduct extends StatelessWidget {
   final GlobalKey<FormState> _formKey;
-  final TextEditingController nameController;
-  final TextEditingController descriptionController;
+  final TextEditingController name;
+  final TextEditingController description;
+  final TextEditingController address;
 
   const _ButtonSentNewProduct({
     required GlobalKey<FormState> formKey,
-    required this.nameController,
-    required this.descriptionController,
+    required this.name,
+    required this.description,
+    required this.address,
   }) : _formKey = formKey;
 
   @override
@@ -135,16 +145,12 @@ class _ButtonSentNewProduct extends StatelessWidget {
           ),
         ),
         onPressed: () async {
-          print(nameController.text);
-          print(descriptionController.text);
-          /* if (_formKey.currentState!.validate()) {
-            final createOk = await newCenter.createNewCenter(CenterModel(
-              id: '',
-              nameCenter: nameController.text,
-              addressCenter: nameController.text,
-              descriptionCenter: '',
-              avatarUrl: '',
-            ));
+          if (_formKey.currentState!.validate()) {
+            final createOk = await newCenter.createNewCenter(
+              name: name.text,
+              address: address.text,
+              description: description.text,
+            );
             if (context.mounted) {
               resetPassaword(context, 'Producto creado correctamente');
               getCenters.getCenter();
@@ -157,7 +163,7 @@ class _ButtonSentNewProduct extends StatelessWidget {
                 errorAlert(context);
               }
             }
-          } */
+          }
         },
         child: newCenter.loading
             ? const SizedBox(

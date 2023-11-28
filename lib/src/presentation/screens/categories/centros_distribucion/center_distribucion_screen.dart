@@ -7,7 +7,6 @@ import 'package:trackstar_web/src/presentation/screens/categories/centros_distri
 import '../../../../config/resposive/responsive_funtion.dart';
 import '../../../../data/data.dart';
 import '../../../widgets/widgets.dart';
-import '../user/widgets/body_form_user.dart';
 import 'widgets/body_form_add_center.dart';
 
 class CenterDistribucionScreen extends StatefulWidget {

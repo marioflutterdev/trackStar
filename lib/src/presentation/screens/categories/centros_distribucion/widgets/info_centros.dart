@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../../../../../data/data.dart';
 import '../../../../provider/providers.dart';
 import '../../../../widgets/widgets.dart';
+import 'body_form_edit_center.dart';
 
 class InfoCenter extends StatelessWidget {
   final CenterModel center;
@@ -32,9 +33,11 @@ class InfoCenter extends StatelessWidget {
                     backgroundColor:
                         Theme.of(context).colorScheme.onPrimaryContainer,
                     child: CircleAvatar(
-                      radius: 70,
-                      backgroundImage: NetworkImage(center.avatarUrl),
-                    ),
+                        radius: 70,
+                        backgroundImage: center.avatarUrl != null
+                            ? NetworkImage(center.avatarUrl!)
+                            : const AssetImage('assets/img/no-image.jpg')
+                                as ImageProvider),
                   ),
                   Text(center.nameCenter),
                   Text(center.addressCenter),
@@ -120,11 +123,10 @@ class _MenuButtonState extends State<_MenuButton> {
           visible: _visible,
           child: FadeInLeft(
             from: 60,
-            child: IconButton(
-              onPressed: () {
-                //TODO editar centro
-              },
-              icon: const Icon(Icons.edit),
+            child: FormFuncion(
+              title: 'Editar Producto \'${widget.center.nameCenter}\' ',
+              icon: Icons.edit,
+              child: const BodyFormEditCenter(),
             ),
           ),
         ),

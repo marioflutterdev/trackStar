@@ -13,7 +13,7 @@ class CenterModel {
   final String nameCenter;
   final String addressCenter;
   final String descriptionCenter;
-  final String avatarUrl;
+  final String? avatarUrl;
   final List<InventoryModel>? inventory;
 
   CenterModel({
