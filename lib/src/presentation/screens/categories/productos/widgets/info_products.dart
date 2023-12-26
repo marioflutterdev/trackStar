@@ -43,7 +43,6 @@ class InfoProducts extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text('ID: ${product.id}'),
                   SizedBox(
                     height: 100,
                     width: double.infinity,

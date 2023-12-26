@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trackstar_web/src/data/data.dart';
 
 import '../../../../config/constans/constans.dart';
 import '../../../api/api.dart';
@@ -14,29 +15,24 @@ class EditCenter extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> editCenter({
-    final String? id,
-    final String? name,
-    final String? addressCenter,
-    final String? description,
-  }) async {
+  Future<bool> editCenter({required final CenterModel center}) async {
     loading = true;
-
     final url =
-        'https://ztqeizrfbddnmuvjznav.supabase.co/rest/v1/center?id=eq.$id';
+        'https://ztqeizrfbddnmuvjznav.supabase.co/rest/v1/center?id=eq.${center.id}';
 
     dio.options.headers['Authorization'] = ' $accessToken';
     dio.options.headers['Prefer'] = 'return=minimal';
 
     final data = {
-      "name_product": name,
-      "address_product": addressCenter,
-      "description_product": description,
+      "name_center": center.nameCenter,
+      "address_center": center.addressCenter,
+      "description_center": center.descriptionCenter,
     };
 
     final res = await dio.patch(url, data: data);
 
-    if (res.statusCode == 201) {
+    print(res.statusCode);
+    if (res.statusCode == 204) {
       loading = false;
       return true;
     } else {

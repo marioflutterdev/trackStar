@@ -82,9 +82,9 @@ class _BodyFormAddCenterState extends State<BodyFormAddCenter> {
                     FormCustomWidget(
                       controller: addressController,
                       border: 15,
-                      hintText: "Description",
+                      hintText: "Direccion",
                     ),
-                    textTitle("Direccion"),
+                    textTitle("Descripción"),
                     FormCustomWidget(
                       controller: descriptionController,
                       hintText: "Descripción",

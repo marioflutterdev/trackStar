@@ -39,8 +39,14 @@ class InfoCenter extends StatelessWidget {
                             : const AssetImage('assets/img/no-image.jpg')
                                 as ImageProvider),
                   ),
-                  Text(center.nameCenter),
-                  Text(center.addressCenter),
+                  Text(
+                    ' ${center.nameCenter}',
+                    style: const TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  textCustom(center.addressCenter, title: 'Dirección'),
                   SizedBox(
                     height: 100,
                     width: double.infinity,
@@ -61,6 +67,19 @@ class InfoCenter extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Row textCustom(String? value, {String? title}) {
+    const TextStyle textStyles = TextStyle(
+      fontSize: 15,
+      fontWeight: FontWeight.bold,
+    );
+    return Row(
+      children: [
+        Text('$title: ', style: textStyles),
+        Text(value ?? 'no data'),
+      ],
     );
   }
 }
@@ -124,9 +143,11 @@ class _MenuButtonState extends State<_MenuButton> {
           child: FadeInLeft(
             from: 60,
             child: FormFuncion(
-              title: 'Editar Producto \'${widget.center.nameCenter}\' ',
+              title: 'Editar Centro \'${widget.center.nameCenter}\' ',
               icon: Icons.edit,
-              child: const BodyFormEditCenter(),
+              child: BodyFormEditCenter(
+                center: widget.center,
+              ),
             ),
           ),
         ),

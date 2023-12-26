@@ -1,16 +1,20 @@
 import 'dart:io';
+import 'dart:typed_data';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:trackstar_web/src/config/helpers/alert_auth.dart';
+import 'package:trackstar_web/src/data/data.dart';
 
-import '../../../../../data/data.dart';
+import '../../../../../config/helpers/alert_auth.dart';
 import '../../../../widgets/widgets.dart';
 
 class BodyFormEditCenter extends StatefulWidget {
-  const BodyFormEditCenter({super.key});
+  final CenterModel center;
+  const BodyFormEditCenter({
+    super.key,
+    required this.center,
+  });
 
   @override
   State<BodyFormEditCenter> createState() => _BodyFormEditCenterState();
@@ -78,18 +82,17 @@ class _BodyFormEditCenterState extends State<BodyFormEditCenter> {
                       border: 15,
                       hintText: "Nombre",
                     ),
-                    textTitle("Direccion"),
+                    textTitle("Dirección"),
                     FormCustomWidget(
                       controller: addressController,
                       border: 15,
-                      hintText: "Description",
+                      hintText: "Dirección",
                     ),
-                    textTitle("Direccion"),
+                    textTitle("Descripción"),
                     FormCustomWidget(
                       controller: descriptionController,
-                      hintText: "Descripción",
-                      textExtraLarge: true,
                       border: 15,
+                      hintText: "Direccion",
                     ),
                   ],
                 ),
@@ -97,11 +100,12 @@ class _BodyFormEditCenterState extends State<BodyFormEditCenter> {
             ),
           ),
           const SizedBox(height: 15),
-          _ButtonSentEditProduct(
+          _ButtonSentEditCenter(
+            id: widget.center.id,
             formKey: _formKey,
-            name: nameController,
+            centerName: nameController,
             address: addressController,
-            description: descriptionController,
+            drescription: descriptionController,
           )
           // const SizedBox(height: 15,
         ],
@@ -117,66 +121,80 @@ class _BodyFormEditCenterState extends State<BodyFormEditCenter> {
   }
 }
 
-class _ButtonSentEditProduct extends StatelessWidget {
-  final GlobalKey<FormState> _formKey;
-  final TextEditingController name;
-  final TextEditingController description;
+class _ButtonSentEditCenter extends StatelessWidget {
+  final GlobalKey<FormState> formKey;
+  final String id;
+  final TextEditingController centerName;
   final TextEditingController address;
+  final TextEditingController drescription;
 
-  const _ButtonSentEditProduct({
-    required GlobalKey<FormState> formKey,
-    required this.name,
-    required this.description,
+  const _ButtonSentEditCenter({
+    super.key,
+    required this.formKey,
+    required this.centerName,
     required this.address,
-  }) : _formKey = formKey;
+    required this.drescription,
+    required this.id,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final editCenter = context.watch<EditCenter>();
-    final getCenters = context.watch<GetCenterDistribution>();
-    return SizedBox(
-      height: 40,
-      width: double.infinity,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5),
-          ),
-        ),
-        onPressed: () async {
-          if (_formKey.currentState!.validate()) {
-            final createOk = await editCenter.editCenter();
-            if (context.mounted) {
-              resetPassaword(context, 'Producto creado correctamente');
-              getCenters.getCenter();
-              Future.delayed(
-                const Duration(milliseconds: 500),
-                () => Navigator.pop(context),
-              );
-              if (createOk) {
-              } else {
-                errorAlert(context);
-              }
-            }
-          }
-        },
-        child: editCenter.loading
-            ? const SizedBox(
-                height: 20,
-                width: 20,
-                child: CircularProgressIndicator(
-                  color: Colors.white,
-                ),
-              )
-            : const Text(
-                "Añadir Centro",
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                ),
+    return ChangeNotifierProvider(
+      create: (context) => CreatedNewUser(),
+      child: Builder(builder: (context) {
+        final editCenter = context.watch<EditCenter>();
+        final getCenter = context.watch<GetCenterDistribution>();
+        return SizedBox(
+          height: 40,
+          width: double.infinity,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5),
               ),
-      ),
+            ),
+            onPressed: () async {
+              if (formKey.currentState!.validate()) {
+                final userOk = await editCenter.editCenter(
+                  center: CenterModel(
+                    id: id,
+                    nameCenter: centerName.text,
+                    addressCenter: address.text,
+                    descriptionCenter: drescription.text,
+                    avatarUrl: '',
+                  ),
+                );
+                if (context.mounted) {
+                  if (userOk) {
+                    getCenter.getCenter();
+                    Navigator.pop(context);
+                  } else {
+                    errorAlert(
+                      context,
+                    );
+                  }
+                }
+              }
+            },
+            child: editCenter.loading
+                ? const SizedBox(
+                    height: 20,
+                    width: 20,
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
+                    ),
+                  )
+                : const Text(
+                    "Añadir Usuario",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                    ),
+                  ),
+          ),
+        );
+      }),
     );
   }
 }

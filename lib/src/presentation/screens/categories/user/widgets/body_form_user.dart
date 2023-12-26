@@ -199,6 +199,7 @@ class _ButtonSentNewUser extends StatelessWidget {
               ),
             ),
             onPressed: () async {
+              print(dataUser.lastName);
               if (formKey.currentState!.validate()) {
                 final userOk = await createUser.createNewUser(
                   dataUser: dataUser,

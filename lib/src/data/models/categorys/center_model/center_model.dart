@@ -11,7 +11,7 @@ String centerModelToJson(List<CenterModel> data) =>
 class CenterModel {
   final String id;
   final String nameCenter;
-  final String addressCenter;
+  late final String addressCenter;
   final String descriptionCenter;
   final String? avatarUrl;
   final List<InventoryModel>? inventory;
