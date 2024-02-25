@@ -12,6 +12,7 @@ import '../widgets/widgets.dart';
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
+  /// Builds the login screen UI
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -32,6 +33,7 @@ class LoginScreen extends StatelessWidget {
 class _Elements extends StatelessWidget {
   const _Elements();
 
+  /// Builds the elements for the login screen
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -96,6 +98,8 @@ class _FormState extends State<_Form> {
   final controllerEmail = TextEditingController();
   final controllerPassword = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  /// Builds the form for the login screen
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
