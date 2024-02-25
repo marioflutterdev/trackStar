@@ -17,8 +17,10 @@ class DelateProduct extends ChangeNotifier {
     final res = await dio.delete(url);
 
     if (res.statusCode == 201) {
+      print(res.data);
       return true;
     } else {
+      print(res.data);
       return false;
     }
   }

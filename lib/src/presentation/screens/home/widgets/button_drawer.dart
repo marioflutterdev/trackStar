@@ -44,6 +44,33 @@ class ButtonHome extends StatelessWidget {
         FadeInLeft(
           from: 250,
           child: ButtomCustom(
+            icon: Icons.shopping_cart,
+            title: 'Carrito',
+            opTap: () => menuController.paginaActual = 3,
+            colors: selectColor(menuController, 3),
+          ),
+        ),
+        FadeInLeft(
+          from: 250,
+          child: ButtomCustom(
+            icon: Icons.list_alt,
+            title: 'Solicitudes',
+            opTap: () => menuController.paginaActual = 3,
+            colors: selectColor(menuController, 3),
+          ),
+        ),
+        FadeInLeft(
+          from: 250,
+          child: ButtomCustom(
+            icon: Icons.notifications,
+            title: 'Notificaciones',
+            opTap: () => menuController.paginaActual = 3,
+            colors: selectColor(menuController, 3),
+          ),
+        ),
+        FadeInLeft(
+          from: 250,
+          child: ButtomCustom(
             icon: Icons.settings,
             title: 'Configuraciónes',
             opTap: () => menuController.paginaActual = 3,
