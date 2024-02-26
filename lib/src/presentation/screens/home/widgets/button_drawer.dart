@@ -55,8 +55,8 @@ class ButtonHome extends StatelessWidget {
           child: ButtomCustom(
             icon: Icons.list_alt,
             title: 'Solicitudes',
-            opTap: () => menuController.paginaActual = 3,
-            colors: selectColor(menuController, 3),
+            opTap: () => menuController.paginaActual = 4,
+            colors: selectColor(menuController, 4),
           ),
         ),
         FadeInLeft(
@@ -64,8 +64,8 @@ class ButtonHome extends StatelessWidget {
           child: ButtomCustom(
             icon: Icons.notifications,
             title: 'Notificaciones',
-            opTap: () => menuController.paginaActual = 3,
-            colors: selectColor(menuController, 3),
+            opTap: () => menuController.paginaActual = 5,
+            colors: selectColor(menuController, 5),
           ),
         ),
         FadeInLeft(
@@ -73,8 +73,8 @@ class ButtonHome extends StatelessWidget {
           child: ButtomCustom(
             icon: Icons.settings,
             title: 'Configuraciónes',
-            opTap: () => menuController.paginaActual = 3,
-            colors: selectColor(menuController, 3),
+            opTap: () => menuController.paginaActual = 6,
+            colors: selectColor(menuController, 6),
           ),
         )
       ],

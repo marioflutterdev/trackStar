@@ -5,6 +5,13 @@ class SolicitudesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Center(
+      child: Text(
+        'SolicitudesScreen',
+        style: TextStyle(
+          fontSize: 70,
+        ),
+      ),
+    );
   }
 }

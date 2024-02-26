@@ -1,3 +1,6 @@
+export 'package:trackstar_web/src/presentation/screens/categories/cart/cart_screen.dart';
+export 'package:trackstar_web/src/presentation/screens/categories/notificaciones/notificaciones_screen.dart';
+export 'package:trackstar_web/src/presentation/screens/categories/solicitudes/solicitudes_screen.dart';
 export 'package:trackstar_web/src/presentation/screens/categories/info_centros_distribucion/inventario_centro/inventario_screen.dart';
 export 'package:trackstar_web/src/presentation/screens/categories/settings/settings_screen.dart';
 export 'package:trackstar_web/src/presentation/screens/auth/forgot_password/update_password_screen.dart';

@@ -66,6 +66,9 @@ class _CategoriesView extends StatelessWidget {
             const UserScreen(),
             const ProductsScreen(),
             const CenterDistribucionScreen(),
+            const CartScreen(),
+            const SolicitudesScreen(),
+            const NotificacionesScreen(),
             const SettingsScreen(),
             InventarioScreen(inventory: menuController.inventory),
             const EntradasSalidasScreen(),
@@ -93,8 +96,8 @@ class _ButtonMenu extends StatelessWidget {
     return Row(
       children: [
         Visibility(
-          visible: menuController.paginaActual == 4 ||
-                  menuController.paginaActual == 5
+          visible: menuController.paginaActual == 7 ||
+                  menuController.paginaActual == 8
               ? true
               : false,
           child: ButtonCustomHome(

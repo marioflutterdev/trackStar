@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'package:trackstar_web/src/data/data.dart';
 import 'package:trackstar_web/src/presentation/screens/categories/info_centros_distribucion/inventario_centro/widgets/info_inventario.dart';
 
 import '../../../../../config/resposive/responsive_funtion.dart';
-import '../../../../provider/providers.dart';
 import '../../../../widgets/widgets.dart';
 import '../../user/widgets/body_form_user.dart';
 
