@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:provider/provider.dart';
 
@@ -87,9 +88,22 @@ class _ButtonMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final menuController = context.watch<NavegacionDrawerProvider>();
     final nameCategoria = context.watch<NavegacionDrawerProvider>();
     return Row(
       children: [
+        Visibility(
+          visible: menuController.paginaActual == 4 ||
+                  menuController.paginaActual == 5
+              ? true
+              : false,
+          child: ButtonCustomHome(
+            icon: Icons.arrow_back_ios_new_outlined,
+            onTap: () {
+              menuController.paginaActual = 2;
+            },
+          ),
+        ),
         if (movile) const OpenDrawer(),
         if (!movile)
           const SizedBox(

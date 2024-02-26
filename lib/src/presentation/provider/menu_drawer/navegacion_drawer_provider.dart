@@ -12,7 +12,9 @@ List<String> categorias = [
 
 class NavegacionDrawerProvider extends ChangeNotifier {
   late int _paginaActual = 0;
+
   List<InventoryModel>? _inventory;
+
   final PageController _pageController = PageController();
 
   int get paginaActual => _paginaActual;

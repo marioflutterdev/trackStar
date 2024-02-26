@@ -23,7 +23,6 @@ class InventarioScreen extends StatefulWidget {
 class _UserScreenState extends State<InventarioScreen> {
   @override
   Widget build(BuildContext context) {
-    final menuController = context.watch<NavegacionDrawerProvider>();
     return Stack(
       children: [
         GridView.builder(
@@ -37,16 +36,6 @@ class _UserScreenState extends State<InventarioScreen> {
               inventory: widget.inventory![index],
             );
           },
-        ),
-        Positioned(
-          top: 30,
-          left: 30,
-          child: IconButton(
-            onPressed: () {
-              menuController.paginaActual = 2;
-            },
-            icon: const Icon(Icons.arrow_back),
-          ),
         ),
         const Positioned(
           bottom: 30,
