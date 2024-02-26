@@ -52,4 +52,32 @@ class GetProducts extends ChangeNotifier {
       loading = false;
     }
   }
+
+  Future<void> searchProducts(String text) async {
+    loading = true;
+    _products.clear();
+
+    dio.options.headers['Authorization'] = ' $accessToken';
+
+    final res = await dio.get('/rest/v1/products?name_product=ilike.%$text%');
+
+    if (res.statusCode == 200) {
+      res.data.forEach(
+        (element) {
+          _products.add(ProductsModel.fromJson(element));
+        },
+      );
+
+      Future.delayed(
+        const Duration(
+          milliseconds: 500,
+        ),
+        () => loading = false,
+      );
+
+      notifyListeners();
+    } else {
+      loading = false;
+    }
+  }
 }

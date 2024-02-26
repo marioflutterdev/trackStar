@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'package:provider/provider.dart';
+import 'package:trackstar_web/src/data/data.dart';
+import 'package:trackstar_web/src/presentation/widgets/form_custom.dart';
 
 import '../../../../config/config.dart';
 import '../../../../config/theme/app_theme.dart';
@@ -121,6 +122,10 @@ class _ButtonMenu extends StatelessWidget {
                     ),
                   )
                 : const SizedBox()),
+        Visibility(
+          visible: menuController.paginaActual == 1 ? true : false,
+          child: _SearchProduct(),
+        ),
         ButtonCustomHome(
           icon: providerTheme.themeData == dartMode
               ? Icons.light_mode
@@ -130,6 +135,41 @@ class _ButtonMenu extends StatelessWidget {
           },
         ),
         const LeaveLogin(),
+      ],
+    );
+  }
+}
+
+class _SearchProduct extends StatefulWidget {
+  @override
+  State<_SearchProduct> createState() => _SearchProductState();
+}
+
+class _SearchProductState extends State<_SearchProduct> {
+  final textController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    final nameProduct = context.watch<GetProducts>();
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(
+          margin: const EdgeInsets.only(top: 20),
+          width: 300,
+          height: 60,
+          child: FormCustomWidget(
+            controller: textController,
+            hintText: 'Buscar',
+            onChanged: (value) {},
+          ),
+        ),
+        ButtonCustomHome(
+          icon: Icons.search,
+          onTap: () {
+            nameProduct.searchProducts(textController.text);
+          },
+        ),
       ],
     );
   }
