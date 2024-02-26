@@ -33,11 +33,12 @@ class InfoCenter extends StatelessWidget {
                     backgroundColor:
                         Theme.of(context).colorScheme.onPrimaryContainer,
                     child: CircleAvatar(
-                        radius: 70,
-                        backgroundImage: center.avatarUrl != null
-                            ? NetworkImage(center.avatarUrl!)
-                            : const AssetImage('assets/img/no-image.jpg')
-                                as ImageProvider),
+                      radius: 70,
+                      backgroundImage: NetworkImage(center.avatarUrl!),
+                      onBackgroundImageError: (exception, stackTrace) =>
+                          const AssetImage('assets/img/no-image.jpg')
+                              as ImageProvider,
+                    ),
                   ),
                   Text(
                     ' ${center.nameCenter}',
@@ -158,6 +159,7 @@ class _MenuButtonState extends State<_MenuButton> {
             child: DelateItemWidget(
               onPressed: () {
                 deleteCenter.delateCenter(widget.center.id);
+
                 Future.delayed(const Duration(milliseconds: 500), () {
                   getCenter.getCenter();
                 });

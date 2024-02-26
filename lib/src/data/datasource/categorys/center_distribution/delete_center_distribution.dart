@@ -9,8 +9,7 @@ class DeleteCenter extends ChangeNotifier {
   Future<bool> delateCenter(
     String id,
   ) async {
-    final url =
-        'https://ztqeizrfbddnmuvjznav.supabase.co/rest/v1/center?id=eq.$id';
+    final url = '/rest/v1/center?id=eq.$id';
 
     dio.options.headers['Authorization'] = ' $accessToken';
 

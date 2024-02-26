@@ -9,8 +9,7 @@ class DelateProduct extends ChangeNotifier {
   Future<bool> delateProduct(
     String id,
   ) async {
-    final url =
-        'https://ztqeizrfbddnmuvjznav.supabase.co/rest/v1/products?id=eq.$id';
+    final url = '/rest/v1/products?id=eq.$id';
 
     dio.options.headers['Authorization'] = ' $accessToken';
 
