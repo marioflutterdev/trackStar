@@ -124,7 +124,7 @@ class _ButtonMenu extends StatelessWidget {
                 : const SizedBox()),
         Visibility(
           visible: menuController.paginaActual == 1 ? true : false,
-          child: _SearchProduct(),
+          child: SearchProduct(),
         ),
         ButtonCustomHome(
           icon: providerTheme.themeData == dartMode
@@ -140,19 +140,19 @@ class _ButtonMenu extends StatelessWidget {
   }
 }
 
-class _SearchProduct extends StatefulWidget {
+class SearchProduct extends StatefulWidget {
+  const SearchProduct({super.key});
+
   @override
-  State<_SearchProduct> createState() => _SearchProductState();
+  State<SearchProduct> createState() => _SearchProductState();
 }
 
-class _SearchProductState extends State<_SearchProduct> {
+class _SearchProductState extends State<SearchProduct> {
   final textController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final nameProduct = context.watch<GetProducts>();
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
           margin: const EdgeInsets.only(top: 20),

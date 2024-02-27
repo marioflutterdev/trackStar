@@ -6,6 +6,7 @@ import 'package:trackstar_web/src/presentation/screens/categories/info_centros_d
 import '../../../../../config/resposive/responsive_funtion.dart';
 import '../../../../widgets/widgets.dart';
 import '../../user/widgets/body_form_user.dart';
+import 'widgets/body_form_add_inventory.dart';
 
 class InventarioScreen extends StatefulWidget {
   final List<InventoryModel>? inventory;
@@ -39,9 +40,8 @@ class _UserScreenState extends State<InventarioScreen> {
           bottom: 30,
           right: 30,
           child: BodyUpdateItemCustomWidget(
-            title: 'Agregar Centro de Distribución',
-            //TODO agregar el formulario de Inventarios
-            child: BodyFormUser(),
+            title: 'Agregar Producto al Inventario',
+            child: BodyFormAddInventory(),
           ),
         )
       ],
