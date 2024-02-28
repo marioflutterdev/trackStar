@@ -10,7 +10,6 @@ class GetCenterDistribution extends ChangeNotifier {
   final url =
       '/rest/v1/center?select=*,inventory(id,quantity,price,product:id_product(*))';
 
-  //TODO Cambiar el apikey por el de produccion
   final String accessToken = 'Bearer $apikey';
 
   bool get loading => _loading;
