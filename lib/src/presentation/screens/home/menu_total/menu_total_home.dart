@@ -161,7 +161,11 @@ class _SearchProductState extends State<_SearchProduct> {
           child: FormCustomWidget(
             controller: textController,
             hintText: 'Buscar',
-            onChanged: (value) {},
+            onChanged: (value) {
+              if (value.isEmpty) {
+                nameProduct.getProducts();
+              }
+            },
           ),
         ),
         ButtonCustomHome(

@@ -7,7 +7,13 @@ import '../../data.dart';
 class LoginAuthProvider extends ChangeNotifier {
   static bool authenticated = false;
 
-  User? user; //? usuario que se autenticado
+  User? _user;
+
+  User? get user => _user;
+  set user(User? valor) {
+    _user = valor;
+    notifyListeners();
+  }
 
   bool _loading = false;
   bool get loading => _loading;
@@ -27,7 +33,7 @@ class LoginAuthProvider extends ChangeNotifier {
     Response response = await dio.post(url, data: data);
 
     if (response.statusCode == 200) {
-      user = User.fromJson(response.data);
+      _user = User.fromJson(response.data);
       authenticated = true;
       loading = false;
       notifyListeners();

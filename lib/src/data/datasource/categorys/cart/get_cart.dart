@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../config/constans/constans.dart';
 import '../../../api/api.dart';
 import '../../../data.dart';
@@ -6,8 +7,6 @@ import '../../../data.dart';
 class GetCartProducts extends ChangeNotifier {
   bool _loading = true;
   final List<CartModel> _cartProducts = [];
-  // Todo solo trer los datos del carrito de el centro en le que estoy
-  final url = '/rest/v1/cart?select=*,product:product(*)';
 
   final String accessToken = 'Bearer $apikey';
   bool get loading => _loading;
@@ -19,11 +18,12 @@ class GetCartProducts extends ChangeNotifier {
     notifyListeners();
   }
 
-  GetCartProducts() {
-    getCart();
-  }
-  Future<void> getCart() async {
+  Future<void> getCart(User user) async {
+    final url =
+        '/rest/v1/cart?center=eq.${user.user.userMetadata.center}&select=*,product:product(*)';
     loading = true;
+
+    print('url $url');
 
     _cartProducts.clear();
 

@@ -28,7 +28,7 @@ void main() {
                 ResetPasswordProvider(accessToken: accessToken.toString())),
         //TODO Change of location the providers
         ChangeNotifierProvider(create: (context) => GetUser()),
-        ChangeNotifierProvider(create: (context) => GetCartProducts()),
+        ChangeNotifierProvider(create: (context) => LoginAuthProvider()),
         ChangeNotifierProvider(create: (context) => GetProducts()),
         ChangeNotifierProvider(create: (context) => GetCenterDistribution()),
         ChangeNotifierProvider(create: (context) => NewProduct()),
@@ -37,6 +37,7 @@ void main() {
         ChangeNotifierProvider(create: (context) => NewCenter()),
         ChangeNotifierProvider(create: (context) => DeleteCenter()),
         ChangeNotifierProvider(create: (context) => EditCenter()),
+        ChangeNotifierProvider(create: (context) => GetCartProducts()),
       ],
       child: const MainApp(),
     ),

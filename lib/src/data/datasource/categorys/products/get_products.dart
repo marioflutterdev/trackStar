@@ -8,7 +8,6 @@ class GetProducts extends ChangeNotifier {
   bool _loading = true;
   final List<ProductsModel> _products = [];
 
-  //TODO chage apikey for your apikey
   final String accessToken = 'Bearer $apikey';
 
   List<ProductsModel> get products => _products;
@@ -70,7 +69,7 @@ class GetProducts extends ChangeNotifier {
 
       Future.delayed(
         const Duration(
-          milliseconds: 500,
+          milliseconds: 1000,
         ),
         () => loading = false,
       );

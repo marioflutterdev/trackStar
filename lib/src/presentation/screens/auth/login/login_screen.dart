@@ -102,83 +102,76 @@ class _FormState extends State<_Form> {
   /// Builds the form for the login screen
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => LoginAuthProvider(),
-      child: Builder(builder: (context) {
-        final auth = context.watch<LoginAuthProvider>();
-        return Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const SizedBox(height: 15),
-              const Text(
-                'Iniciar sesión',
-                style: TextStyle(
-                    fontSize: 40,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 30),
-              FormCustomWidget(
-                prefixIcon: const Icon(Icons.person_4_rounded,
-                    color: Color(0xff01091D)),
-                hintText: 'Email',
-                controller: controllerEmail,
-                validator: (value) => alertEmail(value, context),
-                onChanged: (value) => setState(() {}),
-              ),
-              FormCustomWidget(
-                prefixIcon: const Icon(Icons.lock, color: Color(0xff01091D)),
-                hintText: 'Password',
-                obscureText: true,
-                controller: controllerPassword,
-                validator: (value) => passwordAlert(value, context),
-                onChanged: (value) => setState(() {}),
-              ),
-              const SizedBox(height: 20),
-              CustomButtonWidget(
-                onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
-                    final loginOk = await auth.signUp(
-                      email: controllerEmail.text,
-                      password: controllerPassword.text,
-                    );
-                    if (context.mounted) {
-                      if (loginOk) {
-                        context.go('/home');
-                      } else {
-                        errorAlert(context);
-                      }
-                    }
-                  }
-                },
-                child: auth.loading
-                    ? const Center(
-                        child: SizedBox(
-                        height: 20,
-                        width: 20,
-                        child: CircularProgressIndicator(
-                          color: Colors.black,
-                          strokeWidth: 2,
-                        ),
-                      ))
-                    : const Center(
-                        child: Text(
-                          'Iniciar sesión',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-              ),
-              const SizedBox(height: 15),
-            ],
+    final auth = context.watch<LoginAuthProvider>();
+    return Form(
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const SizedBox(height: 15),
+          const Text(
+            'Iniciar sesión',
+            style: TextStyle(
+                fontSize: 40, color: Colors.black, fontWeight: FontWeight.bold),
           ),
-        );
-      }),
+          const SizedBox(height: 30),
+          FormCustomWidget(
+            prefixIcon:
+                const Icon(Icons.person_4_rounded, color: Color(0xff01091D)),
+            hintText: 'Email',
+            controller: controllerEmail,
+            validator: (value) => alertEmail(value, context),
+            onChanged: (value) => setState(() {}),
+          ),
+          FormCustomWidget(
+            prefixIcon: const Icon(Icons.lock, color: Color(0xff01091D)),
+            hintText: 'Password',
+            obscureText: true,
+            controller: controllerPassword,
+            validator: (value) => passwordAlert(value, context),
+            onChanged: (value) => setState(() {}),
+          ),
+          const SizedBox(height: 20),
+          CustomButtonWidget(
+            onPressed: () async {
+              if (_formKey.currentState!.validate()) {
+                final loginOk = await auth.signUp(
+                  email: controllerEmail.text,
+                  password: controllerPassword.text,
+                );
+                if (context.mounted) {
+                  if (loginOk) {
+                    context.go('/home');
+                  } else {
+                    errorAlert(context);
+                  }
+                }
+              }
+            },
+            child: auth.loading
+                ? const Center(
+                    child: SizedBox(
+                    height: 20,
+                    width: 20,
+                    child: CircularProgressIndicator(
+                      color: Colors.black,
+                      strokeWidth: 2,
+                    ),
+                  ))
+                : const Center(
+                    child: Text(
+                      'Iniciar sesión',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+          ),
+          const SizedBox(height: 15),
+        ],
+      ),
     );
   }
 }
