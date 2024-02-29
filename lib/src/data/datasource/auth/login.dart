@@ -2,9 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:trackstar_web/src/data/api/api.dart';
 
-//? Provider para login de la aplicacion
+import '../../data.dart';
+
 class LoginAuthProvider extends ChangeNotifier {
   static bool authenticated = false;
+
+  User? user; //? usuario que se autenticado
 
   bool _loading = false;
   bool get loading => _loading;
@@ -13,7 +16,6 @@ class LoginAuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  //! Funcion para hacer login en la aplicacion
   Future<dynamic> signUp({String email = '', String password = ''}) async {
     loading = true;
 
@@ -25,6 +27,7 @@ class LoginAuthProvider extends ChangeNotifier {
     Response response = await dio.post(url, data: data);
 
     if (response.statusCode == 200) {
+      user = User.fromJson(response.data);
       authenticated = true;
       loading = false;
       notifyListeners();
