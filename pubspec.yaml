@@ -23,6 +23,7 @@ dependencies:
   page_transition: ^2.1.0
   provider: ^6.0.5
   skeletonizer: ^0.8.0
+  supabase: ^2.0.8
   url_strategy: ^0.2.0
 
 dev_dependencies:

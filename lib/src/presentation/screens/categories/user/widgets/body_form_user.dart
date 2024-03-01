@@ -29,14 +29,16 @@ class _BodyFormUserState extends State<BodyFormUser> {
 
   bool superUser = false;
 
-  _seletImage() async {
-    final picker = ImagePicker();
-    final XFile? image = await picker.pickImage(
+  Uint8List? _newPictureFile;
+  XFile? _imageFile;
+
+  Future<void> _pickImage() async {
+    final XFile? imageFile = await ImagePicker().pickImage(
       source: ImageSource.gallery,
     );
-    if (image != null) {
-      final webImage = await image.readAsBytes();
-      newPictureFile = webImage;
+    if (imageFile != null) {
+      _newPictureFile = await imageFile.readAsBytes();
+      _imageFile = imageFile;
       setState(() {});
     }
   }
@@ -62,15 +64,15 @@ class _BodyFormUserState extends State<BodyFormUser> {
                     textTitle("Imagen"),
                     CircleAvatar(
                       radius: 50,
-                      backgroundImage: newPictureFile != null
-                          ? Image.memory(newPictureFile!).image
+                      backgroundImage: _newPictureFile != null
+                          ? Image.memory(_newPictureFile!).image
                           : null,
-                      backgroundColor: newPictureFile != null
+                      backgroundColor: _newPictureFile != null
                           ? theme.onPrimaryContainer
-                          : null,
+                          : Colors.grey.shade300,
                       child: IconButton(
-                        onPressed: () {
-                          _seletImage();
+                        onPressed: () async {
+                          await _pickImage();
                         },
                         icon: const Icon(Icons.add_a_photo),
                         color: Colors.white,
@@ -151,6 +153,7 @@ class _BodyFormUserState extends State<BodyFormUser> {
               phoneNumber: numTelefonoController.text,
               superUser: superUser,
             ),
+            path: _imageFile,
             getUser: getUser,
             password: passwordController.text,
           )
@@ -173,6 +176,7 @@ class _ButtonSentNewUser extends StatelessWidget {
   final GlobalKey<FormState> formKey;
   final UsersGetModel dataUser;
   final GetUser getUser;
+  final XFile? path;
 
   const _ButtonSentNewUser({
     super.key,
@@ -180,6 +184,7 @@ class _ButtonSentNewUser extends StatelessWidget {
     required this.dataUser,
     required this.getUser,
     required this.password,
+    this.path,
   });
 
   @override
@@ -199,11 +204,11 @@ class _ButtonSentNewUser extends StatelessWidget {
               ),
             ),
             onPressed: () async {
-              print(dataUser.lastName);
               if (formKey.currentState!.validate()) {
                 final userOk = await createUser.createNewUser(
                   dataUser: dataUser,
                   password: password,
+                  path: path,
                 );
                 if (context.mounted) {
                   if (userOk) {
