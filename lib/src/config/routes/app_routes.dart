@@ -42,7 +42,7 @@ class AppRoute {
           redirect: (context, state) =>
               (LoginAuthProvider.authenticated) ? null : '/home')
     ],
-    // errorBuilder: (BuildContext context, GoRouterState state) =>
-    //     const PageNotFoundScreen(),
+    errorBuilder: (BuildContext context, GoRouterState state) =>
+        const PageNotFoundScreen(),
   );
 }
