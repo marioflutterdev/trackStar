@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:trackstar_web/src/data/data.dart';
 
@@ -17,8 +18,10 @@ class NewProduct extends ChangeNotifier {
   Future<bool> createNewProduct(
     String name,
     String description,
+    String? path,
   ) async {
     loading = true;
+    print('path:    $path');
 
     const String url = '/rest/v1/products';
 

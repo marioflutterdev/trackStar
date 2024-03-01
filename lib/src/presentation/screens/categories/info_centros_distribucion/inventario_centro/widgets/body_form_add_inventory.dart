@@ -9,8 +9,6 @@ import 'package:trackstar_web/src/presentation/screens/categories/info_centros_d
 
 import '../../../../../../data/data.dart';
 import '../../../../../widgets/widgets.dart';
-import '../../../../home/menu_total/menu_total_home.dart';
-import '../../../productos/products_screen.dart';
 
 class BodyFormAddInventory extends StatefulWidget {
   const BodyFormAddInventory({super.key});

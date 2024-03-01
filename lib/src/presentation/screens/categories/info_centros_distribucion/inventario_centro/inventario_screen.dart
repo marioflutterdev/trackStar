@@ -5,7 +5,6 @@ import 'package:trackstar_web/src/presentation/screens/categories/info_centros_d
 
 import '../../../../../config/resposive/responsive_funtion.dart';
 import '../../../../widgets/widgets.dart';
-import '../../user/widgets/body_form_user.dart';
 import 'widgets/body_form_add_inventory.dart';
 
 class InventarioScreen extends StatefulWidget {

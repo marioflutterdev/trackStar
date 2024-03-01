@@ -24,20 +24,19 @@ class _BodyFormAddProductsState extends State<BodyFormAddProducts> {
 
   bool superUser = false;
 
-  _seletImage() async {
-    final picker = ImagePicker();
-    final XFile? image = await picker.pickImage(
+  Uint8List? _newPictureFile;
+  XFile? _imageFile;
+
+  Future<void> _pickImage() async {
+    final XFile? imageFile = await ImagePicker().pickImage(
       source: ImageSource.gallery,
     );
-    if (image != null) {
-      final webImage = await image.readAsBytes();
-      newPictureFile = webImage;
+    if (imageFile != null) {
+      _newPictureFile = await imageFile.readAsBytes();
+      _imageFile = imageFile;
       setState(() {});
     }
   }
-
-  Uint8List? newPictureFile = Uint8List(8);
-  File? fileSendData;
 
   @override
   Widget build(BuildContext context) {
@@ -56,15 +55,15 @@ class _BodyFormAddProductsState extends State<BodyFormAddProducts> {
                     textTitle("Imagen"),
                     CircleAvatar(
                       radius: 50,
-                      backgroundImage: newPictureFile != null
-                          ? Image.memory(newPictureFile!).image
+                      backgroundImage: _newPictureFile != null
+                          ? Image.memory(_newPictureFile!).image
                           : null,
-                      backgroundColor: newPictureFile != null
+                      backgroundColor: _newPictureFile != null
                           ? theme.onPrimaryContainer
-                          : null,
+                          : Colors.grey.shade300,
                       child: IconButton(
-                        onPressed: () {
-                          _seletImage();
+                        onPressed: () async {
+                          await _pickImage();
                         },
                         icon: const Icon(Icons.add_a_photo),
                         color: Colors.white,
@@ -94,6 +93,7 @@ class _BodyFormAddProductsState extends State<BodyFormAddProducts> {
             formKey: _formKey,
             nameController: nameController,
             descriptionController: descriptionController,
+            path: _imageFile?.path,
           )
           // const SizedBox(height: 15,
         ],
@@ -110,15 +110,17 @@ class _BodyFormAddProductsState extends State<BodyFormAddProducts> {
 }
 
 class _ButtonSentNewProduct extends StatelessWidget {
+  final GlobalKey<FormState> _formKey;
+  final TextEditingController nameController;
+  final TextEditingController descriptionController;
+  final String? path;
+
   const _ButtonSentNewProduct({
     required GlobalKey<FormState> formKey,
     required this.nameController,
     required this.descriptionController,
+    this.path,
   }) : _formKey = formKey;
-
-  final GlobalKey<FormState> _formKey;
-  final TextEditingController nameController;
-  final TextEditingController descriptionController;
 
   @override
   Widget build(BuildContext context) {
@@ -139,6 +141,7 @@ class _ButtonSentNewProduct extends StatelessWidget {
             final createOk = await newProduct.createNewProduct(
               nameController.text,
               descriptionController.text,
+              path,
             );
             if (context.mounted) {
               resetPassaword(context, 'Producto creado correctamente');
