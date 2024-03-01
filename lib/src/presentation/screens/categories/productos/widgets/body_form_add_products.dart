@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -93,7 +91,7 @@ class _BodyFormAddProductsState extends State<BodyFormAddProducts> {
             formKey: _formKey,
             nameController: nameController,
             descriptionController: descriptionController,
-            path: _imageFile?.path,
+            path: _imageFile,
           )
           // const SizedBox(height: 15,
         ],
@@ -113,7 +111,7 @@ class _ButtonSentNewProduct extends StatelessWidget {
   final GlobalKey<FormState> _formKey;
   final TextEditingController nameController;
   final TextEditingController descriptionController;
-  final String? path;
+  final XFile? path;
 
   const _ButtonSentNewProduct({
     required GlobalKey<FormState> formKey,
