@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../data/data.dart';
 import '../../../provider/providers.dart';
 import '../../../widgets/widgets.dart';
 
@@ -12,7 +13,8 @@ class ButtonHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final menuController = context.watch<NavegacionDrawerProvider>();
-
+    final cart = context.watch<GetCartProducts>();
+    final user = context.watch<LoginAuthProvider>().user;
     return Column(
       children: [
         FadeInLeft(
@@ -46,7 +48,10 @@ class ButtonHome extends StatelessWidget {
           child: ButtomCustom(
             icon: Icons.shopping_cart,
             title: 'Carrito',
-            opTap: () => menuController.paginaActual = 3,
+            opTap: () {
+              menuController.paginaActual = 3;
+              cart.getCart(user!);
+            },
             colors: selectColor(menuController, 3),
           ),
         ),

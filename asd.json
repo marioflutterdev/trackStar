@@ -1,0 +1,69 @@
+[
+    {
+        "name_center": "Bogota",
+        "description_center": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur cursus odio vitae laoreet fringilla. Quisque tempor, turpis sed elementum faucibus, arcu tortor euismod lorem, ut gravida est orci vitae ex. Aliquam sollicitudin blandit est vel rhoncus. Suspendisse rhoncus sapien ac orci sagittis, nec porttitor ex facilisis.",
+        "avatar_url": "https://www.educaciontrespuntocero.com/wp-content/uploads/2019/02/girasoles-978x652.jpg",
+        "address_center": "Cra 45 - 8-35"
+    },
+    {
+        "name_center": "Cali",
+        "description_center": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur cursus odio vitae laoreet fringilla. Quisque tempor, turpis sed elementum faucibus, arcu tortor euismod lorem, ut gravida est orci vitae ex. Aliquam sollicitudin blandit est vel rhoncus. Suspendisse rhoncus sapien ac orci sagittis, nec porttitor ex facilisis.",
+        "avatar_url": "https://www.educaciontrespuntocero.com/wp-content/uploads/2019/02/girasoles-978x652.jpg",
+        "address_center": "Cra 12 8-72"
+    },
+    {
+        "name_center": "Popayan",
+        "description_center": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur cursus odio vitae laoreet fringilla. Quisque tempor, turpis sed elementum faucibus, arcu tortor euismod lorem, ut gravida est orci vitae ex. Aliquam sollicitudin blandit est vel rhoncus. Suspendisse rhoncus sapien ac orci sagittis, nec porttitor ex facilisis.",
+        "avatar_url": "https://www.educaciontrespuntocero.com/wp-content/uploads/2019/02/girasoles-978x652.jpg",
+        "address_center": "Cra 45 8-54"
+    },
+    {
+        "name_center": "Ibague",
+        "description_center": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur cursus odio vitae laoreet fringilla. Quisque tempor, turpis sed elementum faucibus, arcu tortor euismod lorem, ut gravida est orci vitae ex. Aliquam sollicitudin blandit est vel rhoncus. Suspendisse rhoncus sapien ac orci sagittis, nec porttitor ex facilisis.",
+        "avatar_url": "https://www.educaciontrespuntocero.com/wp-content/uploads/2019/02/girasoles-978x652.jpg",
+        "address_center": "Cra 45 5-78"
+    },
+    {
+        "name_center": "Santa Marta",
+        "description_center": "Este es el centro de Santa Marta, conocido por su ambiente cálido y agradable.",
+        "avatar_url": "https://www.educaciontrespuntocero.com/wp-content/uploads/2019/02/girasoles-978x652.jpg",
+        "address_center": "Cra 25 - 6-45"
+    },
+    {
+        "name_center": "Manizales",
+        "description_center": "Este es el centro de Manizales, famoso por su excelente servicio al cliente y su ubicación conveniente.",
+        "avatar_url": "https://www.educaciontrespuntocero.com/wp-content/uploads/2019/02/girasoles-978x652.jpg",
+        "address_center": "Cra 30 6-92"
+    },
+    {
+        "name_center": "Bucaramanga",
+        "description_center": "Este es el centro de Bucaramanga, un lugar popular para estudiantes y profesionales por igual.",
+        "avatar_url": "https://www.educaciontrespuntocero.com/wp-content/uploads/2019/02/girasoles-978x652.jpg",
+        "address_center": "Cra 50 7-64"
+    },
+    {
+        "name_center": "Cucuta",
+        "description_center": "Este es el centro de Cucuta, un lugar acogedor y bien equipado para todas tus necesidades.",
+        "avatar_url": "https://www.educaciontrespuntocero.com/wp-content/uploads/2019/02/girasoles-978x652.jpg",
+        "address_center": "Cra 55 6-88"
+    },
+    {
+        "name_center": "Cartagena",
+        "description_center": "Esta es la descripción del centro de Cartagena. Es conocido por su excelente ubicación y personal amigable.",
+        "avatar_url": "https://www.educaciontrespuntocero.com/wp-content/uploads/2019/02/girasoles-978x652.jpg",
+        "address_center": "Cra 20 3-72"
+    },
+    {
+        "name_center": "Barranquilla",
+        "description_center": "Esta es la descripción del centro de Barranquilla. Es un lugar popular para estudiantes y profesionales por igual.",
+        "avatar_url": "https://www.educaciontrespuntocero.com/wp-content/uploads/2019/02/girasoles-978x652.jpg",
+        "address_center": "Cra 35 7-54"
+    },
+    {
+        "name_center": "Pereira",
+        "description_center": "Esta es la descripción del centro de Pereira. Es un lugar acogedor y bien equipado para todas tus necesidades.",
+        "avatar_url": "https://www.educaciontrespuntocero.com/wp-content/uploads/2019/02/girasoles-978x652.jpg",
+        "address_center": "Cra 40 6-78"
+    }
+    
+]

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trackstar_web/src/data/models/categorys/user_model/user_model.dart';
+import 'package:trackstar_web/src/data/models/categorys/users_model/users_model.dart';
 
 import '../../../../config/constans/constans.dart';
 import '../../../api/api.dart';
@@ -7,7 +7,7 @@ import '../../../api/api.dart';
 class GetUser extends ChangeNotifier {
   bool _loading = true;
   final List<UsersGetModel> _users = [];
-  //TODO chage apikey for your apikey
+
   final String accessToken = 'Bearer $apikey';
 
   List<UsersGetModel> get users => _users;

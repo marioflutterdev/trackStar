@@ -44,7 +44,7 @@ class InfoUser extends StatelessWidget {
               Row(
                 children: [
                   const Text('Adaministrador: '),
-                  user.superUser
+                  user.superUser ?? false
                       ? const Icon(
                           Icons.check_circle,
                           color: Colors.green,
