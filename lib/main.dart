@@ -37,6 +37,7 @@ void main() {
         ChangeNotifierProvider(create: (context) => NewCenter()),
         ChangeNotifierProvider(create: (context) => DeleteCenter()),
         ChangeNotifierProvider(create: (context) => EditCenter()),
+        ChangeNotifierProvider(create: (context) => NewInventoryItem()),
         ChangeNotifierProvider(create: (context) => GetCartProducts()),
       ],
       child: const MainApp(),

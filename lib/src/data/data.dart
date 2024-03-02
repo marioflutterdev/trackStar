@@ -1,3 +1,4 @@
+export 'package:trackstar_web/src/data/datasource/categorys/inventory/add_invertory_product.dart';
 export 'package:trackstar_web/src/data/models/auth/user_model/user_model.dart';
 export 'package:trackstar_web/src/data/datasource/categorys/cart/get_cart.dart';
 export 'package:trackstar_web/src/data/models/categorys/cart_model/cart_model.dart';
