@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -22,24 +21,10 @@ class _BodyFormAddProductsState extends State<BodyFormAddProducts> {
 
   bool superUser = false;
 
-  Uint8List? _newPictureFile;
   XFile? _imageFile;
-
-  Future<void> _pickImage() async {
-    final XFile? imageFile = await ImagePicker().pickImage(
-      source: ImageSource.gallery,
-    );
-    if (imageFile != null) {
-      _newPictureFile = await imageFile.readAsBytes();
-      _imageFile = imageFile;
-      setState(() {});
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).colorScheme;
-
     return Form(
       key: _formKey,
       child: Column(
@@ -51,21 +36,11 @@ class _BodyFormAddProductsState extends State<BodyFormAddProducts> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     textTitle("Imagen"),
-                    CircleAvatar(
-                      radius: 50,
-                      backgroundImage: _newPictureFile != null
-                          ? Image.memory(_newPictureFile!).image
-                          : null,
-                      backgroundColor: _newPictureFile != null
-                          ? theme.onPrimaryContainer
-                          : Colors.grey.shade300,
-                      child: IconButton(
-                        onPressed: () async {
-                          await _pickImage();
-                        },
-                        icon: const Icon(Icons.add_a_photo),
-                        color: Colors.white,
-                      ),
+                    ImagenAvatar(
+                      onChangeDate: (file) {
+                        _imageFile = file;
+                        setState(() {});
+                      },
                     ),
                     const SizedBox(height: 15),
                     textTitle("Nombre"),

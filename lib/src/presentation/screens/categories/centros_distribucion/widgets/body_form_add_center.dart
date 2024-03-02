@@ -1,6 +1,3 @@
-import 'dart:io';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -23,27 +20,10 @@ class _BodyFormAddCenterState extends State<BodyFormAddCenter> {
       addressController = TextEditingController(),
       descriptionController = TextEditingController();
 
-  bool superUser = false;
-
-  _seletImage() async {
-    final picker = ImagePicker();
-    final XFile? image = await picker.pickImage(
-      source: ImageSource.gallery,
-    );
-    if (image != null) {
-      final webImage = await image.readAsBytes();
-      newPictureFile = webImage;
-      setState(() {});
-    }
-  }
-
-  Uint8List? newPictureFile = Uint8List(8);
-  File? fileSendData;
+  XFile? fileSendData;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).colorScheme;
-
     return Form(
       key: _formKey,
       child: Column(
@@ -55,22 +35,10 @@ class _BodyFormAddCenterState extends State<BodyFormAddCenter> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     textTitle("Imagen"),
-                    CircleAvatar(
-                      radius: 50,
-                      backgroundImage: newPictureFile != null
-                          ? Image.memory(newPictureFile!).image
-                          : null,
-                      backgroundColor: newPictureFile != null
-                          ? theme.onPrimaryContainer
-                          : null,
-                      child: IconButton(
-                        onPressed: () {
-                          _seletImage();
-                        },
-                        icon: const Icon(Icons.add_a_photo),
-                        color: Colors.white,
-                      ),
-                    ),
+                    ImagenAvatar(onChangeDate: (file) {
+                      fileSendData = file;
+                      setState(() {});
+                    }),
                     const SizedBox(height: 15),
                     textTitle("Nombre"),
                     FormCustomWidget(
@@ -102,6 +70,7 @@ class _BodyFormAddCenterState extends State<BodyFormAddCenter> {
             name: nameController,
             address: addressController,
             description: descriptionController,
+            avatarUrl: fileSendData,
           )
           // const SizedBox(height: 15,
         ],
@@ -122,12 +91,14 @@ class _ButtonSentNewProduct extends StatelessWidget {
   final TextEditingController name;
   final TextEditingController description;
   final TextEditingController address;
+  final XFile? avatarUrl;
 
   const _ButtonSentNewProduct({
     required GlobalKey<FormState> formKey,
     required this.name,
     required this.description,
     required this.address,
+    required this.avatarUrl,
   }) : _formKey = formKey;
 
   @override
@@ -150,6 +121,7 @@ class _ButtonSentNewProduct extends StatelessWidget {
               name: name.text,
               address: address.text,
               description: description.text,
+              avatarUrl: avatarUrl,
             );
             if (context.mounted) {
               resetPassaword(context, 'Producto creado correctamente');
