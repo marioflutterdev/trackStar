@@ -6,7 +6,12 @@ import '../../../../../../data/data.dart';
 import '../../../../../widgets/widgets.dart';
 
 class BodyFormAddInventory extends StatefulWidget {
-  const BodyFormAddInventory({super.key});
+  final String product;
+
+  const BodyFormAddInventory({
+    super.key,
+    required this.product,
+  });
 
   @override
   State<BodyFormAddInventory> createState() => _BodyFormAddInventoryState();
@@ -34,7 +39,6 @@ class _BodyFormAddInventoryState extends State<BodyFormAddInventory> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    textTitle('Centro de Distribución $center'),
                     textTitle("Cantidad"),
                     FormCustomWidget(
                       controller: cantidadController,
@@ -60,7 +64,7 @@ class _BodyFormAddInventoryState extends State<BodyFormAddInventory> {
                 if (_formKey.currentState!.validate()) {
                   final createOk = await addIventory.createNewProduct(
                     center: center,
-                    nameProduct: '50410e5a-8980-45de-9556-1534cec5c410',
+                    nameProduct: widget.product,
                     quantity: cantidadController.text,
                     price: precioController.text,
                   );

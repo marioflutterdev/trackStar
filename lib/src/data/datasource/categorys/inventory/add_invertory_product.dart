@@ -31,11 +31,7 @@ class NewInventoryItem extends ChangeNotifier {
       "price": price,
     };
 
-    print(data);
-
     final res = await dio.post(url, data: data);
-    print(res.data);
-    print(res.statusCode);
     if (res.statusCode == 201) {
       loading = false;
       return true;

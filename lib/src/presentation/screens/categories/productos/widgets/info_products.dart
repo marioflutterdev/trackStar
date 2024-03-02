@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:trackstar_web/src/data/data.dart';
 
 import '../../../../widgets/widgets.dart';
+import '../../info_centros_distribucion/inventario_centro/widgets/body_form_add_inventory.dart';
 import 'body_form_edit_product.dart';
 
 class InfoProducts extends StatelessWidget {
@@ -54,6 +55,16 @@ class InfoProducts extends StatelessWidget {
                 top: 5,
                 right: 0,
                 child: _MenuButton(product: product),
+              ),
+              Positioned(
+                bottom: 5,
+                right: 0,
+                child: BodyUpdateItemCustomWidget(
+                  title: 'Agregar Producto al Inventario',
+                  child: BodyFormAddInventory(
+                    product: product.id,
+                  ),
+                ),
               )
             ],
           ),

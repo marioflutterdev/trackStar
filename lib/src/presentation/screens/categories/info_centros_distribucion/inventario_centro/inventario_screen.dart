@@ -4,8 +4,6 @@ import 'package:trackstar_web/src/data/data.dart';
 import 'package:trackstar_web/src/presentation/screens/categories/info_centros_distribucion/inventario_centro/widgets/info_inventario.dart';
 
 import '../../../../../config/resposive/responsive_funtion.dart';
-import '../../../../widgets/widgets.dart';
-import 'widgets/body_form_add_inventory.dart';
 
 class InventarioScreen extends StatefulWidget {
   final List<InventoryModel>? inventory;
@@ -35,14 +33,6 @@ class _UserScreenState extends State<InventarioScreen> {
             );
           },
         ),
-        const Positioned(
-          bottom: 30,
-          right: 30,
-          child: BodyUpdateItemCustomWidget(
-            title: 'Agregar Producto al Inventario',
-            child: BodyFormAddInventory(),
-          ),
-        )
       ],
     );
   }
