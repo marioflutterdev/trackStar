@@ -1,3 +1,4 @@
+export 'package:trackstar_web/src/presentation/widgets/botom_new_item.dart';
 export 'package:trackstar_web/src/presentation/widgets/imagen_avatar.dart';
 export 'package:trackstar_web/src/presentation/widgets/delate_item_custom.dart';
 export 'package:trackstar_web/src/presentation/widgets/form_funcion.dart';

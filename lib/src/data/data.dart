@@ -1,5 +1,5 @@
+export 'package:trackstar_web/src/data/datasource/auth/update_user.dart';
 export 'package:trackstar_web/src/data/datasource/cart/add_cart_product.dart';
-
 export 'package:trackstar_web/src/data/datasource/inventory/add_invertory_product.dart';
 export 'package:trackstar_web/src/data/models/auth/user_model.dart';
 export 'package:trackstar_web/src/data/datasource/cart/get_cart.dart';

@@ -5,10 +5,12 @@ import '../../../widgets/widgets.dart';
 class ButtonCustomHome extends StatelessWidget {
   final VoidCallback? onTap;
   final IconData? icon;
+  final Color? colorCustom;
   const ButtonCustomHome({
     super.key,
     this.onTap,
     this.icon,
+    this.colorCustom,
   });
 
   @override
@@ -17,7 +19,7 @@ class ButtonCustomHome extends StatelessWidget {
       builder: (isHovered) {
         final color = isHovered
             ? Colors.grey
-            : Theme.of(context).colorScheme.onPrimaryContainer;
+            : colorCustom ?? Theme.of(context).colorScheme.onPrimaryContainer;
         return GestureDetector(
           onTap: onTap,
           child: Container(

@@ -21,7 +21,8 @@ class BodyUpdateItemCustomWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context).colorScheme;
     return ButtonCustomHome(
-      icon: Icons.add,
+      icon: icon ?? Icons.add,
+      colorCustom: color,
       onTap: () => showDialog(
         context: context,
         builder: (builder) => ScaffoldMessenger(

@@ -8,7 +8,7 @@ String usersGetModelToJson(List<UsersGetModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class UsersGetModel {
-  final String id;
+  final String? id;
   final String? email;
   final String? firstName;
   final String? lastName;
@@ -20,7 +20,7 @@ class UsersGetModel {
   final String? center;
 
   UsersGetModel({
-    required this.id,
+    this.id,
     required this.email,
     required this.firstName,
     required this.lastName,
