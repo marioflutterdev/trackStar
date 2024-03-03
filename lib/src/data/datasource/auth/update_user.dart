@@ -44,13 +44,16 @@ class UploadUser extends ChangeNotifier {
       }
     };
 
-    final res = await dio.post(url, data: data);
-
+    final res = await dio.put(url, data: data);
+    print(res.data);
+    print(res.statusCode);
     if (res.statusCode == 200) {
+      print(res.data);
       loading = false;
       GetUser().getUser();
       return true;
     } else {
+      print(res.data);
       loading = false;
       return false;
     }

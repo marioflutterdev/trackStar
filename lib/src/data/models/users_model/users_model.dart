@@ -21,14 +21,14 @@ class UsersGetModel {
 
   UsersGetModel({
     this.id,
-    required this.email,
-    required this.firstName,
-    required this.lastName,
+    this.email,
+    this.firstName,
+    this.lastName,
     this.addressProfile,
     this.documentProfile,
-    required this.avatarUrl,
+    this.avatarUrl,
     this.phoneNumber,
-    required this.superUser,
+    this.superUser,
     this.center,
   });
 

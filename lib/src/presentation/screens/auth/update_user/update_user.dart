@@ -98,10 +98,22 @@ class _BodyFormEditUserState extends State<BodyFormEditUser> {
           const SizedBox(height: 15),
           ButtonSentNewItem(
               loading: uploadUser.loading,
-              title: 'actualizar',
+              title: 'Actualizar',
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
-                  final createOk = await uploadUser.uploadUser();
+                  final createOk = await uploadUser.uploadUser(
+                    dataUser: UsersGetModel(
+                      email: emailController.text,
+                      firstName: nameController.text,
+                      lastName: lastNameController.text,
+                      addressProfile: addressController.text,
+                      documentProfile: documentUser.text,
+                      phoneNumber: numTelefonoController.text,
+                    ),
+                    password: passwordController.text,
+                    token: context.read<LoginAuthProvider>().user!.accessToken,
+                    path: _imageFile,
+                  );
                   if (context.mounted) {
                     if (createOk) {
                       resetPassaword(context, 'Actualizado correctamente');

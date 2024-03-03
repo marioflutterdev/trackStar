@@ -16,7 +16,6 @@ export 'package:trackstar_web/src/data/datasource/products/get_products.dart';
 export 'package:trackstar_web/src/data/models/products_model/products_model.dart';
 export 'package:trackstar_web/src/data/models/users_model/users_model.dart';
 export 'package:trackstar_web/src/data/datasource/users/get_users.dart';
-export 'package:trackstar_web/src/data/datasource/users/upload_image.dart';
 export 'package:trackstar_web/src/data/datasource/users/create_new_user.dart';
 export 'package:trackstar_web/src/data/datasource/auth/login.dart';
 export 'package:trackstar_web/src/data/datasource/auth/reset_password.dart';
