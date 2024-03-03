@@ -8,7 +8,7 @@ class GetCenterDistribution extends ChangeNotifier {
   bool _loading = true;
   final List<CenterModel> _centerDistribution = [];
   final url =
-      '/rest/v1/center?select=*,inventory(id,quantity,price,product:id_product(*))';
+      '/rest/v1/center?select=*,inventory(id,quantity,price,id_center,product:id_product(*))';
 
   final String accessToken = 'Bearer $apikey';
 

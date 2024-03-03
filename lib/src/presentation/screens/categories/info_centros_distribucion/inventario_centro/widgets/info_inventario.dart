@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:trackstar_web/src/data/data.dart';
 
 import '../../../../../widgets/widgets.dart';
+import '../../../cart/widgets/body_form_info.dart';
 
 class InfoInventy extends StatelessWidget {
   final InventoryModel inventory;
@@ -10,6 +12,8 @@ class InfoInventy extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final center =
+        Provider.of<LoginAuthProvider>(context).user!.user.userMetadata.center;
     return RepaintBoundary(
       child: CardInfoCustomWidget(
         child: Padding(
@@ -47,6 +51,19 @@ class InfoInventy extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+              Visibility(
+                visible: inventory.center == center ? false : true,
+                child: Positioned(
+                  top: 5,
+                  right: 0,
+                  child: BodyUpdateItemCustomWidget(
+                    title: 'agregar producto al carrito',
+                    child: BodyFormAddCart(
+                      product: inventory.product.id,
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
