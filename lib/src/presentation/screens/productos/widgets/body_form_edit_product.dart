@@ -4,11 +4,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:trackstar_web/src/data/datasource/categorys/products/edit_products.dart';
+import 'package:trackstar_web/src/data/datasource/products/edit_products.dart';
 
-import '../../../../../config/helpers/alert_auth.dart';
-import '../../../../../data/data.dart';
-import '../../../../widgets/widgets.dart';
+import '../../../../config/helpers/alert_auth.dart';
+import '../../../../data/data.dart';
+import '../../../widgets/widgets.dart';
 
 class BodyFormEditProducts extends StatefulWidget {
   final ProductsModel? product;

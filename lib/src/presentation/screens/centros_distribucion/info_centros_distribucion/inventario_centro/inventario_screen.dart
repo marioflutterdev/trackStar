@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:trackstar_web/src/data/data.dart';
-import 'package:trackstar_web/src/presentation/screens/categories/info_centros_distribucion/inventario_centro/widgets/info_inventario.dart';
+import 'package:trackstar_web/src/presentation/screens/centros_distribucion/info_centros_distribucion/inventario_centro/widgets/info_inventario.dart';
 
 import '../../../../../config/resposive/responsive_funtion.dart';
 

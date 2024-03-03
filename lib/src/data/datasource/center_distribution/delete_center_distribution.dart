@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../config/constans/constans.dart';
-import '../../../api/api.dart';
+import '../../../config/constans/constans.dart';
+import '../../api/api.dart';
 
 class DeleteCenter extends ChangeNotifier {
   final String accessToken = 'Bearer $apikey';

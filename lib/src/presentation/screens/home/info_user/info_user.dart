@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:trackstar_web/src/presentation/screens/categories/user/widgets/body_form_user.dart';
+import 'package:trackstar_web/src/presentation/screens/users/widgets/body_form_add_user.dart';
 
 import '../../../../data/data.dart';
 import '../../../widgets/widgets.dart';
@@ -26,7 +26,7 @@ class InfoUserDawer extends StatelessWidget {
             const Spacer(),
             const BodyUpdateItemCustomWidget(
               title: 'Añadir Usuario',
-              child: BodyFormUser(),
+              child: BodyFormAddUser(),
             ),
           ],
         ),

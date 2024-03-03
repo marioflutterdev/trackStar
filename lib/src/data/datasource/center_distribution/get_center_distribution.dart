@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../config/constans/constans.dart';
-import '../../../api/api.dart';
-import '../../../data.dart';
+import '../../../config/constans/constans.dart';
+import '../../api/api.dart';
+import '../../data.dart';
 
 class GetCenterDistribution extends ChangeNotifier {
   bool _loading = true;

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../../../data.dart';
+import '../../data.dart';
 
 List<CenterModel> centerModelFromJson(String str) => List<CenterModel>.from(
     json.decode(str).map((x) => CenterModel.fromJson(x)));

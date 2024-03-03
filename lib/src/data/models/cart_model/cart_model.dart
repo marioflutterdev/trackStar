@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../../../data.dart';
+import '../../data.dart';
 
 List<CartModel> cartModelFromJson(String str) =>
     List<CartModel>.from(json.decode(str).map((x) => CartModel.fromJson(x)));

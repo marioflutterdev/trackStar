@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:trackstar_web/src/data/data.dart';
 
-import '../../../api/api.dart';
-import '../../upload/upload_imagen.dart';
+import '../../api/api.dart';
+import '../upload/upload_imagen.dart';
 
 class CreatedNewUser extends ChangeNotifier {
   bool _loading = false;

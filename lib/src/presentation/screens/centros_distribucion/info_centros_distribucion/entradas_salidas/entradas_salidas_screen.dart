@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trackstar_web/src/presentation/screens/categories/user/widgets/body_form_user.dart';
+import 'package:trackstar_web/src/presentation/screens/users/widgets/body_form_add_user.dart';
 import 'package:trackstar_web/src/presentation/widgets/body_update_item.dart';
 
 class EntradasSalidasScreen extends StatelessWidget {
@@ -28,7 +28,7 @@ class EntradasSalidasScreen extends StatelessWidget {
           child: BodyUpdateItemCustomWidget(
             title: 'Agregar Centro de Distribución',
             //TODO agregar el formulario de entradas y salidas
-            child: BodyFormUser(),
+            child: BodyFormAddUser(),
           ),
         )
       ],

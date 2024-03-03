@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trackstar_web/src/config/helpers/alert_auth.dart';
 
-import '../../../../../data/data.dart';
-import '../../../../widgets/widgets.dart';
+import '../../../../data/data.dart';
+import '../../../widgets/widgets.dart';
 
 class BodyFormAddCart extends StatefulWidget {
   final String product;

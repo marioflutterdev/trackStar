@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../config/helpers/alert_auth.dart';
-import '../../../../../data/data.dart';
-import '../../../../widgets/widgets.dart';
+import '../../../../config/helpers/alert_auth.dart';
+import '../../../../data/data.dart';
+import '../../../widgets/widgets.dart';
 
-class BodyFormUser extends StatefulWidget {
-  const BodyFormUser({super.key});
+class BodyFormAddUser extends StatefulWidget {
+  const BodyFormAddUser({super.key});
 
   @override
-  State<BodyFormUser> createState() => _BodyFormUserState();
+  State<BodyFormAddUser> createState() => _BodyFormAddUserState();
 }
 
-class _BodyFormUserState extends State<BodyFormUser> {
+class _BodyFormAddUserState extends State<BodyFormAddUser> {
   final _formKey = GlobalKey<FormState>();
 
   final nameController = TextEditingController(),

@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:trackstar_web/src/data/data.dart';
 
-import '../../../../widgets/widgets.dart';
-import '../../info_centros_distribucion/inventario_centro/widgets/body_form_add_inventory.dart';
+import '../../../widgets/widgets.dart';
+import '../../centros_distribucion/info_centros_distribucion/inventario_centro/widgets/body_form_add_inventory.dart';
 import 'body_form_edit_product.dart';
 
 class InfoProducts extends StatelessWidget {

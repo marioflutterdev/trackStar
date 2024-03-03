@@ -3,8 +3,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:trackstar_web/src/config/helpers/alert_auth.dart';
 
-import '../../../../../data/data.dart';
-import '../../../../widgets/widgets.dart';
+import '../../../../data/data.dart';
+import '../../../widgets/widgets.dart';
 
 class BodyFormAddCenter extends StatefulWidget {
   const BodyFormAddCenter({super.key});

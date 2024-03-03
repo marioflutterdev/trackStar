@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../config/helpers/alert_auth.dart';
-import '../../../../../data/data.dart';
-import '../../../../widgets/widgets.dart';
+import '../../../../config/helpers/alert_auth.dart';
+import '../../../../data/data.dart';
+import '../../../widgets/widgets.dart';
 
 class BodyFormAddProducts extends StatefulWidget {
   const BodyFormAddProducts({super.key});

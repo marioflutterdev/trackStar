@@ -6,8 +6,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:trackstar_web/src/data/data.dart';
 
-import '../../../../../config/helpers/alert_auth.dart';
-import '../../../../widgets/widgets.dart';
+import '../../../../config/helpers/alert_auth.dart';
+import '../../../widgets/widgets.dart';
 
 class BodyFormEditCenter extends StatefulWidget {
   final CenterModel center;

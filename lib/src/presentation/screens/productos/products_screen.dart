@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:trackstar_web/src/presentation/widgets/widgets.dart';
 
-import '../../../../config/resposive/responsive_funtion.dart';
-import '../../../../data/data.dart';
+import '../../../config/resposive/responsive_funtion.dart';
+import '../../../data/data.dart';
 import 'widgets/body_form_add_products.dart';
 import 'widgets/info_products.dart';
 

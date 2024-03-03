@@ -1,4 +1,4 @@
-import '../../../data.dart';
+import '../../data.dart';
 
 class InventoryModel {
   final String id;

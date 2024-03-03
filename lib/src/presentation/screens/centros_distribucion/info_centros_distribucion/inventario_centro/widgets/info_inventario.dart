@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:trackstar_web/src/data/data.dart';
 
 import '../../../../../widgets/widgets.dart';
-import '../../../cart/widgets/body_form_info.dart';
+import '../../../../cart/widgets/body_form_info.dart';
 
 class InfoInventy extends StatelessWidget {
   final InventoryModel inventory;

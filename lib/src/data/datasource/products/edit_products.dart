@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../config/constans/constans.dart';
+import '../../../config/constans/constans.dart';
 
-import '../../../api/api.dart';
+import '../../api/api.dart';
 
 class EditProduct extends ChangeNotifier {
   bool _loading = false;

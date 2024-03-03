@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:trackstar_web/src/data/data.dart';
 
-import '../../../../config/constans/constans.dart';
-import '../../../api/api.dart';
+import '../../../config/constans/constans.dart';
+import '../../api/api.dart';
 
 class EditCenter extends ChangeNotifier {
   bool _loading = false;

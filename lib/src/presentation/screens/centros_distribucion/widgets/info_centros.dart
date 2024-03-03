@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../data/data.dart';
-import '../../../../provider/providers.dart';
-import '../../../../widgets/widgets.dart';
+import '../../../../data/data.dart';
+import '../../../provider/providers.dart';
+import '../../../widgets/widgets.dart';
 import 'body_form_edit_center.dart';
 
 class InfoCenter extends StatelessWidget {

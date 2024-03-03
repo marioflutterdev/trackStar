@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trackstar_web/src/data/data.dart';
 
-import '../../../../widgets/widgets.dart';
+import '../../../widgets/widgets.dart';
 
 class InfoUser extends StatelessWidget {
   final UsersGetModel user;

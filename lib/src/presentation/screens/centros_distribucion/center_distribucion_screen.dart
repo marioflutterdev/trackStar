@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-import 'package:trackstar_web/src/presentation/screens/categories/centros_distribucion/widgets/info_centros.dart';
+import 'package:trackstar_web/src/presentation/screens/centros_distribucion/widgets/info_centros.dart';
 
-import '../../../../config/resposive/responsive_funtion.dart';
-import '../../../../data/data.dart';
-import '../../../widgets/widgets.dart';
+import '../../../config/resposive/responsive_funtion.dart';
+import '../../../data/data.dart';
+import '../../widgets/widgets.dart';
 import 'widgets/body_form_add_center.dart';
 
 class CenterDistribucionScreen extends StatefulWidget {

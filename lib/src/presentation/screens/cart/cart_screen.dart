@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:trackstar_web/src/config/resposive/responsive_funtion.dart';
 
-import '../../../../data/data.dart';
+import '../../../data/data.dart';
 import 'widgets/info_cart.dart';
 
 class CartScreen extends StatelessWidget {

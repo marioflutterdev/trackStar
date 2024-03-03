@@ -4,9 +4,9 @@ import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:trackstar_web/src/presentation/widgets/widgets.dart';
 
-import '../../../../config/resposive/responsive_funtion.dart';
-import '../../../../data/data.dart';
-import 'widgets/body_form_user.dart';
+import '../../../config/resposive/responsive_funtion.dart';
+import '../../../data/data.dart';
+import 'widgets/body_form_add_user.dart';
 import 'widgets/info_user.dart';
 
 class UserScreen extends StatefulWidget {
@@ -41,7 +41,7 @@ class _UserScreenState extends State<UserScreen> {
           right: 30,
           child: BodyUpdateItemCustomWidget(
             title: 'Añadir Usuario',
-            child: BodyFormUser(),
+            child: BodyFormAddUser(),
           ),
         )
       ],
