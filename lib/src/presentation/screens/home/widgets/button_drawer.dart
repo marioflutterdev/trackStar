@@ -73,15 +73,6 @@ class ButtonHome extends StatelessWidget {
             colors: selectColor(menuController, 5),
           ),
         ),
-        FadeInLeft(
-          from: 250,
-          child: ButtomCustom(
-            icon: Icons.settings,
-            title: 'Configuraciónes',
-            opTap: () => menuController.paginaActual = 6,
-            colors: selectColor(menuController, 6),
-          ),
-        )
       ],
     );
   }

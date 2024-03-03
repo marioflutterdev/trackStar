@@ -8,7 +8,6 @@ List<String> categorias = [
   'Carrito',
   'Solicitudes',
   'Notificaciones',
-  'Configuraciónes',
   'inventario',
   'Entradas y Salidas',
 ];

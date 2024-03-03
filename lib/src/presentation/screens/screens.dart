@@ -2,7 +2,6 @@ export 'package:trackstar_web/src/presentation/screens/categories/cart/cart_scre
 export 'package:trackstar_web/src/presentation/screens/categories/notificaciones/notificaciones_screen.dart';
 export 'package:trackstar_web/src/presentation/screens/categories/solicitudes/solicitudes_screen.dart';
 export 'package:trackstar_web/src/presentation/screens/categories/info_centros_distribucion/inventario_centro/inventario_screen.dart';
-export 'package:trackstar_web/src/presentation/screens/categories/settings/settings_screen.dart';
 export 'package:trackstar_web/src/presentation/screens/auth/forgot_password/update_password_screen.dart';
 export 'package:trackstar_web/src/presentation/screens/auth/404/page_not_found_screen.dart';
 export 'package:trackstar_web/src/presentation/screens/auth/forgot_password/forgot_passaword_screen.dart';

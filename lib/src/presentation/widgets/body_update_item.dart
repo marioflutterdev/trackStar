@@ -6,11 +6,15 @@ import 'xencard_custom/xencard_custom.dart';
 class BodyUpdateItemCustomWidget extends StatelessWidget {
   final Widget child;
   final String title;
+  final Color? color;
+  final IconData? icon;
 
   const BodyUpdateItemCustomWidget({
     super.key,
     required this.child,
     required this.title,
+    this.color,
+    this.icon,
   });
 
   @override

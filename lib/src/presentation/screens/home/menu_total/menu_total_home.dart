@@ -70,7 +70,6 @@ class _CategoriesView extends StatelessWidget {
             const CartScreen(),
             const SolicitudesScreen(),
             const NotificacionesScreen(),
-            const SettingsScreen(),
             InventarioScreen(inventory: menuController.inventory),
             const EntradasSalidasScreen(),
           ],
@@ -97,8 +96,8 @@ class _ButtonMenu extends StatelessWidget {
     return Row(
       children: [
         Visibility(
-          visible: menuController.paginaActual == 7 ||
-                  menuController.paginaActual == 8
+          visible: menuController.paginaActual == 6 ||
+                  menuController.paginaActual == 7
               ? true
               : false,
           child: ButtonCustomHome(
@@ -124,7 +123,7 @@ class _ButtonMenu extends StatelessWidget {
                 : const SizedBox()),
         Visibility(
           visible: menuController.paginaActual == 1 ? true : false,
-          child: SearchProduct(),
+          child: const SearchProduct(),
         ),
         ButtonCustomHome(
           icon: providerTheme.themeData == dartMode
