@@ -121,7 +121,7 @@ class _MenuButtonState extends State<_MenuButton> {
             child: IconButton(
               onPressed: () {
                 menuController.inventory = widget.center.inventory;
-                menuController.paginaActual = 7;
+                menuController.paginaActual = 6;
               },
               icon: const Icon(Icons.shopping_basket_outlined),
             ),
@@ -133,7 +133,7 @@ class _MenuButtonState extends State<_MenuButton> {
             from: 50,
             child: IconButton(
               onPressed: () {
-                menuController.paginaActual = 8;
+                menuController.paginaActual = 7;
               },
               icon: const Icon(Icons.local_shipping),
             ),

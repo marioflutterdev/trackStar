@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:trackstar_web/src/data/data.dart';
+import 'package:trackstar_web/src/presentation/screens/home/widgets/widgets.dart';
 
 import '../../../widgets/widgets.dart';
 
@@ -10,6 +12,10 @@ class InfoCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user =
+        context.watch<LoginAuthProvider>().user!.user.userMetadata.center;
+    final solicitudes = context.watch()<AddSolicitudes>(context);
+    final notification = context.watch()<AddNotificaciones>(context);
     return RepaintBoundary(
       child: CardInfoCustomWidget(
         child: Padding(
@@ -39,12 +45,85 @@ class InfoCart extends StatelessWidget {
                   ),
                   Text('ID: ${cart.id}'),
                   Text('Cantidad: ${cart.quantity}'),
+                  Buttom(
+                    onPressed: () {
+                      solicitudes.addSolicitudes(
+                        center: user,
+                        nameProduct: cart.product.nameProduct,
+                        quantity: cart.quantity,
+                      );
+                      notification.addNotificaciones(
+                        center: cart.center,
+                        nameProduct: cart.product.nameProduct,
+                        quantity: cart.quantity,
+                      );
+                      Navigator.pop(context);
+                    },
+                  )
                 ],
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class Buttom extends StatelessWidget {
+  final void Function() onPressed;
+
+  const Buttom({
+    super.key,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ButtonCustomHome(
+      icon: Icons.logout,
+      onTap: () => showDialog(
+        context: context,
+        builder: (context) => _DialogLeave(
+          onPressed: onPressed,
+        ),
+      ),
+    );
+  }
+}
+
+class _DialogLeave extends StatelessWidget {
+  final void Function() onPressed;
+  const _DialogLeave({
+    super.key,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CleanDialog(
+      title: 'Solicitar El Producto',
+      content: 'Estas Seguro de Esta Acción',
+      backgroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
+      titleTextStyle: const TextStyle(
+        fontSize: 25,
+        fontWeight: FontWeight.bold,
+      ),
+      contentTextStyle: const TextStyle(
+        fontSize: 16,
+      ),
+      actions: [
+        CleanDialogActionButtons(
+          actionTitle: 'Cancel',
+          textColor: const Color(0XFFF50057),
+          onPressed: () => Navigator.pop(context),
+        ),
+        CleanDialogActionButtons(
+          actionTitle: 'Aceptar',
+          textColor: const Color(0XFF27ae61),
+          onPressed: onPressed,
+        ),
+      ],
     );
   }
 }

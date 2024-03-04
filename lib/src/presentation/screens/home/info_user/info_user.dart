@@ -66,6 +66,14 @@ class InfoUserDawer extends StatelessWidget {
             color: Colors.black,
           ),
         ),
+        Row(
+          children: [
+            const Text('Tipo usario: '),
+            user!.superUser
+                ? const Text('Administrador')
+                : const Text('Empleado'),
+          ],
+        )
       ],
     );
   }

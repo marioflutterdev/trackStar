@@ -69,7 +69,7 @@ class _CategoriesView extends StatelessWidget {
             const CenterDistribucionScreen(),
             const CartScreen(),
             const SolicitudesScreen(),
-            const NotificacionesScreen(),
+            const NotificationsScreen(),
             InventarioScreen(inventory: menuController.inventory),
             const EntradasSalidasScreen(),
           ],
