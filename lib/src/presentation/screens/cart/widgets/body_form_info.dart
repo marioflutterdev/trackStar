@@ -7,10 +7,12 @@ import '../../../widgets/widgets.dart';
 
 class BodyFormAddCart extends StatefulWidget {
   final String product;
+  final String idCenterPertence;
 
   const BodyFormAddCart({
     super.key,
     required this.product,
+    required this.idCenterPertence,
   });
 
   @override
@@ -57,6 +59,7 @@ class _BodyFormAddCartState extends State<BodyFormAddCart> {
                     center: center,
                     nameProduct: widget.product,
                     quantity: cantidadController.text,
+                    centerPertenece: widget.idCenterPertence,
                   );
 
                   if (context.mounted) {

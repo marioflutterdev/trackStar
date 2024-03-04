@@ -26,8 +26,9 @@ void main() {
         ChangeNotifierProvider(
             create: (context) =>
                 ResetPasswordProvider(accessToken: accessToken.toString())),
-        //TODO Change of location the providers
         ChangeNotifierProvider(create: (context) => GetUser()),
+        ChangeNotifierProvider(create: (context) => GetNotificaciones()),
+        ChangeNotifierProvider(create: (context) => GetSolicitudes()),
         ChangeNotifierProvider(create: (context) => AddSolicitudes()),
         ChangeNotifierProvider(create: (context) => AddNotificaciones()),
         ChangeNotifierProvider(create: (context) => UploadUser()),

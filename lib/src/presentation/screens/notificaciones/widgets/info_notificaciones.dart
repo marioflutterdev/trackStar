@@ -29,11 +29,11 @@ class NotificationInfo extends StatelessWidget {
                     child: CircleAvatar(
                       radius: 70,
                       backgroundImage:
-                          NetworkImage(notification.producto.avatarUrl ?? ''),
+                          NetworkImage(notification.producto?.avatarUrl ?? ''),
                     ),
                   ),
                   Text(
-                    notification.producto.nameProduct,
+                    notification.producto!.nameProduct,
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,

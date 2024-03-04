@@ -61,6 +61,7 @@ class InfoInventy extends StatelessWidget {
                     title: 'agregar producto al carrito',
                     child: BodyFormAddCart(
                       product: inventory.product.id,
+                      idCenterPertence: inventory.center,
                     ),
                   ),
                 ),

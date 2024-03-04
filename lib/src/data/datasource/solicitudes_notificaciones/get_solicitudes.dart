@@ -18,13 +18,18 @@ class GetSolicitudes extends ChangeNotifier {
     notifyListeners();
   }
 
+  GetSolicitudes() {
+    getSolicitudes();
+  }
+
   Future<void> getSolicitudes() async {
-    const url = '/rest/v1/solicitudes?select=*';
+    const url = '/rest/v1/solicitudes?select=*,producto:producto(*)';
     loading = true;
 
     dio.options.headers['Authorization'] = ' $accessToken';
 
     final res = await dio.get(url);
+
     if (res.statusCode == 200) {
       res.data.forEach(
         (element) {

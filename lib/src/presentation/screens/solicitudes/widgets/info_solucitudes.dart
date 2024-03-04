@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:trackstar_web/src/presentation/screens/home/widgets/widgets.dart';
 
 import '../../../../data/data.dart';
 import '../../../widgets/widgets.dart';
-import '../../home/widgets/widgets.dart';
 
 class InfoSolicitud extends StatelessWidget {
   final NotificaiconesSolicitudes solicitud;
@@ -28,11 +28,11 @@ class InfoSolicitud extends StatelessWidget {
                     child: CircleAvatar(
                       radius: 70,
                       backgroundImage:
-                          NetworkImage(solicitud.producto.avatarUrl ?? ''),
+                          NetworkImage(solicitud.producto?.avatarUrl ?? ''),
                     ),
                   ),
                   Text(
-                    solicitud.producto.nameProduct,
+                    solicitud.producto!.nameProduct,
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,

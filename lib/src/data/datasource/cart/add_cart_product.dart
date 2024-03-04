@@ -13,6 +13,7 @@ class NewCartItem extends ChangeNotifier {
 
   Future<bool> createNewProduct({
     final String? center,
+    final String? centerPertenece,
     final String? nameProduct,
     final String? quantity,
   }) async {
@@ -25,6 +26,7 @@ class NewCartItem extends ChangeNotifier {
 
     final data = {
       "center": center,
+      "center_pertenece": centerPertenece,
       "product": nameProduct,
       "quantity": quantity,
     };

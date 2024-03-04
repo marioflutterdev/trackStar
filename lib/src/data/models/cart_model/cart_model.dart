@@ -12,6 +12,7 @@ class CartModel {
   final String id;
   final String center;
   final ProductsModel product;
+  final String centerPertenece;
   final int quantity;
 
   CartModel({
@@ -19,6 +20,7 @@ class CartModel {
     required this.center,
     required this.product,
     required this.quantity,
+    required this.centerPertenece,
   });
 
   factory CartModel.fromJson(Map<String, dynamic> json) => CartModel(
@@ -26,6 +28,7 @@ class CartModel {
         center: json["center"],
         product: ProductsModel.fromJson(json["product"]),
         quantity: json["quantity"],
+        centerPertenece: json["center_pertenece"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -33,5 +36,6 @@ class CartModel {
         "center": center,
         "product": product.toJson(),
         "quantity": quantity,
+        "center_pertenece": centerPertenece,
       };
 }

@@ -23,8 +23,6 @@ class GetCartProducts extends ChangeNotifier {
         '/rest/v1/cart?center=eq.${user.user.userMetadata.center}&select=*,product:product(*)';
     loading = true;
 
-    print('url $url');
-
     _cartProducts.clear();
 
     dio.options.headers['Authorization'] = ' $accessToken';
