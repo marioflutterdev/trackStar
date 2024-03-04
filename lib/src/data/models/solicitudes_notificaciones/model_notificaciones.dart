@@ -2,17 +2,19 @@ import '../../data.dart';
 
 class NotificaiconesSolicitudes {
   final String id;
-  final String createdAt;
-  final int cantidad;
+  final String? createdAt;
+  final int? cantidad;
   final ProductsModel? producto;
-  final String centroSolicitud;
+  final String? miCentro;
+  final String? centroPeticion;
 
   NotificaiconesSolicitudes({
     required this.id,
-    required this.createdAt,
-    required this.cantidad,
+    this.createdAt,
+    this.cantidad,
     this.producto,
-    required this.centroSolicitud,
+    this.miCentro,
+    this.centroPeticion,
   });
 
   factory NotificaiconesSolicitudes.fromJson(Map<String, dynamic> json) =>
@@ -21,7 +23,8 @@ class NotificaiconesSolicitudes {
         createdAt: json["created_at"],
         cantidad: json["cantidad"],
         producto: ProductsModel.fromJson(json["producto"]),
-        centroSolicitud: json["centro_solicitud"],
+        miCentro: json["mi_centro"],
+        centroPeticion: json["centro_peticion"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -29,6 +32,7 @@ class NotificaiconesSolicitudes {
         "created_at": createdAt,
         "cantidad": cantidad,
         "producto": producto?.toJson(),
-        "centro_solicitud": centroSolicitud,
+        "centro_solicitud": miCentro,
+        "centro_peticion": centroPeticion,
       };
 }

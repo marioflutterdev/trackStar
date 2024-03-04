@@ -14,6 +14,7 @@ class AddSolicitudes extends ChangeNotifier {
   Future<bool> addSolicitudes({
     final String? center,
     final String? idProduct,
+    final String? centerPertenece,
     final int? quantity,
   }) async {
     loading = true;
@@ -24,9 +25,10 @@ class AddSolicitudes extends ChangeNotifier {
     dio.options.headers['Prefer'] = 'return=minimal';
 
     final data = {
-      "centro_solicitud": center,
+      "mi_centro": center,
       "producto": idProduct,
       "cantidad": quantity,
+      "centro_peticion": centerPertenece
     };
 
     print(data);

@@ -29,7 +29,7 @@ class GetSolicitudes extends ChangeNotifier {
     dio.options.headers['Authorization'] = ' $accessToken';
 
     final res = await dio.get(url);
-
+    print(res.data);
     if (res.statusCode == 200) {
       res.data.forEach(
         (element) {

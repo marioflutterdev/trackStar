@@ -49,11 +49,13 @@ class InfoCart extends StatelessWidget {
                     onPressed: () {
                       solicitudes.addSolicitudes(
                         center: user,
+                        centerPertenece: cart.centerPertenece,
                         idProduct: cart.product.id,
                         quantity: cart.quantity,
                       );
                       notification.addNotificaciones(
                         center: cart.center,
+                        centerPertenece: cart.centerPertenece,
                         idProduct: cart.product.id,
                         quantity: cart.quantity,
                       );

@@ -19,7 +19,7 @@ class GetNotificaciones extends ChangeNotifier {
   }
 
   Future<void> getSolicitudes() async {
-    const url = '/rest/v1/solicitudes?select=*';
+    const url = '/rest/v1/notificaciones?select=*,producto:producto(*)';
     loading = true;
 
     dio.options.headers['Authorization'] = ' $accessToken';

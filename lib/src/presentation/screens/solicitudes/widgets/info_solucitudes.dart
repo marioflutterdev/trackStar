@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:trackstar_web/src/presentation/screens/home/widgets/widgets.dart';
 
 import '../../../../data/data.dart';
 import '../../../widgets/widgets.dart';
@@ -38,77 +37,14 @@ class InfoSolicitud extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text('ID: ${solicitud.id}'),
-                  Text('Cantidad: ${solicitud.cantidad}'),
-                  Buttom(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  )
+                  Text('Fecha solicitud: ${solicitud.createdAt}'),
+                  Text('Cantidad que solicita: ${solicitud.cantidad}'),
                 ],
               ),
             ],
           ),
         ),
       ),
-    );
-  }
-}
-
-class Buttom extends StatelessWidget {
-  final void Function() onPressed;
-
-  const Buttom({
-    super.key,
-    required this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ButtonCustomHome(
-      icon: Icons.logout,
-      onTap: () => showDialog(
-        context: context,
-        builder: (context) => _DialogLeave(
-          onPressed: onPressed,
-        ),
-      ),
-    );
-  }
-}
-
-class _DialogLeave extends StatelessWidget {
-  final void Function() onPressed;
-  const _DialogLeave({
-    super.key,
-    required this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return CleanDialog(
-      title: 'Anular La Solicitud',
-      content: 'Estas Seguro de Esta Acción',
-      backgroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
-      titleTextStyle: const TextStyle(
-        fontSize: 25,
-        fontWeight: FontWeight.bold,
-      ),
-      contentTextStyle: const TextStyle(
-        fontSize: 16,
-      ),
-      actions: [
-        CleanDialogActionButtons(
-          actionTitle: 'Cancel',
-          textColor: const Color(0XFFF50057),
-          onPressed: () => Navigator.pop(context),
-        ),
-        CleanDialogActionButtons(
-          actionTitle: 'Aceptar',
-          textColor: const Color(0XFF27ae61),
-          onPressed: onPressed,
-        ),
-      ],
     );
   }
 }
