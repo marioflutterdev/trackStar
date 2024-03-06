@@ -1,0 +1,98 @@
+{
+    "email": "presentacion3@yopmail.com",
+    "password": "123456",
+    "data": {
+        "first_name": "Aura Jan neth",
+        "last _name": "Hernandez Uribe",
+        "address_profile": "Calle 35 # 2-37, Cartagena        ",
+        "document_profile": "7 63475000",
+        "phone_number": "45284 96315 ",
+        "super_user": false,
+        "avatar_url": "",
+        "center": "f317f7d3-05e1-4af5-955a-7ea371c8066d"
+    }
+}
+{
+    "email": "presentacion4@yopmail.com",
+    "password": "123456",
+    "data": {
+        "first_name": "Luis Fernando",
+        "last_name": "Rubio Jaramillo",
+        "address_profile": "Calle 19 # 2-01, Santa Marta",
+        "document_profile": "898623818",
+        "phone_number": "4528496315",
+        "super_user": false,
+        "avatar_url": "",
+        "center": "f317f7d3-05e1-4af5-955a-7ea371c8066d"
+    }
+}
+{
+    "email": "presentacion5@yopmail.com",
+    "password": "123456",
+    "data": {
+        "first_name": "Carmen Luz",
+        "last_name": "Trujillo Becerra",
+        "address_profile": "Avenida Santander # 23-01 , Manizales",
+        "document_profile": "9 38144307",
+        "phone_number": "4528496315",
+        "super_user": false,
+        "avatar_url": "",
+        "center": "f317f7d3-05e1-4af5-955a-7ea371c8066d"
+    }
+}
+{
+    "email": "presentacion6@yopmail.com",
+    "password": "123456",
+    "data": {
+        "first_name": "Gloria Stella",
+        "last_name": "Balbin Diaz",
+        "address_profile": "Carrera 6 # 5-33, Popayán",        ",
+        "document_profile": "10 22464618",
+        "phone_number": "4528496315",
+        "super_user": false,
+        "avatar_url": "",
+        "center": "f317f7d3-05e1-4af5-955a-7ea371c8066d"
+    }
+}
+{
+    "email": "presentacion7@yopmail.com",
+    "password": "123456",
+    "data": {
+        "first_name": "Luis Alberto",
+        "last_name": "Perez Galvis",
+        "address_profile": "Calle 10 No. 10-10, Medellín",
+        "document_profile": "12 72206646",
+        "phone_number": "4528496315",
+        "super_user": false,
+        "avatar_url": "",
+        "center": "f317f7d3-05e1-4af5-955a-7ea371c8066d"
+    }
+}
+{
+    "email": "presentacion8@yopmail.com",
+    "password": "123456",
+    "data": {
+        "first_name": "Ingrid Yulieth",
+        "last_name": "Molina Londoño",
+        "address_profile": "Calle 10 No . 10-10, Medellín",
+        "document_profile": "13 50930839",
+        "phone_number": "4528496315",
+        "super_user": false,
+        "avatar_url": "",
+        "center": "f317f7d3-05e1-4af5-955a-7ea371c8066d"
+    }
+}
+{
+    "email": "presentacion2@yopmail.com",
+    "password": "123456",
+    "data": {
+        "first_name": "Nuvia Silvana",
+        "last_name": "Tutistar Jojoa",
+        "address_profile": "Calle 10 No. 10-10, Medellín",
+        "document_profile": "14 59827178",
+        "phone_number": "4528496315",
+        "super_user": false,
+        "avatar_url": "https://img.freepik.com/fotos-premium/guapo-hombre-latino-sonriente-elegante-camiseta-blanca-compras-telefonos-moviles-linea_695242-226.jpg",
+        "center": "f317f7d3-05e1-4af5-955a-7ea371c8066d"
+    }
+}
