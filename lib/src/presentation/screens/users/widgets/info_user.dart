@@ -39,11 +39,13 @@ class InfoUser extends StatelessWidget {
               ),
               textCustom(user.email, title: 'Email'),
               textCustom(user.phoneNumber, title: 'Celular'),
-              textCustom(user.addressProfile, title: 'Direccion'),
+              textCustom(user.addressProfile, title: 'Dirección'),
               textCustom(user.documentProfile, title: 'CC'),
               Row(
                 children: [
-                  const Text('Adaministrador: '),
+                  user.superUser ?? false
+                      ? const Text('Administrador: ')
+                      : const Text('Empleado: '),
                   user.superUser ?? false
                       ? const Icon(
                           Icons.check_circle,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class FormCustomWidget extends StatefulWidget {
   final double? border;
   final bool? textExtraLarge;
+  final int? maxLines;
   final TextInputType? keyboardType;
   final String? hintText;
   final Widget? prefixIcon;
@@ -25,6 +26,7 @@ class FormCustomWidget extends StatefulWidget {
     this.validator,
     this.textExtraLarge = false,
     this.border,
+    this.maxLines,
   }) : super(key: key);
 
   @override
@@ -69,7 +71,8 @@ class _FormCustomWidgetState extends State<FormCustomWidget> {
         autocorrect: false,
         keyboardType: widget.keyboardType ?? TextInputType.emailAddress,
         obscureText: widget.obscureText == true ? _obscureText : false,
-        maxLength: widget.textExtraLarge! ? 150 : null,
+        maxLength:
+            widget.maxLines ?? (widget.textExtraLarge == true ? 150 : null),
         style: const TextStyle(color: Colors.black),
         validator: widget.validator,
         decoration: InputDecoration(

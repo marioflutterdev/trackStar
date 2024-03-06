@@ -1,5 +1,7 @@
 //!Funciones de SnackBar alertas
 
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:trackstar_web/src/presentation/widgets/snackbar_custom.dart';
 
@@ -78,4 +80,13 @@ resetPassaword(BuildContext context, String sudErroloTex) {
       elevation: 0,
     ),
   );
+}
+
+soloNumeros(v) {
+  if (v!.contains(
+    RegExp(r'[a-zA-Z]'),
+  )) {
+    return "Solo se permiten numeros";
+  }
+  return null;
 }

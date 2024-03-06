@@ -52,32 +52,40 @@ class _BodyFormAddUserState extends State<BodyFormAddUser> {
                     textTitle("Nombres"),
                     FormCustomWidget(
                       controller: nameController,
+                      maxLines: 30,
                       border: 15,
                       hintText: "Nombres",
                     ),
                     textTitle("Apellidos"),
                     FormCustomWidget(
+                      maxLines: 30,
                       controller: lastNameController,
                       border: 15,
                       hintText: "Apellidos",
                     ),
-                    textTitle("Direccion"),
+                    textTitle("Dirección"),
                     FormCustomWidget(
+                      maxLines: 45,
                       controller: addressController,
                       border: 15,
-                      hintText: "Direccion",
+                      hintText: "Dirección",
                     ),
                     textTitle("Documento"),
                     FormCustomWidget(
+                      maxLines: 10,
                       controller: documentUser,
+                      keyboardType: TextInputType.number,
                       border: 15,
+                      validator: (value) => soloNumeros(value),
                       hintText: "Documento",
                     ),
                     textTitle("Numero De Telefono"),
                     FormCustomWidget(
+                      maxLines: 10,
                       controller: numTelefonoController,
                       border: 15,
                       hintText: "Numero De Telefono",
+                      validator: (value) => soloNumeros(value),
                     ),
                     textTitle("Correo"),
                     FormCustomWidget(
@@ -93,16 +101,30 @@ class _BodyFormAddUserState extends State<BodyFormAddUser> {
                       border: 15,
                       hintText: "contraseña",
                     ),
-                    textTitle("Administrador"),
-                    Switch(
-                      value: superUser,
-                      activeColor: theme.onPrimaryContainer,
-                      inactiveThumbColor: theme.background,
-                      inactiveTrackColor: Colors.red,
-                      onChanged: (value) {
-                        setState(() {});
-                        superUser = value;
-                      },
+                    textTitle("Tipo De Usuario"),
+                    Row(
+                      children: [
+                        Switch(
+                          value: superUser,
+                          activeColor: theme.onPrimaryContainer,
+                          inactiveThumbColor: theme.background,
+                          inactiveTrackColor: Colors.red,
+                          onChanged: (value) {
+                            setState(() {});
+                            superUser = value;
+                          },
+                        ),
+                        const SizedBox(width: 10),
+                        superUser
+                            ? const Text(
+                                "Administrador",
+                                style: TextStyle(fontSize: 15),
+                              )
+                            : const Text(
+                                "Empleado",
+                                style: TextStyle(fontSize: 15),
+                              ),
+                      ],
                     ),
                   ],
                 ),
