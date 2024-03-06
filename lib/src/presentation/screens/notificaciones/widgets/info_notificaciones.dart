@@ -41,9 +41,9 @@ class NotificationInfo extends StatelessWidget {
                   ),
                   Text('ID: ${notification.id}'),
                   Text('Cantidad: ${notification.cantidad}'),
-                  Buttom(
-                    onPressed: () {},
-                  )
+                  // Buttom(
+                  //   onPressed: () {},
+                  // )
                 ],
               ),
             ],

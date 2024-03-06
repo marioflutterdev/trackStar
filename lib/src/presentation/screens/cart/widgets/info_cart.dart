@@ -16,6 +16,7 @@ class InfoCart extends StatelessWidget {
         context.watch<LoginAuthProvider>().user!.user.userMetadata.center;
     final solicitudes = context.watch<AddSolicitudes>();
     final notification = context.watch<AddNotificaciones>();
+    final getSolicitude = context.watch<GetSolicitudes>();
     return RepaintBoundary(
       child: CardInfoCustomWidget(
         child: Padding(
@@ -59,6 +60,7 @@ class InfoCart extends StatelessWidget {
                         idProduct: cart.product.id,
                         quantity: cart.quantity,
                       );
+                      getSolicitude.getSolicitudes();
                       Navigator.pop(context);
                     },
                   )
