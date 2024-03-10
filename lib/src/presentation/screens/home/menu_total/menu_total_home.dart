@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:provider/provider.dart';
 import 'package:trackstar_web/src/data/data.dart';
-import 'package:trackstar_web/src/presentation/widgets/form_custom.dart';
+import 'package:trackstar_web/src/presentation/widgets/widgets.dart';
 
 import '../../../../config/config.dart';
 import '../../../../config/theme/app_theme.dart';
 import '../../../../provider/providers.dart';
 import '../../screens.dart';
-import '../widgets/widgets.dart';
 
 class MenuTotalHome extends StatelessWidget {
   const MenuTotalHome({
@@ -133,7 +133,19 @@ class _ButtonMenu extends StatelessWidget {
             providerTheme.toggleMode();
           },
         ),
-        ButtonWidget(icon: Icons.leave_bags_at_home, onTap: () {}),
+        ButtonWidget(
+          icon: Icons.leave_bags_at_home,
+          onTap: () => showDialog(
+            context: context,
+            builder: (context) => YesOrNotWidget(
+              title: '¿Deseas cerrar tu sesion?',
+              content: 'Estas seguro de cerrar tu sesion',
+              onPressed: () {
+                context.go('/login');
+              },
+            ),
+          ),
+        )
       ],
     );
   }

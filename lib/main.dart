@@ -1,5 +1,3 @@
-
-
 import 'dart:html';
 
 import 'package:flutter/material.dart';
@@ -24,6 +22,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
+        ChangeNotifierProvider(create: (context) => DeleteCart()),
         ChangeNotifierProvider(create: (context) => NavegacionDrawerProvider()),
         ChangeNotifierProvider(
             create: (context) =>

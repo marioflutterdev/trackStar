@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:trackstar_web/src/data/data.dart';
 
@@ -11,11 +12,12 @@ class InfoCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user =
-        context.watch<LoginAuthProvider>().user!.user.userMetadata.center;
-    final solicitudes = context.watch<AddSolicitudes>();
-    final notification = context.watch<AddNotificaciones>();
-    final getSolicitude = context.watch<GetSolicitudes>();
+    final user = context.watch<LoginAuthProvider>().user;
+    //final solicitudes = context.watch<AddSolicitudes>();
+    //final notification = context.watch<AddNotificaciones>();
+    //final getSolicitude = context.watch<GetSolicitudes>();
+    final getProducts = context.watch<GetCartProducts>();
+    final deleteProducts = context.watch<DeleteCart>();
     return RepaintBoundary(
       child: CardInfoCustomWidget(
         child: Padding(
@@ -45,23 +47,30 @@ class InfoCart extends StatelessWidget {
                   ),
                   Text('ID: ${cart.id}'),
                   Text('Cantidad: ${cart.quantity}'),
-                  YesOrNotWidget(
-                    onPressed: () {
-                      solicitudes.addSolicitudes(
-                        center: user,
-                        centerPertenece: cart.centerPertenece,
-                        idProduct: cart.product.id,
-                        quantity: cart.quantity,
-                      );
-                      notification.addNotificaciones(
-                        center: cart.center,
-                        centerPertenece: cart.centerPertenece,
-                        idProduct: cart.product.id,
-                        quantity: cart.quantity,
-                      );
-                      getSolicitude.getSolicitudes();
-                      Navigator.pop(context);
-                    },
+                  ButtonWidget(
+                    icon: Icons.check,
+                    onTap: () => showDialog(
+                      context: context,
+                      builder: (context) => YesOrNotWidget(
+                        title: '¿Deseas solicitar este producto?',
+                        onPressed: () {
+                          /* solicitudes.addSolicitudes(
+                            center: user.user?.user.userMetadata.center,
+                            centerPertenece: cart.centerPertenece,
+                            idProduct: cart.product.id,
+                            quantity: cart.quantity,
+                          );
+                          notification.addNotificaciones(
+                            center: cart.center,
+                            centerPertenece: cart.centerPertenece,
+                            idProduct: cart.product.id,
+                            quantity: cart.quantity,
+                          );
+                          getSolicitude.getSolicitudes();
+                          Navigator.pop(context); */
+                        },
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -73,9 +82,13 @@ class InfoCart extends StatelessWidget {
                   onTap: () => showDialog(
                     context: context,
                     builder: (context) => YesOrNotWidget(
-                      onPressed: () {
-                        Navigator.pop(context);
-                        Navigator.pop(context);
+                      title: '¿Deseas eliminar este producto?',
+                      onPressed: () async {
+                        deleteProducts.delateCart(cart.id);
+                        Future.delayed(const Duration(milliseconds: 500), () {
+                          getProducts.getCart(user!);
+                        });
+                        context.pop(context);
                       },
                     ),
                   ),

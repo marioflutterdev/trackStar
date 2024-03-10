@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trackstar_web/src/config/constans/constans.dart';
 import 'package:trackstar_web/src/data/api/api.dart';
 
-class DelateCart extends ChangeNotifier {
+class DeleteCart extends ChangeNotifier {
   final String accessToken = 'Bearer $apikey';
 
   Future<bool> delateCart(
@@ -14,7 +14,7 @@ class DelateCart extends ChangeNotifier {
 
     final res = await dio.delete(url);
 
-    if (res.statusCode == 201) {
+    if (res.statusCode == 204) {
       return true;
     } else {
       return false;

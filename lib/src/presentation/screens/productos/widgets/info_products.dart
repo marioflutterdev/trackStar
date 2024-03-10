@@ -119,14 +119,21 @@ class _MenuButtonState extends State<_MenuButton> {
           visible: _visible,
           child: FadeInLeft(
             from: 50,
-            child: YesOrNotWidget(
-              onPressed: () {
-                delateProduct.delateProduct(widget.product.id);
-                Future.delayed(const Duration(milliseconds: 500), () {
-                  getUser.getProducts();
-                });
-                context.pop(context);
-              },
+            child: ButtonWidget(
+              icon: Icons.delete,
+              onTap: () => showDialog(
+                context: context,
+                builder: (context) => YesOrNotWidget(
+                  title: '¿Desea eliminar el producto?',
+                  onPressed: () {
+                    delateProduct.delateProduct(widget.product.id);
+                    Future.delayed(const Duration(milliseconds: 500), () {
+                      getUser.getProducts();
+                    });
+                    context.pop(context);
+                  },
+                ),
+              ),
             ),
           ),
         ),
