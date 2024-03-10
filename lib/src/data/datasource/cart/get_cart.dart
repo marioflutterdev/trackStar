@@ -20,7 +20,7 @@ class GetCartProducts extends ChangeNotifier {
 
   Future<void> getCart(User user) async {
     final url =
-        '/rest/v1/cart?center=eq.${user.user.userMetadata.center}&select=*,product:product(*)';
+        '/rest/v1/cart?center=eq.${user.user.userMetadata.center}&select=*,product:product(*),cetroget:center_pertenece(*)';
     loading = true;
 
     _cartProducts.clear();

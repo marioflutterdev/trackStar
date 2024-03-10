@@ -41,12 +41,18 @@ class InfoCart extends StatelessWidget {
                   Text(
                     cart.product.nameProduct,
                     style: const TextStyle(
-                      fontSize: 20,
+                      fontSize: 30,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text('ID: ${cart.id}'),
-                  Text('Cantidad: ${cart.quantity}'),
+                  textCustom(
+                    title: 'Pertenece',
+                    value: cart.centerModel?.nameCenter,
+                  ),
+                  textCustom(
+                    title: 'Cantidad',
+                    value: cart.quantity.toString(),
+                  ),
                   ButtonWidget(
                     icon: Icons.check,
                     onTap: () => showDialog(
@@ -98,6 +104,15 @@ class InfoCart extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Row textCustom({String? title, String? value}) {
+    return Row(
+      children: [
+        Text('$title: ', style: const TextStyle(fontSize: 20)),
+        Text(value ?? 'no data', style: const TextStyle(fontSize: 15)),
+      ],
     );
   }
 }

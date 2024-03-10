@@ -31,8 +31,10 @@ class CenterModel {
         addressCenter: json["address_center"],
         descriptionCenter: json["description_center"],
         avatarUrl: json["avatar_url"],
-        inventory: List<InventoryModel>.from(
-            json["inventory"].map((x) => InventoryModel.fromJson(x))),
+        inventory: json["inventory"] == null
+            ? []
+            : List<InventoryModel>.from(
+                json["inventory"].map((x) => InventoryModel.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
