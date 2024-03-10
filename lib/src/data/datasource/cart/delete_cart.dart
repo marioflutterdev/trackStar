@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:trackstar_web/src/config/constans/constans.dart';
+import 'package:trackstar_web/src/data/api/api.dart';
 
-import '../../../config/constans/constans.dart';
-import '../../api/api.dart';
-
-class DelateProduct extends ChangeNotifier {
+class DelateCart extends ChangeNotifier {
   final String accessToken = 'Bearer $apikey';
 
-  Future<bool> delateProduct(
+  Future<bool> delateCart(
     String id,
   ) async {
-    final url = '/rest/v1/products?id=eq.$id';
+    final url = '/rest/v1/center?id=eq.$id';
 
     dio.options.headers['Authorization'] = ' $accessToken';
 

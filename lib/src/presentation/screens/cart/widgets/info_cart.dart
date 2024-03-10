@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:trackstar_web/src/data/data.dart';
 import 'package:trackstar_web/src/presentation/screens/home/widgets/widgets.dart';
@@ -63,9 +64,19 @@ class InfoCart extends StatelessWidget {
                       getSolicitude.getSolicitudes();
                       Navigator.pop(context);
                     },
-                  )
+                  ),
                 ],
               ),
+              Positioned(
+                top: 0,
+                right: 0,
+                child: Buttom(
+                  icon: Icons.delete,
+                  onPressed: () {
+                    //todo funcion para borrar el item
+                  },
+                ),
+              )
             ],
           ),
         ),
@@ -76,16 +87,18 @@ class InfoCart extends StatelessWidget {
 
 class Buttom extends StatelessWidget {
   final void Function() onPressed;
+  final IconData? icon;
 
   const Buttom({
     super.key,
     required this.onPressed,
+    this.icon,
   });
 
   @override
   Widget build(BuildContext context) {
     return ButtonCustomHome(
-      icon: Icons.logout,
+      icon: icon ?? Icons.logout,
       onTap: () => showDialog(
         context: context,
         builder: (context) => _DialogLeave(
