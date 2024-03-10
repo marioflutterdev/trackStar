@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../config/config.dart';
-import '../../../provider/providers.dart';
+import '../../../../provider/providers.dart';
 import '../../../widgets/widgets.dart';
 import '../widgets/widgets.dart';
 

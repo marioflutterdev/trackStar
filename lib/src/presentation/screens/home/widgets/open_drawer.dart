@@ -6,7 +6,7 @@ class OpenDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ButtonCustomHome(
+    return ButtonWidget(
       icon: Icons.menu_open,
       onTap: () => Scaffold.of(context).openDrawer(),
     );

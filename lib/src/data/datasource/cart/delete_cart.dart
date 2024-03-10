@@ -8,7 +8,7 @@ class DelateCart extends ChangeNotifier {
   Future<bool> delateCart(
     String id,
   ) async {
-    final url = '/rest/v1/center?id=eq.$id';
+    final url = '/rest/v1/cart?id=eq.$id';
 
     dio.options.headers['Authorization'] = ' $accessToken';
 

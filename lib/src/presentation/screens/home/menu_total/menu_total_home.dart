@@ -6,7 +6,7 @@ import 'package:trackstar_web/src/presentation/widgets/form_custom.dart';
 
 import '../../../../config/config.dart';
 import '../../../../config/theme/app_theme.dart';
-import '../../../provider/providers.dart';
+import '../../../../provider/providers.dart';
 import '../../screens.dart';
 import '../widgets/widgets.dart';
 
@@ -100,7 +100,7 @@ class _ButtonMenu extends StatelessWidget {
                   menuController.paginaActual == 7
               ? true
               : false,
-          child: ButtonCustomHome(
+          child: ButtonWidget(
             icon: Icons.arrow_back_ios_new_outlined,
             onTap: () {
               menuController.paginaActual = 2;
@@ -125,7 +125,7 @@ class _ButtonMenu extends StatelessWidget {
           visible: menuController.paginaActual == 1 ? true : false,
           child: const SearchProduct(),
         ),
-        ButtonCustomHome(
+        ButtonWidget(
           icon: providerTheme.themeData == dartMode
               ? Icons.light_mode
               : Icons.dark_mode_outlined,
@@ -133,7 +133,7 @@ class _ButtonMenu extends StatelessWidget {
             providerTheme.toggleMode();
           },
         ),
-        const LeaveLogin(),
+        ButtonWidget(icon: Icons.leave_bags_at_home, onTap: () {}),
       ],
     );
   }
@@ -167,7 +167,7 @@ class _SearchProductState extends State<SearchProduct> {
             },
           ),
         ),
-        ButtonCustomHome(
+        ButtonWidget(
           icon: Icons.search,
           onTap: () {
             nameProduct.searchProducts(textController.text);

@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../data/data.dart';
-import '../../../provider/providers.dart';
+import '../../../../provider/providers.dart';
 import '../../../widgets/widgets.dart';
 import 'body_form_edit_center.dart';
 
@@ -156,7 +156,7 @@ class _MenuButtonState extends State<_MenuButton> {
           visible: _visible,
           child: FadeInLeft(
             from: 70,
-            child: DelateItemWidget(
+            child: YesOrNotWidget(
               onPressed: () {
                 deleteCenter.delateCenter(widget.center.id);
 

@@ -119,7 +119,7 @@ class _MenuButtonState extends State<_MenuButton> {
           visible: _visible,
           child: FadeInLeft(
             from: 50,
-            child: DelateItemWidget(
+            child: YesOrNotWidget(
               onPressed: () {
                 delateProduct.delateProduct(widget.product.id);
                 Future.delayed(const Duration(milliseconds: 500), () {

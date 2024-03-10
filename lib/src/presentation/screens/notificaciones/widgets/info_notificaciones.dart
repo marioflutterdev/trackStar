@@ -64,7 +64,7 @@ class Buttom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ButtonCustomHome(
+    return ButtonWidget(
       icon: Icons.logout,
       onTap: () => showDialog(
         context: context,

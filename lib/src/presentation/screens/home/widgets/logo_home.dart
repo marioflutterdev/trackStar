@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trackstar_web/src/presentation/screens/home/info_user/info_user.dart';
 
-import '../../../provider/providers.dart';
+import '../../../../provider/providers.dart';
 
 class LogoHome extends StatelessWidget {
   const LogoHome({super.key});

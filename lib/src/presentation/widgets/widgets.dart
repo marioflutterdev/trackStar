@@ -1,6 +1,7 @@
+export 'package:trackstar_web/src/presentation/screens/home/widgets/widgets.dart';
 export 'package:trackstar_web/src/presentation/widgets/botom_new_item.dart';
 export 'package:trackstar_web/src/presentation/widgets/imagen_avatar.dart';
-export 'package:trackstar_web/src/presentation/widgets/delate_item_custom.dart';
+export 'package:trackstar_web/src/presentation/widgets/yes_or_not_custom.dart';
 export 'package:trackstar_web/src/presentation/widgets/form_funcion.dart';
 export 'package:trackstar_web/src/presentation/widgets/body_update_item.dart';
 export 'package:trackstar_web/src/presentation/widgets/card_info_custom.dart';

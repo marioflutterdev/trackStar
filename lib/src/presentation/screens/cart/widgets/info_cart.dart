@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:trackstar_web/src/data/data.dart';
-import 'package:trackstar_web/src/presentation/screens/home/widgets/widgets.dart';
 
 import '../../../widgets/widgets.dart';
 
@@ -47,7 +45,7 @@ class InfoCart extends StatelessWidget {
                   ),
                   Text('ID: ${cart.id}'),
                   Text('Cantidad: ${cart.quantity}'),
-                  Buttom(
+                  YesOrNotWidget(
                     onPressed: () {
                       solicitudes.addSolicitudes(
                         center: user,
@@ -70,77 +68,23 @@ class InfoCart extends StatelessWidget {
               Positioned(
                 top: 0,
                 right: 0,
-                child: Buttom(
+                child: ButtonWidget(
                   icon: Icons.delete,
-                  onPressed: () {
-                    //todo funcion para borrar el item
-                  },
+                  onTap: () => showDialog(
+                    context: context,
+                    builder: (context) => YesOrNotWidget(
+                      onPressed: () {
+                        Navigator.pop(context);
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
                 ),
               )
             ],
           ),
         ),
       ),
-    );
-  }
-}
-
-class Buttom extends StatelessWidget {
-  final void Function() onPressed;
-  final IconData? icon;
-
-  const Buttom({
-    super.key,
-    required this.onPressed,
-    this.icon,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ButtonCustomHome(
-      icon: icon ?? Icons.logout,
-      onTap: () => showDialog(
-        context: context,
-        builder: (context) => _DialogLeave(
-          onPressed: onPressed,
-        ),
-      ),
-    );
-  }
-}
-
-class _DialogLeave extends StatelessWidget {
-  final void Function() onPressed;
-  const _DialogLeave({
-    super.key,
-    required this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return CleanDialog(
-      title: 'Solicitar El Producto',
-      content: 'Estas Seguro de Esta Acción',
-      backgroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
-      titleTextStyle: const TextStyle(
-        fontSize: 25,
-        fontWeight: FontWeight.bold,
-      ),
-      contentTextStyle: const TextStyle(
-        fontSize: 16,
-      ),
-      actions: [
-        CleanDialogActionButtons(
-          actionTitle: 'Cancel',
-          textColor: const Color(0XFFF50057),
-          onPressed: () => Navigator.pop(context),
-        ),
-        CleanDialogActionButtons(
-          actionTitle: 'Aceptar',
-          textColor: const Color(0XFF27ae61),
-          onPressed: onPressed,
-        ),
-      ],
     );
   }
 }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../config/config.dart';
-import '../../../provider/providers.dart';
+import '../../../../provider/providers.dart';
 import '../drawer/menu_drawer_home.dart';
 import '../menu_total/menu_total_home.dart';
 import '../widgets/widgets.dart';
