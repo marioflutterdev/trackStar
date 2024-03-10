@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:trackstar_web/src/data/data.dart';
 
-import '../../../../data/data.dart';
 import '../../../widgets/widgets.dart';
 
 class InfoSolicitud extends StatelessWidget {
-  final NotificaiconesSolicitudes solicitud;
+  final NotificacionesSolicitudesModel solicitud;
 
   const InfoSolicitud({Key? key, required this.solicitud}) : super(key: key);
 
@@ -26,19 +26,21 @@ class InfoSolicitud extends StatelessWidget {
                         Theme.of(context).colorScheme.onPrimaryContainer,
                     child: CircleAvatar(
                       radius: 70,
-                      backgroundImage:
-                          NetworkImage(solicitud.producto?.avatarUrl ?? ''),
+                      backgroundImage: NetworkImage(
+                          solicitud.pedido.producto.avatarUrl ?? ''),
                     ),
                   ),
                   Text(
-                    solicitud.producto!.nameProduct,
+                    solicitud.pedido.producto.nameProduct,
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text('Fecha solicitud: ${solicitud.createdAt}'),
-                  Text('Cantidad que solicita: ${solicitud.cantidad}'),
+                  Text('Fecha solicitud: ${solicitud.pedido.createdAt}'),
+                  Text('Cantidad que solicita: ${solicitud.pedido.cantidad}'),
+                  Text(
+                      'centro a que pertenece: ${solicitud.pedido.idNotificacion?.centro.nameCenter}'),
                 ],
               ),
             ],

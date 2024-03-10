@@ -6,12 +6,12 @@ import '../../api/api.dart';
 
 class GetSolicitudes extends ChangeNotifier {
   bool _loading = true;
-  final List<NotificaiconesSolicitudes> _solicitudes = [];
+  final List<NotificacionesSolicitudesModel> _solicitudes = [];
 
   final String accessToken = 'Bearer $apikey';
   bool get loading => _loading;
 
-  List<NotificaiconesSolicitudes> get solicitudes => _solicitudes;
+  List<NotificacionesSolicitudesModel> get solicitudes => _solicitudes;
 
   set loading(bool valor) {
     _loading = valor;
@@ -33,7 +33,7 @@ class GetSolicitudes extends ChangeNotifier {
     if (res.statusCode == 200) {
       res.data.forEach(
         (element) {
-          _solicitudes.add(NotificaiconesSolicitudes.fromJson(element));
+          _solicitudes.add(NotificacionesSolicitudesModel.fromJson(element));
         },
       );
 

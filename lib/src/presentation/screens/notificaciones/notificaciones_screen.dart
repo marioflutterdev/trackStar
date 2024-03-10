@@ -24,7 +24,7 @@ class NotificationsScreen extends StatelessWidget {
             ),
             itemBuilder: (BuildContext context, int index) {
               return NotificationInfo(
-                notification: notifications.notificaciones[index],
+                notificationes: notifications.notificaciones[index],
               );
             },
           ),
