@@ -23,13 +23,16 @@ class GetSolicitudes extends ChangeNotifier {
   }
 
   Future<void> getSolicitudes() async {
-    const url = '/rest/v1/solicitudes?select=*,producto:producto(*)';
+    const url =
+        '/rest/v1/solicitud?select=id,nombre_centro,centro:centro(*),producto:producto(*),cantidad';
     loading = true;
 
     dio.options.headers['Authorization'] = ' $accessToken';
 
     final res = await dio.get(url);
     print(res.data);
+    print(res.statusCode);
+
     if (res.statusCode == 200) {
       res.data.forEach(
         (element) {

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import 'package:animate_do/animate_do.dart';
@@ -39,7 +38,7 @@ class ButtonHome extends StatelessWidget {
           from: 100,
           child: ButtomCustom(
             icon: Icons.directions_bus_filled_outlined,
-            title: 'C. Distribucion',
+            title: 'Sucursales',
             opTap: () => menuController.paginaActual = 2,
             colors: selectColor(menuController, 2),
           ),

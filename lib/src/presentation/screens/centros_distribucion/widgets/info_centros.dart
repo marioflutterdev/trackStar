@@ -18,8 +18,12 @@ class InfoCenter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userCenter =
+        context.watch<LoginAuthProvider>().user?.user.userMetadata.center;
+    final color = center.id == userCenter ? const Color(0XffFCAC24) : null;
     return RepaintBoundary(
       child: CardInfoCustomWidget(
+        color: color,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Stack(
@@ -30,8 +34,9 @@ class InfoCenter extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 75,
-                    backgroundColor:
-                        Theme.of(context).colorScheme.onPrimaryContainer,
+                    backgroundColor: center.id == userCenter
+                        ? const Color(0XffFCAC24)
+                        : Theme.of(context).colorScheme.onPrimaryContainer,
                     child: CircleAvatar(
                       radius: 70,
                       backgroundImage: NetworkImage(center.avatarUrl!),

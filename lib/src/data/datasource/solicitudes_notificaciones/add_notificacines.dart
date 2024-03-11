@@ -31,18 +31,12 @@ class AddNotificaciones extends ChangeNotifier {
       "centro_peticion": centerPertenece
     };
 
-    print(data);
     final res = await dio.post(url, data: data);
-    print(res.statusCode);
 
     if (res.statusCode == 201) {
-      print(res.data);
-
       loading = false;
       return true;
     } else {
-      print(res.data);
-
       loading = false;
       return false;
     }

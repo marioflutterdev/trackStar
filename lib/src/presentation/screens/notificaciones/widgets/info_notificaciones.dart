@@ -29,21 +29,19 @@ class NotificationInfo extends StatelessWidget {
                         Theme.of(context).colorScheme.onPrimaryContainer,
                     child: CircleAvatar(
                       radius: 70,
-                      backgroundImage: NetworkImage(
-                          notificationes.pedido.producto.avatarUrl ?? ''),
+                      backgroundImage:
+                          NetworkImage(notificationes.producto.avatarUrl ?? ''),
                     ),
                   ),
                   Text(
-                    notificationes.pedido.producto.nameProduct,
+                    notificationes.producto.nameProduct,
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text('Fecha: ${notificationes.pedido.createdAt}'),
-                  Text('Cantidad: ${notificationes.pedido.cantidad}'),
-                  Text(
-                      'centro que lo solicita: ${notificationes.pedido.idSolicitud?.centro.nameCenter}'),
+                  Text('Cantidad: ${notificationes.cantidad}'),
+                  Text('centro que lo solicita: ${notificationes.nameCenter}'),
                 ],
               ),
             ],

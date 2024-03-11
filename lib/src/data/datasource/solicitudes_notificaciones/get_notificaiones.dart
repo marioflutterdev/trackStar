@@ -18,9 +18,13 @@ class GetNotificaciones extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> getSolicitudes() async {
+  GetNotificaciones() {
+    getNotificaciones();
+  }
+
+  Future<void> getNotificaciones() async {
     const url =
-        'rest/v1/notificacion?id.eq.78b5a4d7-f16c-440a-9c9e-45ba56afe026&select=centro,id_pedido:id_pedido(cantidad,created_at,producto:producto(*),id_solicitud:id_solicitud(centro:centro(*)))';
+        '/rest/v1/notificacion?select=id,nombre_centro,centro:centro(*),producto:producto(*),cantidad';
     loading = true;
 
     dio.options.headers['Authorization'] = ' $accessToken';

@@ -18,23 +18,14 @@ class MenuTotalHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final movile = AppResponsive.isLargeMobile(context);
-    final theme = Theme.of(context).colorScheme;
     final providerTheme = context.watch<ThemeProvider>();
     return Container(
       width: double.infinity,
       height: double.infinity,
       margin: EdgeInsets.fromLTRB(
           movile ? 15 : 100, movile ? 15 : 15, 15, movile ? 15 : 50),
-      decoration: BoxDecoration(
-        color: theme.onSecondaryContainer,
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black26,
-            blurRadius: 10,
-            offset: Offset(10, 10),
-          )
-        ],
+      decoration: const BoxDecoration(
+        color: Colors.transparent,
       ),
       child: Column(
         children: [

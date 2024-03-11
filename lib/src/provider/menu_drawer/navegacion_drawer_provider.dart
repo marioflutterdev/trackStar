@@ -4,11 +4,11 @@ import 'package:trackstar_web/src/data/data.dart';
 List<String> categorias = [
   'Usuarios',
   'Productos',
-  'Centros de Distribución',
+  'Sucursales',
   'Carrito',
   'Solicitudes',
   'Notificaciones',
-  'inventario',
+  'Inventario ',
   'Entradas y Salidas',
 ];
 

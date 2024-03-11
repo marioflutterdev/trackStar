@@ -1,36 +1,50 @@
 // To parse this JSON data, do
 //
-//     final notificacionModel = notificacionModelFromJson(jsonString);
+//     final notificacionesSolicitudesModel = notificacionesSolicitudesModelFromJson(jsonString);
 
 import 'dart:convert';
 
-import 'package:trackstar_web/src/data/models/pedido/pedido_model.dart';
+import 'package:trackstar_web/src/data/data.dart';
 
-List<NotificacionesSolicitudesModel> notificacionModelFromJson(String str) =>
+List<NotificacionesSolicitudesModel> notificacionesSolicitudesModelFromJson(
+        String str) =>
     List<NotificacionesSolicitudesModel>.from(json
         .decode(str)
         .map((x) => NotificacionesSolicitudesModel.fromJson(x)));
 
-String notificacionModelToJson(List<NotificacionesSolicitudesModel> data) =>
+String notificacionesSolicitudesModelToJson(
+        List<NotificacionesSolicitudesModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class NotificacionesSolicitudesModel {
-  final String centro;
-  final PedidoModel pedido;
+  final int id;
+  final String? nameCenter;
+  final int cantidad;
+  final CenterModel centro;
+  final ProductsModel producto;
 
   NotificacionesSolicitudesModel({
+    required this.id,
+    required this.cantidad,
     required this.centro,
-    required this.pedido,
+    required this.producto,
+    this.nameCenter,
   });
 
   factory NotificacionesSolicitudesModel.fromJson(Map<String, dynamic> json) =>
       NotificacionesSolicitudesModel(
-        centro: json["centro"],
-        pedido: PedidoModel.fromJson(json["id_pedido"]),
+        id: json["id"],
+        nameCenter: json["nombre_centro"],
+        cantidad: json["cantidad"],
+        centro: CenterModel.fromJson(json["centro"]),
+        producto: ProductsModel.fromJson(json["producto"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "centro": centro,
-        "id_pedido": pedido.toJson(),
+        "id": id,
+        "nombre_centro": nameCenter,
+        "cantidad": cantidad,
+        "centro": centro.toJson(),
+        "producto": producto.toJson(),
       };
 }

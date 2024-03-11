@@ -26,21 +26,19 @@ class InfoSolicitud extends StatelessWidget {
                         Theme.of(context).colorScheme.onPrimaryContainer,
                     child: CircleAvatar(
                       radius: 70,
-                      backgroundImage: NetworkImage(
-                          solicitud.pedido.producto.avatarUrl ?? ''),
+                      backgroundImage:
+                          NetworkImage(solicitud.producto.avatarUrl ?? ''),
                     ),
                   ),
                   Text(
-                    solicitud.pedido.producto.nameProduct,
+                    solicitud.producto.nameProduct,
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text('Fecha solicitud: ${solicitud.pedido.createdAt}'),
-                  Text('Cantidad que solicita: ${solicitud.pedido.cantidad}'),
-                  Text(
-                      'centro a que pertenece: ${solicitud.pedido.idNotificacion?.centro.nameCenter}'),
+                  Text('Cantidad que solicita: ${solicitud.cantidad}'),
+                  Text('centro a que pertenece: ${solicitud.nameCenter}'),
                 ],
               ),
             ],

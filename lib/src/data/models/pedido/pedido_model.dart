@@ -19,8 +19,12 @@ class PedidoModel {
         cantidad: json["cantidad"],
         producto: ProductsModel.fromJson(json["producto"]),
         createdAt: DateTime.parse(json["created_at"]),
-        idSolicitud: IdItem.fromJson(json["id_solicitud"]),
-        idNotificacion: IdItem.fromJson(json["id_notificacion"]),
+        idSolicitud: json["id_solicitud"] == null
+            ? null
+            : IdItem.fromJson(json["id_solicitud"]),
+        idNotificacion: json["id_notificacion"] == null
+            ? null
+            : IdItem.fromJson(json["id_notificacion"]),
       );
 
   Map<String, dynamic> toJson() => {
