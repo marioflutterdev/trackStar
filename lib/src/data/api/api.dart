@@ -11,6 +11,7 @@ Dio dio = Dio(
     headers: <String, String>{
       'Content-Type': 'application/json; charset=utf-8',
       'apikey': apikey,
+      'Authorization': 'Bearer $apikey',
     },
   ),
 );

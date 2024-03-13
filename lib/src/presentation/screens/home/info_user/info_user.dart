@@ -52,28 +52,36 @@ class InfoUserDawer extends StatelessWidget {
           ),
         ),
         const Divider(),
-        Text(
-          'Numero: ${user?.phoneNumber}',
-          style: const TextStyle(
-            fontSize: 15,
-            color: Colors.black,
-          ),
-        ),
-        Text(
-          'CC: ${user?.documentProfile}',
-          style: const TextStyle(
-            fontSize: 15,
-            color: Colors.black,
-          ),
-        ),
+        textCustom(user?.phoneNumber, title: 'Celular'),
+        textCustom(user?.documentProfile, title: 'Documento'),
         Row(
           children: [
-            const Text('Tipo usario: '),
+            const Text('Tipo de Usuario: ',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                )),
             user!.superUser
                 ? const Text('Administrador')
                 : const Text('Empleado'),
           ],
+        ),
+        const SizedBox(
+          height: 100,
         )
+      ],
+    );
+  }
+
+  Row textCustom(String? value, {String? title}) {
+    const TextStyle textStyles = TextStyle(
+      fontSize: 15,
+      fontWeight: FontWeight.bold,
+    );
+    return Row(
+      children: [
+        Text('$title: ', style: textStyles),
+        Text(value ?? 'no data'),
       ],
     );
   }

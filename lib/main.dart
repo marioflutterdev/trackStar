@@ -25,8 +25,10 @@ void main() {
         ChangeNotifierProvider(create: (context) => DeleteCart()),
         ChangeNotifierProvider(create: (context) => NavegacionDrawerProvider()),
         ChangeNotifierProvider(
-            create: (context) =>
-                ResetPasswordProvider(accessToken: accessToken.toString())),
+          create: (context) => ResetPasswordProvider(
+            accessToken: accessToken.toString(),
+          ),
+        ),
         ChangeNotifierProvider(create: (context) => GetUser()),
         ChangeNotifierProvider(create: (context) => GetNotificaciones()),
         ChangeNotifierProvider(create: (context) => GetSolicitudes()),
@@ -39,6 +41,7 @@ void main() {
         ChangeNotifierProvider(create: (context) => GetCenterDistribution()),
         ChangeNotifierProvider(create: (context) => NewProduct()),
         ChangeNotifierProvider(create: (context) => EditProduct()),
+        ChangeNotifierProvider(create: (context) => AddPedido()),
         ChangeNotifierProvider(create: (context) => DelateProduct()),
         ChangeNotifierProvider(create: (context) => NewCenter()),
         ChangeNotifierProvider(create: (context) => DeleteCenter()),

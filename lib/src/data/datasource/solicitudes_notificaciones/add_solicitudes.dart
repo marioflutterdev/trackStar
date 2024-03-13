@@ -5,41 +5,40 @@ class AddSolicitudes extends ChangeNotifier {
   bool _loading = false;
   bool get loading => _loading;
 
-  get accessToken => null;
   set loading(bool valor) {
     _loading = valor;
     notifyListeners();
   }
 
-  Future<bool> addSolicitudes({
+  Future<dynamic> addSolicitudes({
+    final String? idSolicitudes,
     final String? center,
     final String? idProduct,
-    final String? centerPertenece,
     final int? quantity,
+    final String? nombreCenterPertenece,
   }) async {
     loading = true;
 
-    const String url = '/rest/v1/solicitudes';
+    const String url = '/rest/v1/solicitud';
 
-    dio.options.headers['Authorization'] = ' $accessToken';
     dio.options.headers['Prefer'] = 'return=minimal';
 
     final data = {
-      "mi_centro": center,
+      "id": idSolicitudes,
+      "centro": center,
       "producto": idProduct,
       "cantidad": quantity,
-      "centro_peticion": centerPertenece
+      "nombre_centro": nombreCenterPertenece
     };
 
-    print(data);
     final res = await dio.post(url, data: data);
     print(res.statusCode);
+    print(res.data);
+
     if (res.statusCode == 201) {
-      print(res.data);
       loading = false;
       return true;
     } else {
-      print(res.data);
       loading = false;
       return false;
     }

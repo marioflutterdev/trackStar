@@ -125,7 +125,7 @@ class _ButtonMenu extends StatelessWidget {
           },
         ),
         ButtonWidget(
-          icon: Icons.leave_bags_at_home,
+          icon: Icons.exit_to_app_outlined,
           onTap: () => showDialog(
             context: context,
             builder: (context) => YesOrNotWidget(

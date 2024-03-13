@@ -6,7 +6,7 @@ import '../../../../../../data/data.dart';
 import '../../../../../widgets/widgets.dart';
 
 class BodyFormAddInventory extends StatefulWidget {
-  final String product;
+  final ProductsModel product;
 
   const BodyFormAddInventory({
     super.key,
@@ -64,7 +64,7 @@ class _BodyFormAddInventoryState extends State<BodyFormAddInventory> {
                 if (_formKey.currentState!.validate()) {
                   final createOk = await addIventory.createNewProduct(
                     center: center,
-                    nameProduct: widget.product,
+                    nameProduct: widget.product.id,
                     quantity: cantidadController.text,
                     price: precioController.text,
                   );
@@ -74,11 +74,11 @@ class _BodyFormAddInventoryState extends State<BodyFormAddInventory> {
                       resetPassaword(context, 'Producto creado correctamente');
                       getCenter.getCenter();
                       Future.delayed(
-                        const Duration(milliseconds: 500),
+                        const Duration(milliseconds: 2000),
                         () => Navigator.pop(context),
                       );
                     } else {
-                      errorAlert(context);
+                      errorAlertCustom(context);
                     }
                   }
                 }

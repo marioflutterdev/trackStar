@@ -13,9 +13,10 @@ class InfoCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = context.watch<LoginAuthProvider>().user;
-    //final solicitudes = context.watch<AddSolicitudes>();
-    //final notification = context.watch<AddNotificaciones>();
-    //final getSolicitude = context.watch<GetSolicitudes>();
+    final solicitudes = context.watch<AddSolicitudes>();
+    final notificaciones = context.watch<AddNotificaciones>();
+    final pedidos = context.watch<AddPedido>();
+
     final getProducts = context.watch<GetCartProducts>();
     final deleteProducts = context.watch<DeleteCart>();
     return RepaintBoundary(
@@ -59,21 +60,26 @@ class InfoCart extends StatelessWidget {
                       context: context,
                       builder: (context) => YesOrNotWidget(
                         title: '¿Deseas solicitar este producto?',
-                        onPressed: () {
-                          /* solicitudes.addSolicitudes(
-                            center: user.user?.user.userMetadata.center,
-                            centerPertenece: cart.centerPertenece,
-                            idProduct: cart.product.id,
-                            quantity: cart.quantity,
-                          );
-                          notification.addNotificaciones(
-                            center: cart.center,
-                            centerPertenece: cart.centerPertenece,
-                            idProduct: cart.product.id,
-                            quantity: cart.quantity,
-                          );
-                          getSolicitude.getSolicitudes();
-                          Navigator.pop(context); */
+                        onPressed: () async {
+                          final data = await pedidos.addPedidos();
+
+                          if (data != false) {
+                            solicitudes.addSolicitudes(
+                              idSolicitudes: pedidos.uuidSolicitudes,
+                              center: user?.user.userMetadata.center,
+                              idProduct: cart.product.id,
+                              quantity: cart.quantity,
+                              nombreCenterPertenece:
+                                  cart.centerModel?.nameCenter,
+                            );
+                            notificaciones.addNotificaciones(
+                              idNotificaciones: pedidos.uuidNotificaciones,
+                              center: user?.user.userMetadata.center,
+                              idProduct: cart.product.id,
+                              quantity: cart.quantity,
+                              centroNotificado: cart.centerModel?.nameCenter,
+                            );
+                          }
                         },
                       ),
                     ),

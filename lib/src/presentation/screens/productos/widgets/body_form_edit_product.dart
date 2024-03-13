@@ -168,7 +168,7 @@ class _ButtonSentNewProduct extends StatelessWidget {
               );
               if (createOk) {
               } else {
-                errorAlert(context);
+                errorAlertCustom(context);
               }
             }
           }

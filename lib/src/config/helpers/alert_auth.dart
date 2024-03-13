@@ -16,6 +16,22 @@ errorAlert(
   );
 }
 
+errorAlertCustom(
+  BuildContext context,
+) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(
+      content: SnackbarCustomWidget(
+        erroText: 'Advertencia',
+        sudErroloText: 'Por favor completa todos los campos',
+      ),
+      behavior: SnackBarBehavior.floating,
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+    ),
+  );
+}
+
 alertEmail(String? value, BuildContext context) {
   const pattern = r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'"
       r'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-'

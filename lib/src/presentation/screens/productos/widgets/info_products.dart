@@ -62,7 +62,7 @@ class InfoProducts extends StatelessWidget {
                 child: BodyUpdateItemCustomWidget(
                   title: 'Agregar Producto al Inventario',
                   child: BodyFormAddInventory(
-                    product: product.id,
+                    product: product,
                   ),
                 ),
               )
