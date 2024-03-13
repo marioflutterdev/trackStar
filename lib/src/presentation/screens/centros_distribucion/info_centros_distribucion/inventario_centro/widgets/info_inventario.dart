@@ -58,8 +58,9 @@ class InfoInventy extends StatelessWidget {
                   top: 5,
                   right: 0,
                   child: BodyUpdateItemCustomWidget(
-                    title: 'agregar producto al carrito',
+                    title: 'Agregar Producto al Carrito',
                     child: BodyFormAddCart(
+                      quantity: inventory.quantity,
                       product: inventory.product.id,
                       idCenterPertence: inventory.center,
                     ),

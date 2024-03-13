@@ -78,7 +78,7 @@ class _BodyFormAddInventoryState extends State<BodyFormAddInventory> {
                         () => Navigator.pop(context),
                       );
                     } else {
-                      errorAlertCustom(context);
+                      errorAlertCustom(context: context);
                     }
                   }
                 }

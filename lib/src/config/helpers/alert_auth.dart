@@ -16,14 +16,15 @@ errorAlert(
   );
 }
 
-errorAlertCustom(
-  BuildContext context,
-) {
+errorAlertCustom({
+  required BuildContext context,
+  String? text,
+}) {
   ScaffoldMessenger.of(context).showSnackBar(
-    const SnackBar(
+    SnackBar(
       content: SnackbarCustomWidget(
         erroText: 'Advertencia',
-        sudErroloText: 'Por favor completa todos los campos',
+        sudErroloText: text ?? 'Por favor completa todos los campos',
       ),
       behavior: SnackBarBehavior.floating,
       backgroundColor: Colors.transparent,

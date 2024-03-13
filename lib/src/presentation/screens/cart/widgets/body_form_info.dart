@@ -6,12 +6,14 @@ import '../../../../data/data.dart';
 import '../../../widgets/widgets.dart';
 
 class BodyFormAddCart extends StatefulWidget {
+  final int quantity;
   final String product;
   final String idCenterPertence;
 
   const BodyFormAddCart({
     super.key,
     required this.product,
+    required this.quantity,
     required this.idCenterPertence,
   });
 
@@ -54,6 +56,14 @@ class _BodyFormAddCartState extends State<BodyFormAddCart> {
               loading: addCart.loading,
               title: 'Agregar',
               onPressed: () async {
+                if (widget.quantity * 0.30 <
+                    int.parse(cantidadController.text)) {
+                  errorAlertCustom(
+                    context: context,
+                    text: 'No puedes agregar mas de 30% de inventario',
+                  );
+                  return;
+                }
                 if (_formKey.currentState!.validate()) {
                   final createOk = await addCart.createNewProduct(
                     center: center,

@@ -63,11 +63,11 @@ class InfoUserDawer extends StatelessWidget {
                 )),
             user!.superUser
                 ? const Text('Administrador')
-                : const Text('Empleado'),
+                : const Text('Colaborador'),
           ],
         ),
         const SizedBox(
-          height: 100,
+          height: 50,
         )
       ],
     );

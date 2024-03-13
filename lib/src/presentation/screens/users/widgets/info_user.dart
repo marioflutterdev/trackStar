@@ -45,7 +45,7 @@ class InfoUser extends StatelessWidget {
                 children: [
                   user.superUser ?? false
                       ? const Text('Administrador: ')
-                      : const Text('Empleado: '),
+                      : const Text('Colaborador: '),
                   user.superUser ?? false
                       ? const Icon(
                           Icons.check_circle,
