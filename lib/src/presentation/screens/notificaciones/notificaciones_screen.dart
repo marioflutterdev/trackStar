@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:trackstar_web/src/config/resposive/responsive_funtion.dart';
-import 'package:trackstar_web/src/data/datasource/solicitudes_notificaciones/get_notificaiones.dart';
+import 'package:trackstar_web/src/data/datasource/solicitudes/get_notificaiones.dart';
 
 import 'widgets/info_notificaciones.dart';
 

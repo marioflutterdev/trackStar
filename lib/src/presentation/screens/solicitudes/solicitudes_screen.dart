@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:trackstar_web/src/config/resposive/responsive_funtion.dart';
-import 'package:trackstar_web/src/data/datasource/solicitudes_notificaciones/get_solicitudes.dart';
+import 'package:trackstar_web/src/data/datasource/notificaicones/get_solicitudes.dart';
 import 'package:trackstar_web/src/presentation/screens/solicitudes/widgets/info_solucitudes.dart';
 
 class SolicitudesScreen extends StatelessWidget {
