@@ -1,3 +1,5 @@
+export 'package:trackstar_web/src/data/models/solicitudes/solicitudes_model.dart';
+
 export 'package:trackstar_web/src/data/datasource/pedido/add_pedido.dart';
 export 'package:trackstar_web/src/data/models/notificaciones/notificaciones_model.dart';
 export 'package:trackstar_web/src/data/datasource/cart/delete_cart.dart';

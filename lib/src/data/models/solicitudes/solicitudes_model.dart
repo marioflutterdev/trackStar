@@ -2,25 +2,16 @@
 //
 //     final notificacionesSolicitudesModel = notificacionesSolicitudesModelFromJson(jsonString);
 
-import 'dart:convert';
-
 import 'package:trackstar_web/src/data/data.dart';
 
-List<NotificacionesModel> notificacionesSolicitudesModelFromJson(String str) =>
-    List<NotificacionesModel>.from(
-        json.decode(str).map((x) => NotificacionesModel.fromJson(x)));
-
-String notificacionesSolicitudesModelToJson(List<NotificacionesModel> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-
-class NotificacionesModel {
+class SolicitudesModel {
   final String id;
   final String? nameCenter;
   final int cantidad;
   final CenterModel centro;
   final ProductsModel producto;
 
-  NotificacionesModel({
+  SolicitudesModel({
     required this.id,
     required this.cantidad,
     required this.centro,
@@ -28,8 +19,8 @@ class NotificacionesModel {
     this.nameCenter,
   });
 
-  factory NotificacionesModel.fromJson(Map<String, dynamic> json) =>
-      NotificacionesModel(
+  factory SolicitudesModel.fromJson(Map<String, dynamic> json) =>
+      SolicitudesModel(
         id: json["id"],
         nameCenter: json["nombre_centro"],
         cantidad: json["cantidad"],

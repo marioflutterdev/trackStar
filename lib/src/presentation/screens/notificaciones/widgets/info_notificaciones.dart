@@ -4,7 +4,7 @@ import 'package:trackstar_web/src/data/data.dart';
 import '../../../widgets/widgets.dart';
 
 class NotificationInfo extends StatelessWidget {
-  final NotificacionesSolicitudesModel notificationes;
+  final NotificacionesModel notificationes;
 
   const NotificationInfo({
     Key? key,
@@ -40,14 +40,29 @@ class NotificationInfo extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text('Cantidad: ${notificationes.cantidad}'),
-                  Text('centro que lo solicita: ${notificationes.nameCenter}'),
+                  textCustom(
+                    title: 'Unidades Solicitadas: ',
+                    value: notificationes.cantidad.toString(),
+                  ),
+                  textCustom(
+                    value: notificationes.nameCenter,
+                    title: 'Centro Solicitante: ',
+                  )
                 ],
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Row textCustom({String? title, String? value}) {
+    return Row(
+      children: [
+        Text(title ?? 'no data', style: const TextStyle(fontSize: 20)),
+        Text(value ?? 'no data', style: const TextStyle(fontSize: 15)),
+      ],
     );
   }
 }

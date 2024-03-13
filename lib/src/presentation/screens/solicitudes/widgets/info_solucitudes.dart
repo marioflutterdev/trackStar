@@ -4,7 +4,7 @@ import 'package:trackstar_web/src/data/data.dart';
 import '../../../widgets/widgets.dart';
 
 class InfoSolicitud extends StatelessWidget {
-  final NotificacionesSolicitudesModel solicitud;
+  final SolicitudesModel solicitud;
 
   const InfoSolicitud({Key? key, required this.solicitud}) : super(key: key);
 
@@ -37,14 +37,28 @@ class InfoSolicitud extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text('Cantidad que solicita: ${solicitud.cantidad}'),
-                  Text('centro a que pertenece: ${solicitud.nameCenter}'),
+                  textCustom(
+                      title: 'Cantidad: ',
+                      value: solicitud.cantidad.toString()),
+                  textCustom(
+                    title: 'Se solicita de',
+                    value: solicitud.nameCenter,
+                  )
                 ],
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Row textCustom({String? title, String? value}) {
+    return Row(
+      children: [
+        Text('$title: ', style: const TextStyle(fontSize: 20)),
+        Text(value ?? 'no data', style: const TextStyle(fontSize: 15)),
+      ],
     );
   }
 }

@@ -1,8 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:trackstar_web/src/data/data.dart';
 
+import '../../../../config/helpers/alert_auth.dart';
 import '../../../widgets/widgets.dart';
 
 class InfoCart extends StatelessWidget {
@@ -64,7 +67,8 @@ class InfoCart extends StatelessWidget {
                           final data = await pedidos.addPedidos();
 
                           if (data != false) {
-                            solicitudes.addSolicitudes(
+                            final pedidosStatus =
+                                await solicitudes.addSolicitudes(
                               idSolicitudes: pedidos.uuidSolicitudes,
                               center: user?.user.userMetadata.center,
                               idProduct: cart.product.id,
@@ -72,13 +76,23 @@ class InfoCart extends StatelessWidget {
                               nombreCenterPertenece:
                                   cart.centerModel?.nameCenter,
                             );
-                            notificaciones.addNotificaciones(
+                            final notificacionesStatus =
+                                await notificaciones.addNotificaciones(
                               idNotificaciones: pedidos.uuidNotificaciones,
-                              center: user?.user.userMetadata.center,
+                              center: cart.centerModel?.id,
                               idProduct: cart.product.id,
                               quantity: cart.quantity,
                               centroNotificado: cart.centerModel?.nameCenter,
                             );
+
+                            if (pedidosStatus && notificacionesStatus) {
+                              deleteProducts.delateCart(cart.id);
+                              Future.delayed(const Duration(milliseconds: 500),
+                                  () {
+                                getProducts.getCart(user!);
+                              });
+                              context.pop(context);
+                            }
                           }
                         },
                       ),

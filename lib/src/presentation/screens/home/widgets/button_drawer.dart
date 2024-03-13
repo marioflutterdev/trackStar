@@ -16,6 +16,7 @@ class ButtonHome extends StatelessWidget {
     final cart = context.watch<GetCartProducts>();
     final user = context.watch<LoginAuthProvider>().user;
     final solicitudes = context.watch<GetSolicitudes>();
+    final notificaciones = context.watch<GetNotificaciones>();
     return Column(
       children: [
         FadeInLeft(
@@ -64,7 +65,6 @@ class ButtonHome extends StatelessWidget {
             opTap: () {
               menuController.paginaActual = 4;
               solicitudes.getSolicitudes(user!);
-              print('EStamo en el boton');
             },
             colors: selectColor(menuController, 4),
           ),
@@ -74,7 +74,10 @@ class ButtonHome extends StatelessWidget {
           child: ButtomCustom(
             icon: Icons.notifications,
             title: 'Notificaciones',
-            opTap: () => menuController.paginaActual = 5,
+            opTap: () {
+              menuController.paginaActual = 5;
+              notificaciones.getNotificaciones(user!);
+            },
             colors: selectColor(menuController, 5),
           ),
         ),
